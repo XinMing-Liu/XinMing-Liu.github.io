@@ -148,6 +148,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android-SDK目录详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/10/Android-SDK目录详解/">Android SDK 目录详解</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/10/Android-SDK目录详解/" class="archive-article-date">
+  	<time datetime="2017-02-10T02:12:33.673Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。<br>初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">abi/</div><div class="line">art/</div><div class="line">bionic/     （bionic C库）</div><div class="line">bootable/   （启动引导相关代码）</div><div class="line">build/     编译脚本（makefile shell（bash））</div><div class="line">cts/    （Android兼容性测试套件标准）</div><div class="line">dalvik/   虚拟机相关工具</div><div class="line">developers/  开发工具和例子程序源码</div><div class="line">development/  开发工具和例子程序源码</div><div class="line">device/  厂家目录</div><div class="line">docs/   说明文档</div><div class="line">external/  三方开源库代码（android使用的一些开源的模组）</div><div class="line">frameworks/   应用框架源码</div><div class="line">gen/</div><div class="line">hardware/   硬件抽象层源码（部分厂家开源的硬解适配层HAL代码）</div><div class="line">libcore/</div><div class="line">libnativehelper/</div><div class="line">Makefile</div><div class="line">ndk/   开发本地工具箱代码</div><div class="line">out/   编译结果</div><div class="line">packages/   应用程序及包的源码</div><div class="line">pdk/</div><div class="line">platform_testing/</div><div class="line">prebuilts/   （x86和arm架构下预编译的一些资源）</div><div class="line">projectFilesBackup/</div><div class="line">sdk/   应用程序开发工具箱中工具源代码（sdk及模拟器）</div><div class="line">system/   系统核心程序和本地服务程序源码（底层文件系统库、应用及组件——C语言）</div><div class="line">tools/</div><div class="line">vendor/   厂家预制应用及修改原生系统源码（厂商定制代码）</div></pre></td></tr></table></figure></p>
+<p>对于这些目录，其中大部分是做安卓开发无法涉猎的，其实它也是不是我们做安卓开发所要去修改的，而是由底层ROM驱动工程师去改的。说白了就是跟我们没关系。<br>这里只重点讲述以下几个目录：build；frameworks；external；out；packages；system；vendor；device<br>如果你想在一款nexs上开发一套自己的全新系统了解这些足够了。（贪多吃不烂，这个道理不必多说现在开始）</p>
+<p>##1、首先说一下android的编译原理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">bionic 目录</div><div class="line">|-- libc                        （C库）</div><div class="line">|   |-- arch-arm        （ARM架构，包含系统调用汇编实现）</div><div class="line">|   |-- arch-x86        （x86架构，包含系统调用汇编实现）</div><div class="line">|   |-- bionic                （由C实现的功能，架构无关）</div><div class="line">|   |-- docs                （文档）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   |-- inet                （？inet相关，具体作用不明）</div><div class="line">|   |-- kernel                （Linux内核中的一些头文件）</div><div class="line">|   |-- netbsd                （？nesbsd系统相关，具体作用不明）</div><div class="line">|   |-- private                （？一些私有的头文件）</div><div class="line">|   |-- stdio                （stdio实现）</div><div class="line">|   |-- stdlib                （stdlib实现）</div><div class="line">|   |-- string                （string函数实现）</div><div class="line">|   |-- tools                （几个工具）</div><div class="line">|   |-- tzcode                （时区相关代码）</div><div class="line">|   |-- unistd                （unistd实现）</div><div class="line">|   `-- zoneinfo        （时区信息）</div><div class="line">|-- libdl                        （libdl实现，dl是动态链接，提供访问动态链接库的功能）</div><div class="line">|-- libm                        （libm数学库的实现，）</div><div class="line">|   |-- alpha                （apaha架构）</div><div class="line">|   |-- amd64                （amd64架构）</div><div class="line">|   |-- arm                （arm架构）</div><div class="line">|   |-- bsdsrc                （？bsd的源码）</div><div class="line">|   |-- i386                （i386架构）</div><div class="line">|   |-- i387                （i387架构？）</div><div class="line">|   |-- ia64                （ia64架构）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   |-- man                （数学函数，后缀名为.3，一些为freeBSD的库文件）</div><div class="line">|   |-- powerpc        （powerpc架构）</div><div class="line">|   |-- sparc64                （sparc64架构）</div><div class="line">|   `-- src                （源代码）</div><div class="line">|-- libstdc++                （libstdc++ C++实现库）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   `-- src                （源码）</div><div class="line">|-- libthread_db        （多线程程序的调试器库）</div><div class="line">|   `-- include                （头文件）</div><div class="line">`-- linker                        （动态链接器）</div><div class="line">`-- arch                （支持arm和x86两种架构）</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">编译结果：</div><div class="line">out</div><div class="line">├── host                               SDK 中的各种工具(emulator，adb...)</div><div class="line">│   ├── common                         所有主机都用的通用库(java库)</div><div class="line">│   │   └── obj</div><div class="line">│   │       └── JAVA_LIBRARIES</div><div class="line">│   └── Linux-x86                      用linux-x86主机上工具程序</div><div class="line">└── target                             目标机上运行的各种程序</div><div class="line">    ├── common                         所有产品都用的通用程序(java程序或库)</div><div class="line">    │   ├── docs                       文档目录</div><div class="line">    │   ├── obj                        中间文件</div><div class="line">    │   │   ├── APPS                   应用程序的中间文件</div><div class="line">    │   │   └── JAVA_LIBRARIES         java库的中间文件</div><div class="line">    │   └── R                          资源文件(java代码形式)</div><div class="line">    │       ├── android</div><div class="line">    │       ├── com</div><div class="line">    │       ├── jp</div><div class="line">    │       └── org</div><div class="line">    └── product                         产品(特定平台)专用程序</div><div class="line">        └── fspad-723                   fspad-723型号产品(全志A23平台)程序</div><div class="line">            ├── data                    用户数据, 该目录中的内容被挂载到/data目录下</div><div class="line">            ├── obj</div><div class="line">            ├── recovery                恢复版的根文件系统</div><div class="line">            ├── root                    根文件系统，装有最基本的命令, 该目录中的内容被挂载到/目录下</div><div class="line">            ├── symbols</div><div class="line">            ├── system                  系统文件系统, 该目录中的内容被挂载到/system目录下</div><div class="line">            -------------------------------------------------------------</div><div class="line">            ├── ramdisk.img             root目录打包</div><div class="line">            ├── ramdisk-recovery.img    recovery目录打包</div><div class="line">            ├── boot.img                kernel + ramdisk.img</div><div class="line">            ├── system.img              system目录打包</div><div class="line">            ├── userdata.img            data目录打包</div><div class="line">            └── recovery.img            kernel + ramdisk-recovery.img</div></pre></td></tr></table></figure>
+<p>参考资料：<br>    <a href="http://blog.csdn.net/haoge921026/article/details/47608751" target="_blank" rel="external">CSDN Android系统编译原理</a><br>    <a href="http://www.cnblogs.com/yyangblog/archive/2011/03/02/1968880.html" target="_blank" rel="external">进则净土，退则凡尘 的博客</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Android开发/" class="article-tag-list-link color1">Android 开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/10/Android-SDK目录详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Andrid-开发环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

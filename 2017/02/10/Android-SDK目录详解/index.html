@@ -1,12 +1,16 @@
-
 <!doctype html>
-<html class="theme-next use-motion theme-next-mala">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -17,27 +21,74 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="用时间沉淀一切，用博客记录一生。" />
-
-
-
-  <meta name="keywords" content="Hexo,Mala" />
 
 
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
 
 
 <meta name="description" content="对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。1234567891011121314151617181920212223242526272829abi/art/bionic/     （bionic C库）boo">
@@ -52,102 +103,148 @@
 <meta name="twitter:description" content="对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。1234567891011121314151617181920212223242526272829abi/art/bionic/     （bionic C库）boo">
 
 
-<script type="text/javascript" id="hexo.configuration">
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mala',
-    sidebar: 'post'
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/10/Android-SDK目录详解/"/>
+
+
+
+
 
   <title> Android SDK 目录详解 | XinMing </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-rCN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column page-post-detail">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">剑锋在磨砺，梅香在苦寒</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            Categories
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            Archives
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            Tags
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            About
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
 
-      
       
     </ul>
   
@@ -155,204 +252,122 @@
   
 </nav>
 
+
+
  </div>
     </header>
 
-    
-      
-
-      
-        <style type="text/css">
-
-    .circle {
-        width: 40px;
-        height: 40px;
-        background: #555 no-repeat;
-        cursor: move;
-    }
-
-    .assist-btn {
-        position: fixed;
-        top: 50％;
-        left: 10px;
-        -moz-border-radius: 50px;
-        -webkit-border-radius: 50px;
-        border-radius: 50px;
-        outline: none;
-        border: none;
-        color: #87daff;
-    }
-
-</style>
-
-<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript">
-    // 浮动圆点展开与收缩
-    /*
-    $(function () {
-        var assist_box = $('.assist-box');
-        $('#assist_btn').hover(function () {
-            assist_box.stop().show(300);
-        }, function () {
-            assist_box.stop().hide(150);
-        })
-    });
-    */  
-    //浮动圆点拖动
-    $(function () {
-        var box = document.getElementById('assist_btn');
-        box.onmousedown = function (event) {
-            var e = event || window.event,
-                t = e.target || e.srcElement,
-                // 鼠标按下时的坐标x1,y1
-                x1 = e.clientX,
-                y1 = e.clientY,
-                //鼠标按下时的左右偏移量
-                dragLeft = this.offsetLeft,
-                dragTop = this.offsetTop;
-
-            document.onmousemove = function (event) {
-                var e = event || window.event,
-                    t = e.target || e.srcElement,
-                    // 鼠标移动时的动态坐标
-                    x2 = e.clientX,
-                    y2 = e.clientY,
-                    // 鼠标移动时的坐标的变化量
-                    x = x2 - x1,
-                    y = y2 - y1;
-                box.style.left = (dragLeft + x) + 'px';
-                box.style.top = (dragTop + y) + 'px';
-            }
-
-            document.onmouseup = function () {
-                this.onmousemove = null;
-            }
-        }
-    });
-
-/*
-    $whitesmoke   = #f5f5f5
-    $gainsboro    = #eee
-    $gray-lighter = #ddd
-    $grey-light   = #ccc
-    $grey         = #bbb
-    $grey-dark    = #999
-    $grey-dim     = #666
-    $black-light  = #555
-    $black-deep   = #222
-    $red          = #ff2a2a
-    $blue-bright  = #87daff
-    $blue         = #0684bd
-    $blue-deep    = #262a30
-*/
-    // white theme
-    var body = {color: "#555", background: "white"};
-    var a_tag = {color: "#222"};
-    var header = { background: "#f5f5f5"};
-    var logo_line_i = {background: "#222"};
-    // var post_code = {background: "#eee", color: "#222"};
-
-    function switch_theme() {
-        $("body").css(body);
-        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
-        $(".header, .footer").css(header);
-        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
-        //$(".post code").css(post_code);
-        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
-        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
-        
-        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
-        $("#assist_btn").hide(1500);
-    }
-
-    $(function () {
-        $("#assist_btn").dblclick(function() {
-            switch_theme();
-        });
-    });
-
-</script>
-
-<div>
-
-    <button class="assist-btn circle" id="assist_btn" title="双击切换">
-        亮
-    </button>
-
-</div>
-
-
-
-
-
-
-
-
-
-      
-
-    
-
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/10/Android-SDK目录详解/">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              Android SDK 目录详解
-            
-          
-        </h1>
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
 
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-02-10T10:24:01+08:00" content="2017-02-10">
-            2017-02-10
-          </time>
-        </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; In
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Android-开发/" itemprop="url" rel="index">
-                  <span itemprop="name">Android 开发</span>
-                </a>
-              </span>
+            
+              
+                Android SDK 目录详解
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-10T10:24:01+08:00">
+                2017-02-10
+              </time>
+            
+
+            
 
             
           </span>
-        
 
-        
           
-        
-      </div>
-    </header>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 开发</span>
+                  </a>
+                </span>
 
-    <div class="post-body">
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。<br>初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">abi/</div><div class="line">art/</div><div class="line">bionic/     （bionic C库）</div><div class="line">bootable/   （启动引导相关代码）</div><div class="line">build/     编译脚本（makefile shell（bash））</div><div class="line">cts/    （Android兼容性测试套件标准）</div><div class="line">dalvik/   虚拟机相关工具</div><div class="line">developers/  开发工具和例子程序源码</div><div class="line">development/  开发工具和例子程序源码</div><div class="line">device/  厂家目录</div><div class="line">docs/   说明文档</div><div class="line">external/  三方开源库代码（android使用的一些开源的模组）</div><div class="line">frameworks/   应用框架源码</div><div class="line">gen/</div><div class="line">hardware/   硬件抽象层源码（部分厂家开源的硬解适配层HAL代码）</div><div class="line">libcore/</div><div class="line">libnativehelper/</div><div class="line">Makefile</div><div class="line">ndk/   开发本地工具箱代码</div><div class="line">out/   编译结果</div><div class="line">packages/   应用程序及包的源码</div><div class="line">pdk/</div><div class="line">platform_testing/</div><div class="line">prebuilts/   （x86和arm架构下预编译的一些资源）</div><div class="line">projectFilesBackup/</div><div class="line">sdk/   应用程序开发工具箱中工具源代码（sdk及模拟器）</div><div class="line">system/   系统核心程序和本地服务程序源码（底层文件系统库、应用及组件——C语言）</div><div class="line">tools/</div><div class="line">vendor/   厂家预制应用及修改原生系统源码（厂商定制代码）</div></pre></td></tr></table></figure></p>
+        <p>对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。<br>初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">abi/</div><div class="line">art/</div><div class="line">bionic/     （bionic C库）</div><div class="line">bootable/   （启动引导相关代码）</div><div class="line">build/     编译脚本（makefile shell（bash））</div><div class="line">cts/    （Android兼容性测试套件标准）</div><div class="line">dalvik/   虚拟机相关工具</div><div class="line">developers/  开发工具和例子程序源码</div><div class="line">development/  开发工具和例子程序源码</div><div class="line">device/  厂家目录</div><div class="line">docs/   说明文档</div><div class="line">external/  三方开源库代码（android使用的一些开源的模组）</div><div class="line">frameworks/   应用框架源码</div><div class="line">gen/</div><div class="line">hardware/   硬件抽象层源码（部分厂家开源的硬解适配层HAL代码）</div><div class="line">libcore/</div><div class="line">libnativehelper/</div><div class="line">Makefile</div><div class="line">ndk/   开发本地工具箱代码</div><div class="line">out/   编译结果</div><div class="line">packages/   应用程序及包的源码</div><div class="line">pdk/</div><div class="line">platform_testing/</div><div class="line">prebuilts/   （x86和arm架构下预编译的一些资源）</div><div class="line">projectFilesBackup/</div><div class="line">sdk/   应用程序开发工具箱中工具源代码（sdk及模拟器）</div><div class="line">system/   系统核心程序和本地服务程序源码（底层文件系统库、应用及组件——C语言）</div><div class="line">tools/</div><div class="line">vendor/   厂家预制应用及修改原生系统源码（厂商定制代码）</div></pre></td></tr></table></figure></p>
 <ul>
 <li>这些目录，其中大部分是做安卓开发无法涉猎的，其实它也是不是我们做安卓开发所要去修改的，而是由底层ROM驱动工程师去改的。说白了就是跟我们没关系。</li>
 <li>这里我推荐以下几个目录做重点了解：build；frameworks；external；out；packages；system；vendor；device<br>如果你想在一款nexs上开发一套自己的全新系统了解这些足够了。（贪多吃不烂，这个道理不必多说现在开始）</li>
@@ -371,24 +386,49 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">vendor 目录                        （厂家定制内容）</div><div class="line"></div><div class="line">|-- aosp                                （android open source project）</div><div class="line">|   `-- products                （一些板级规则）</div><div class="line">|-- htc                                （HTC公司）</div><div class="line">|   |-- common-open        （通用部分）</div><div class="line">|   |   `-- akmd                （解压img用的工具）</div><div class="line">|   |-- dream-open                （G1开放部分）</div><div class="line">|   |-- prebuilt-open        （预编译开放部分）</div><div class="line">|   `-- sapphire-open        （sapphire这款型号开放内容）</div><div class="line">|-- pv-open                        （没东西）</div><div class="line">|-- qcom                                （里面基本是空的）</div><div class="line">`-- sample                        （google提供的样例）</div><div class="line">    |-- apps                        （应用）</div><div class="line">    |   |-- client                （用户）</div><div class="line">    |   `-- upgrade        （升级）</div><div class="line">    |-- frameworks                （框架）</div><div class="line">    |   `-- PlatformLibrary        （平台库）</div><div class="line">    |-- products                （产品）</div><div class="line">    |-- sdk_addon                （sdk添加部分）</div><div class="line">    `-- skins                        （皮肤）</div><div class="line">        `-- WVGAMedDpi        （WVGA适用的图片）</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">编译结果：</div><div class="line">out</div><div class="line">├── host                               SDK 中的各种工具(emulator，adb...)</div><div class="line">│   ├── common                         所有主机都用的通用库(java库)</div><div class="line">│   │   └── obj</div><div class="line">│   │       └── JAVA_LIBRARIES</div><div class="line">│   └── Linux-x86                      用linux-x86主机上工具程序</div><div class="line">└── target                             目标机上运行的各种程序</div><div class="line">    ├── common                         所有产品都用的通用程序(java程序或库)</div><div class="line">    │   ├── docs                       文档目录</div><div class="line">    │   ├── obj                        中间文件</div><div class="line">    │   │   ├── APPS                   应用程序的中间文件</div><div class="line">    │   │   └── JAVA_LIBRARIES         java库的中间文件</div><div class="line">    │   └── R                          资源文件(java代码形式)</div><div class="line">    │       ├── android</div><div class="line">    │       ├── com</div><div class="line">    │       ├── jp</div><div class="line">    │       └── org</div><div class="line">    └── product                         产品(特定平台)专用程序</div><div class="line">        └── fspad-723                   fspad-723型号产品(全志A23平台)程序</div><div class="line">            ├── data                    用户数据, 该目录中的内容被挂载到/data目录下</div><div class="line">            ├── obj</div><div class="line">            ├── recovery                恢复版的根文件系统</div><div class="line">            ├── root                    根文件系统，装有最基本的命令, 该目录中的内容被挂载到/目录下</div><div class="line">            ├── symbols</div><div class="line">            ├── system                  系统文件系统, 该目录中的内容被挂载到/system目录下</div><div class="line">            -------------------------------------------------------------</div><div class="line">            ├── ramdisk.img             root目录打包</div><div class="line">            ├── ramdisk-recovery.img    recovery目录打包</div><div class="line">            ├── boot.img                kernel + ramdisk.img</div><div class="line">            ├── system.img              system目录打包</div><div class="line">            ├── userdata.img            data目录打包</div><div class="line">            └── recovery.img            kernel + ramdisk-recovery.img</div></pre></td></tr></table></figure>
 <p>参考资料：<br>    <a href="http://blog.csdn.net/haoge921026/article/details/47608751" target="_blank" rel="external">CSDN Android系统编译原理</a><br>    <a href="http://www.cnblogs.com/yyangblog/archive/2011/03/02/1968880.html" target="_blank" rel="external">进则净土，退则凡尘 的博客</a></p>
-</span>
+
       
     </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
 
       
+        
+      
+
+      
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/15/Android-启动过程详解/" rel="prev">Android 启动过程详解</a>
+              <a href="/2017/02/09/Andrid-开发环境配置/" rel="next" title="Android 开发环境配置">
+                <i class="fa fa-chevron-left"></i> Android 开发环境配置
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/09/Andrid-开发环境配置/" rel="next">Android 开发环境配置</a>
+              <a href="/2017/02/24/Android-启动过程详解/" rel="prev" title="Android 启动过程详解">
+                Android 启动过程详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -401,169 +441,25 @@
 
 
 
-    <div>
-      
-        <style type="text/css">
-
-    .donate_bar {
-        text-align: center;
-        margin-top : 5%;
-    }
-
-    .donate_bar.hidden {
-        display:none;
-    }
-/*
-    .donate_bar a.btn_donate {
-        display: inline-block;
-        width: 82px;
-        height: 82px;
-        margin-left:auto;
-        margin-right:auto;
-
-        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
-        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
-
-        -webkit-transition: background 0s;
-        -moz-transition: background 0s;
-        -o-transition: background 0s;
-        -ms-transition: background 0s;
-        transition: background 0s;
-    }
-*/
-    .donate_bar a.btn_donate:hover { 
-        // background-position: 0px -82px;
-        color: #87daff
-    }
-
-    .donate_bar .donate_txt {
-        display: block;
-        color: #9d9d9d;
-        font: 14px/2 "Microsoft Yahei";
-    }
-
-    .bold { 
-        font-weight: bold; 
-    }
-
-    .post-donate a {
-        border-bottom: 0px;
-    }
-
-    #donate_guide table {
-        border: none;
-    }
-
-    #donate_guide td {
-        border-bottom: none;
-        border-right: none;
-        background: #333333;
-        valign: top;
-    }
-
-</style>
-
-
-
-    
-
-    <div class ="post-donate">
-        <div id="donate_board" class="donate_bar center">
-              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
-              <span id="donate_txt" class="donate_txt">
-                   
-                        仅仅是一个功能
-                   
-              </span>
-            <br>
-        </div>  
-  
-        <div id="donate_guide" class="donate_bar center hidden">
-            <!--
-            
-                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
-                    style="float:left;margin-left:25%;margin-right:10px;">
-                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
-                </a> 
-              
-
-            
-                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
-                    style="margin-right:30%">
-                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
-                </a>
-            
-            -->
-            <table>
-                <tr>
-                    <td>
-                        
-                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
-                                style="float:left;margin-left:25%;margin-right:10px;">
-                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
-                            </a> 
-                         
-                    </td>
-                    <td>
-                        
-                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
-                                style="margin-right:30%">
-                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
-                            </a>
-                        
-                    </td>
-                </tr>
-            </table>
-
-        </div>
-
-        <script type="text/javascript">
-            document.getElementById('btn_donate').onclick = function() {
-                $('#donate_board').addClass('hidden');
-                // $('#donate_guide').removeClass('hidden');
-                $('#donate_guide').show(2000);
-            }
-
-        </script>
-    </div>
-
-    
-
-
-      
-    </div>
-
     <div class="post-spread">
-      
-        <div class="bdsharebuttonbox">
-	<a href="#" class="bds_more" data-cmd="more"></a>
-	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-</div>
-<script>
-    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
       
     </div>
   </div>
 
- </div>
-
-        
-
-        
-          <div class="comments" id="comments">
-            
+          
           </div>
-        
-      </div>
+          
 
-      
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -577,43 +473,40 @@
     <div class="sidebar-inner">
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
+
       
 
-      <section class="site-overview">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="[object Object]" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">[object Object]</p>
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
         </div>
-        <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">categories</span>
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">tags</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
+
+          
 
         </nav>
 
@@ -621,284 +514,200 @@
 
         <div class="links-of-author motion-element">
           
-        </div>
-
-        <div class="links-of-friendly motion-element">
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
 
         
         
 
+        
+        
+
+        
+
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
-          <div class="post-toc">
-            
-            
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </section>
+
       
 
     </div>
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2017
-  </span>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">XinMing
-  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
 </div>
 
+
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
 </div>
 
-<!-- busuanzi -->
 
+        
 
-
- </div>
+        
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-  
-    
-    
-
   
 
-
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
-      }
-    }
-  });
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
 
   
 
   
+
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
+
+  
+
 </body>
 </html>

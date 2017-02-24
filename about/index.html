@@ -1,12 +1,16 @@
-
 <!doctype html>
-<html class="theme-next use-motion theme-next-mala">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -17,47 +21,118 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="用时间沉淀一切，用博客记录一生。" />
-
-
-
-  <meta name="keywords" content="Hexo,Mala" />
 
 
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="用时间沉淀一切，用博客记录一生。">
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在沧海中,我是一粒沙.　　我,隐藏在茫茫人海中.我既没有柔美的身段,也没有亮丽的双眸,但我有进取的心,有似水的梦怀,有崇高的理想,我坚信腹有诗书气自华.　　我,不愿随波逐流.在《未选择的路》中弗罗斯特曾写过：“黄色的树林里分出两条路,可惜我不能同时去涉足.”“而我选择了人迹更少的一条,从此决定了我一生的道路.”只融于大众的我便成为了实实在在的平凡人.我不愿去走别人庸俗的老路,去过跟别人同样庸俗的生">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="http://yoursite.com/about/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="用时间沉淀一切，用博客记录一生。">
-<meta property="og:updated_time" content="2017-02-15T10:12:08.816Z">
+<meta property="og:description" content="在沧海中,我是一粒沙.　　我,隐藏在茫茫人海中.我既没有柔美的身段,也没有亮丽的双眸,但我有进取的心,有似水的梦怀,有崇高的理想,我坚信腹有诗书气自华.　　我,不愿随波逐流.在《未选择的路》中弗罗斯特曾写过：“黄色的树林里分出两条路,可惜我不能同时去涉足.”“而我选择了人迹更少的一条,从此决定了我一生的道路.”只融于大众的我便成为了实实在在的平凡人.我不愿去走别人庸俗的老路,去过跟别人同样庸俗的生">
+<meta property="og:updated_time" content="2017-02-24T08:50:51.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about">
-<meta name="twitter:description" content="用时间沉淀一切，用博客记录一生。">
+<meta name="twitter:description" content="在沧海中,我是一粒沙.　　我,隐藏在茫茫人海中.我既没有柔美的身段,也没有亮丽的双眸,但我有进取的心,有似水的梦怀,有崇高的理想,我坚信腹有诗书气自华.　　我,不愿随波逐流.在《未选择的路》中弗罗斯特曾写过：“黄色的树林里分出两条路,可惜我不能同时去涉足.”“而我选择了人迹更少的一条,从此决定了我一生的道路.”只融于大众的我便成为了实实在在的平凡人.我不愿去走别人庸俗的老路,去过跟别人同样庸俗的生">
 
 
-<script type="text/javascript" id="hexo.configuration">
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mala',
-    sidebar: 'post'
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/about/"/>
+
+
+
+
 
   <title>
   
@@ -68,92 +143,114 @@
 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-rCN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column ">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">剑锋在磨砺，梅香在苦寒</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            Categories
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            Archives
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            Tags
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            About
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
 
-      
       
     </ul>
   
@@ -161,167 +258,44 @@
   
 </nav>
 
+
+
  </div>
     </header>
 
-    
-      
-
-      
-        <style type="text/css">
-
-    .circle {
-        width: 40px;
-        height: 40px;
-        background: #555 no-repeat;
-        cursor: move;
-    }
-
-    .assist-btn {
-        position: fixed;
-        top: 50％;
-        left: 10px;
-        -moz-border-radius: 50px;
-        -webkit-border-radius: 50px;
-        border-radius: 50px;
-        outline: none;
-        border: none;
-        color: #87daff;
-    }
-
-</style>
-
-<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript">
-    // 浮动圆点展开与收缩
-    /*
-    $(function () {
-        var assist_box = $('.assist-box');
-        $('#assist_btn').hover(function () {
-            assist_box.stop().show(300);
-        }, function () {
-            assist_box.stop().hide(150);
-        })
-    });
-    */  
-    //浮动圆点拖动
-    $(function () {
-        var box = document.getElementById('assist_btn');
-        box.onmousedown = function (event) {
-            var e = event || window.event,
-                t = e.target || e.srcElement,
-                // 鼠标按下时的坐标x1,y1
-                x1 = e.clientX,
-                y1 = e.clientY,
-                //鼠标按下时的左右偏移量
-                dragLeft = this.offsetLeft,
-                dragTop = this.offsetTop;
-
-            document.onmousemove = function (event) {
-                var e = event || window.event,
-                    t = e.target || e.srcElement,
-                    // 鼠标移动时的动态坐标
-                    x2 = e.clientX,
-                    y2 = e.clientY,
-                    // 鼠标移动时的坐标的变化量
-                    x = x2 - x1,
-                    y = y2 - y1;
-                box.style.left = (dragLeft + x) + 'px';
-                box.style.top = (dragTop + y) + 'px';
-            }
-
-            document.onmouseup = function () {
-                this.onmousemove = null;
-            }
-        }
-    });
-
-/*
-    $whitesmoke   = #f5f5f5
-    $gainsboro    = #eee
-    $gray-lighter = #ddd
-    $grey-light   = #ccc
-    $grey         = #bbb
-    $grey-dark    = #999
-    $grey-dim     = #666
-    $black-light  = #555
-    $black-deep   = #222
-    $red          = #ff2a2a
-    $blue-bright  = #87daff
-    $blue         = #0684bd
-    $blue-deep    = #262a30
-*/
-    // white theme
-    var body = {color: "#555", background: "white"};
-    var a_tag = {color: "#222"};
-    var header = { background: "#f5f5f5"};
-    var logo_line_i = {background: "#222"};
-    // var post_code = {background: "#eee", color: "#222"};
-
-    function switch_theme() {
-        $("body").css(body);
-        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
-        $(".header, .footer").css(header);
-        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
-        //$(".post code").css(post_code);
-        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
-        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
-        
-        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
-        $("#assist_btn").hide(1500);
-    }
-
-    $(function () {
-        $("#assist_btn").dblclick(function() {
-            switch_theme();
-        });
-    });
-
-</script>
-
-<div>
-
-    <button class="assist-btn circle" id="assist_btn" title="双击切换">
-        亮
-    </button>
-
-</div>
-
-
-
-
-
-
-
-
-
-      
-
-    
-
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">about</h1>
+
+
+
+</header>
+
     
     
-      
+      <blockquote class="blockquote-center"><p>在沧海中,我是一粒沙.<br>　　我,隐藏在茫茫人海中.我既没有柔美的身段,也没有亮丽的双眸,但我有进取的心,有似水的梦怀,有崇高的理想,我坚信腹有诗书气自华.<br>　　我,不愿随波逐流.在《未选择的路》中弗罗斯特曾写过：“黄色的树林里分出两条路,可惜我不能同时去涉足.”“而我选择了人迹更少的一条,从此决定了我一生的道路.”只融于大众的我便成为了实实在在的平凡人.我不愿去走别人庸俗的老路,去过跟别人同样庸俗的生活.在偷觑他人的同时,也否定了自己.&lt;p<br>　　我,不愿随波逐流.在《未选择的路》中弗罗斯特曾写过：“黄色的树林里分出两条路,可惜我不能同时去涉足.”“而我选择了人迹更少的一条,从此决定了我一生的道路.”只融于大众的我便成为了实实在在的平凡人.我不愿去走别人庸俗的老路,去过跟别人同样庸俗的生活.在偷觑他人的同时,也否定了自己.<br>　　我,幽默宽容.我向来不喜欢看别人满面怒容的样子,我认为他人的笑才是天下最美的风景.所以每天,我都会变成一颗开心果,尽可能地给他们带去欢乐.“比大地宽阔的是海洋,比海洋宽阔的是天空,比天空宽阔的是人的心灵.”宽容使狭隘的胸怀容纳百川,所以对待别人的过失,我都付笑谈中.<br>　　我,要做自己.齐白石老先生曾说过；“学我者生,似我者死.”走不出前人的框架,自然也就不会有自己的天地.当流行泡沫小说时,我感觉那时在浪费时间,当流行网络游戏时,我感觉那是在虚度青春.要做自己,看清真实的我,拿出十二分的信心,告诉自己：“我就是我,凭什么跟他一样?!”抛掉那些人为的浮华雕饰,亮出自己的王牌,追求自己的个性,做我自己,最好!<br>　　我,积极进取.小小的我是一粒沙,但不甘于落后,一生庸碌无为.我愿做生命的酋长,做一粒不朽的珍珠泪.路漫漫其修远兮,吾将上下而求索.我渴望朝向艺术之塔,文化之巅,事业之厦,庆功之缘,不负这繁花似锦的时代,留一行扎实稳健的足迹,把美和爱洒向人间……<br>　　这就是我,风华正茂的我,意气风发的我.<br>　　这就是我,幽默宽容的我,不甘落后的我. </p>
+</blockquote>
+
     
   </div>
 
- </div>
-
-        
-
-        
-          <div class="comments" id="comments">
-            
+          
           </div>
-        
-      </div>
+          
 
-      
+
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -336,33 +310,39 @@
 
       
 
-      <section class="site-overview">
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="[object Object]" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">[object Object]</p>
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
         </div>
-        <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">categories</span>
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">tags</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
+
+          
 
         </nav>
 
@@ -370,16 +350,40 @@
 
         <div class="links-of-author motion-element">
           
-        </div>
-
-        <div class="links-of-friendly motion-element">
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
 
         
         
 
+        
+        
+
+        
+
+
       </section>
+
+      
 
       
 
@@ -387,97 +391,155 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2017
-  </span>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">XinMing
-  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
 </div>
 
+
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
 </div>
 
-<!-- busuanzi -->
 
+        
 
-
- </div>
+        
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-  
-    
-    
-
   
 
-
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+
+
 
   
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
 
   
 
   
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
+  
+
+  
+
+  
+
+
+  
+
 </body>
 </html>

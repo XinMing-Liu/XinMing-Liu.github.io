@@ -75,7 +75,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ubuntu," />
 
 
 
@@ -91,16 +91,16 @@
 
 
 
-<meta name="description" content="图片来自instagram，正在加载中…">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="http://yoursite.com/instagram/index.html">
+<meta name="description" content="Node.js 源码安装,以下部分我们将介绍在Ubuntu Linux下安装 Node.js 。 其他的Linux系统，如Centos等类似如下安装步骤。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu 安装Node.js">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/ubuntu-安装Node-js/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="图片来自instagram，正在加载中…">
-<meta property="og:updated_time" content="2017-02-10T08:39:44.000Z">
+<meta property="og:description" content="Node.js 源码安装,以下部分我们将介绍在Ubuntu Linux下安装 Node.js 。 其他的Linux系统，如Centos等类似如下安装步骤。">
+<meta property="og:updated_time" content="2017-11-21T14:45:03.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content="图片来自instagram，正在加载中…">
+<meta name="twitter:title" content="ubuntu 安装Node.js">
+<meta name="twitter:description" content="Node.js 源码安装,以下部分我们将介绍在Ubuntu Linux下安装 Node.js 。 其他的Linux系统，如Centos等类似如下安装步骤。">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/instagram/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/ubuntu-安装Node-js/"/>
 
 
 
 
 
-  <title> 相册 | XinMing </title>
+  <title> ubuntu 安装Node.js | XinMing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/instagram/index.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/ubuntu-安装Node-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XinMing">
@@ -294,7 +294,7 @@
             
             
               
-                相册
+                ubuntu 安装Node.js
               
             
           </h1>
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T09:56:56+08:00">
-                2017-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T21:38:37+08:00">
+                2017-11-21
               </time>
             
 
@@ -320,6 +320,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -332,6 +354,10 @@
 
           
 
+          
+              <div class="post-description">
+                  Node.js 源码安装,以下部分我们将介绍在Ubuntu Linux下安装 Node.js 。 其他的Linux系统，如Centos等类似如下安装步骤。
+              </div>
           
 
         </div>
@@ -345,9 +371,40 @@
       
 
       
-        <p><div class="instagram" data-client-id="956dd096b6e5496aba6662165b9b8443" data-user-id="438522285"><br>    <a href="http://instagram.com/litten225" target="_blank" class="open-ins">图片来自instagram，正在加载中…</a><br></div></p>
-<script src="/js/jquery.lazyload.js"></script>
-<script src="/js/instagram.js"></script>
+        <h1 id="Ubuntu-安装Node-js"><a href="#Ubuntu-安装Node-js" class="headerlink" title="Ubuntu 安装Node.js"></a>Ubuntu 安装Node.js</h1><hr>
+<h4 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h4><p>Ubuntu是一个好的开发系统，非常适合开发，但是当我们配置好第一次，一般尽量很少再去修改删除了。<br><br>所以有很多指令及安装方式总会忘记，这也是我的目的。</p>
+<h4 id="前提及原由："><a href="#前提及原由：" class="headerlink" title="前提及原由："></a>前提及原由：</h4><p>原来我的电脑已经将开发环境配置好，并在年前还写过几篇文章，后来来到新公司刚来没有分派配电脑，暂时用我的个人电脑因为工作需要（非开发相关德居多）所以将电脑系统重装回Windows。<br><br>公司配置de电脑到位后就将我电脑重新换回Ubuntu，一直没时间倒腾甚至连基本德更新都很少使用。</p>
+<blockquote>
+<p>sudo apt-get update</p>
+</blockquote>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程:"></a>过程:</h3><p>今天准备配置hexo的时候发现的update竟然会报错如下，问了下度娘顺利解决</p>
+<blockquote>
+<p>错误： E:Encountered a section with no Package: header</p>
+<p>解决方式：</p>
+<ul>
+<li>sudo rm /var/lib/apt/lists/* -vf</li>
+<li>sudo apt-get update</li>
+</ul>
+</blockquote>
+<p>npm 和 node 我发现之前不知道什么时候装过直接上来就</p>
+<blockquote>
+<p>sudo npm install -g hexo</p>
+</blockquote>
+<p>发现试了好几遍都不行.</p>
+<blockquote>
+<p>ERROR: npm is known not to run on Node.js v4.4.3</p>
+</blockquote>
+<p>那这个运行不了node我就心思,要不是npm的问题就是node的问题.<br><br>奶奶个熊的我就不信了…<br><br>npm 好说,装个其他软件试试就知道,node难就在这官网提供的是个tar包也不知道咋想得,看着就头疼.下载下来解压了发现也没什么卵用.<br></p>
+<h5 id="废话说这么多开始上干活"><a href="#废话说这么多开始上干活" class="headerlink" title="废话说这么多开始上干活:"></a>废话说这么多开始上干活:</h5><p>选择一个目录,用git下载node源码</p>
+<blockquote>
+<p>git clone <a href="https://github.com/nodejs/node" target="_blank" rel="external">https://github.com/nodejs/node</a><br></p>
+</blockquote>
+<p>修改clone下来的node文件夹读写权限</p>
+<blockquote>
+<p>sudo chmod -R 777 node<br><br>个人习惯使用777,实际755就足够了,为了防止再次修改我一般都会777<br><br>cd node<br><br>sudo ./configure //加载makefile文件<br>sudo make  //编译(实际时间比较长).后面可以接-j8表示开线程数,make -j8表示开8个线程去编译<br><br>sudo make install//安装</p>
+</blockquote>
+<p>如果人品好,一切结束就算完成,人品不好像我可能还会遇到一些问题.<br><br>编译过程中报错了怎么办.不好意思,我没保存我的错误log.其实当时我也没看懂.<br><br>我的处理方式分两部,首先删除out已经编译内容重新编译一遍.<br><br>发现还是有问题,然后我发下我的路径竟然有中文(我在”下载”目录下)<br><br>将我的node目录移至home根目录下重新来遍 ok没问题…</p>
+
       
     </div>
 
@@ -368,11 +425,33 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+        </div>
+      
 
       
         
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/Andrid-开发环境配置/" rel="next" title="Android 开发环境配置">
+                <i class="fa fa-chevron-left"></i> Android 开发环境配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
@@ -416,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/img/ic.png"
@@ -495,6 +583,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-安装Node-js"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu 安装Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目的："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">目的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前提及原由："><span class="nav-number">1.0.0.2.</span> <span class="nav-text">前提及原由：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程"><span class="nav-number">1.0.1.</span> <span class="nav-text">过程:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#废话说这么多开始上干活"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">废话说这么多开始上干活:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

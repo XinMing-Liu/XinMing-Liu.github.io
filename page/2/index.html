@@ -274,6 +274,159 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Android-启动过程详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/13/Android-启动过程详解/" itemprop="url">
+                  Android 启动过程详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T09:56:56+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">今天系统遇到一个问题，问题描述是这样的：开机或者是重启平板的时候经常会卡在OS动画进不去系统，需要强制关机或者是按复位孔在重新开机才能进系统。</div></pre></td></tr></table></figure>
+<h2 id="这样有机会深入了解开机的具体过程。"><a href="#这样有机会深入了解开机的具体过程。" class="headerlink" title="这样有机会深入了解开机的具体过程。"></a>这样有机会深入了解开机的具体过程。</h2><ul>
+<li>首先，百度了一下先关资料(如下)：<blockquote>
+<p><a href="http://blog.csdn.net/codectq/article/details/7383231" target="_blank" rel="external">Android 启动过程简介</a></p>
+</blockquote>
+</li>
+</ul>
+<p>其实这些之前也是有所了解的，不过通过这次机会可以重新认识一下。</p>
+<p>####详解<br> Android系统在启动时首先会启动Linux基础系统，然后引导加载Linux Kernel并启动初始化进程（Init），在第一个进程中会读取init.rc。在这个文件中会启动servicemanager,zygote……等基本的服务。 在init.c@system/core/init。会调用parse_config_file(init.rc)解析脚本文件init.rc<br> init.rc一般会在devices目录下<br> 包括系统的初始化创建文件夹，设置文件权限，初始话启动服务等都在init.rc中配置<br>例如以下截取的部分片段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#GPS</div><div class="line">   mkdir /data/gps_mnl 0771 gps system</div><div class="line">   mkdir /data/misc/gps 0770 gps system</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#bootanation 启动</div><div class="line">on property:init.svc.bootanim=running</div><div class="line">write /proc/bootprof &quot;BOOT_Animation:START&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#wlan0初始话</div><div class="line">service dhcpcd_wlan0 /system/bin/dhcpcd -BK -dd</div><div class="line">    class main</div><div class="line">    user root</div><div class="line">    group net_admin net_raw</div><div class="line">    disabled</div><div class="line">    oneshot</div></pre></td></tr></table></figure>
+<p>我这里看的是mtk中的init.rc文件。如下不同的模块的初始化可以放在相应的rc文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import init.project.rc</div><div class="line">import /FWUpgradeInit.rc</div><div class="line">import init.xlog.rc</div><div class="line">import init.aee.rc</div><div class="line">import init.fon.rc</div><div class="line">import init.volte.rc</div><div class="line">import init.mal.rc</div><div class="line">import init.epdg.rc</div><div class="line">import init.trustonic.rc</div><div class="line">import init.common_svc.rc</div><div class="line">import init.mt8173.usb.rc</div></pre></td></tr></table></figure></p>
+<hr>
+<p>  （在frameworks\base\core\jni文件夹下存在com_android_internel_os_ZygoteInit.cpp文件。在此文件中通过register_com_android_internel_os_ZygoteInit函数调用AndroidRuntime::registerNativeMethods函数。）<br>最终会调用到frameworks/base/core/jni/AndroidRuntime.cpp的start()方法。事实上，Android API与本地方法的注册关联就是在AndroidRuntime.cpp模块里完成的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Ubuntu 压缩解压/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -757,7 +910,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -775,7 +928,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

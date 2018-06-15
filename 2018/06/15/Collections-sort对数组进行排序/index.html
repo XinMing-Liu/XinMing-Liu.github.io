@@ -91,16 +91,16 @@
 
 
 
-<meta name="description" content="图片来自instagram，正在加载中…">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="http://yoursite.com/instagram/index.html">
+<meta name="description" content="1234567891011121314151617181920212223Collections.sort(countType, new Comparator&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt;() &amp;#123;           @Override           public int compare(Map&amp;lt;String, String&amp;gt; o1,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collections.sort对数组进行排序">
+<meta property="og:url" content="http://yoursite.com/2018/06/15/Collections-sort对数组进行排序/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="图片来自instagram，正在加载中…">
-<meta property="og:updated_time" content="2017-02-10T08:39:44.000Z">
+<meta property="og:description" content="1234567891011121314151617181920212223Collections.sort(countType, new Comparator&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt;() &amp;#123;           @Override           public int compare(Map&amp;lt;String, String&amp;gt; o1,">
+<meta property="og:updated_time" content="2018-06-15T05:54:37.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content="图片来自instagram，正在加载中…">
+<meta name="twitter:title" content="Collections.sort对数组进行排序">
+<meta name="twitter:description" content="1234567891011121314151617181920212223Collections.sort(countType, new Comparator&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt;() &amp;#123;           @Override           public int compare(Map&amp;lt;String, String&amp;gt; o1,">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/instagram/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/15/Collections-sort对数组进行排序/"/>
 
 
 
 
 
-  <title> 相册 | XinMing </title>
+  <title> Collections.sort对数组进行排序 | XinMing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/instagram/index.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/Collections-sort对数组进行排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XinMing">
@@ -294,7 +294,7 @@
             
             
               
-                相册
+                Collections.sort对数组进行排序
               
             
           </h1>
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T09:56:56+08:00">
-                2017-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-15T13:51:52+08:00">
+                2018-06-15
               </time>
             
 
@@ -345,9 +345,8 @@
       
 
       
-        <p><div class="instagram" data-client-id="956dd096b6e5496aba6662165b9b8443" data-user-id="438522285"><br>    <a href="http://instagram.com/litten225" target="_blank" class="open-ins">图片来自instagram，正在加载中…</a><br></div></p>
-<script src="/js/jquery.lazyload.js"></script>
-<script src="/js/instagram.js"></script>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Collections.sort(countType, new Comparator&lt;Map&lt;String, String&gt;&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public int compare(Map&lt;String, String&gt; o1, Map&lt;String, String&gt; o2) &#123;</div><div class="line">               String occupy1 = o1.get(&quot;occupy&quot;);</div><div class="line">               String substring1 = occupy1.substring(occupy1.indexOf(&quot;&#123;&quot;) + 1, occupy1.length() - 1);</div><div class="line"></div><div class="line">               String occupy2 = o2.get(&quot;occupy&quot;);</div><div class="line">               String substring2 = occupy2.substring(occupy2.indexOf(&quot;&#123;&quot;) + 1, occupy2.length() - 1);</div><div class="line">               int m1 = Integer.parseInt(substring1);</div><div class="line">               int m2 = Integer.parseInt(substring2);</div><div class="line"></div><div class="line">               if (m1 &gt; m2) &#123;</div><div class="line">                   //m1在m2后面</div><div class="line">                   return 1;</div><div class="line">               &#125; else if (m1 &lt; m2) &#123;</div><div class="line">                   //m1在m2前面</div><div class="line">                   return -1;</div><div class="line">               &#125; else &#123;</div><div class="line">                   Toast.makeText(FYInspecRequireActivity.this, &quot;返回数据存在问题，occupy有相同的，我无法解析&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">                   return 0;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -373,6 +372,26 @@
         
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/Java7新特性/" rel="next" title="Java7新特性">
+                <i class="fa fa-chevron-left"></i> Java7新特性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/15/android万能适配器/" rel="prev" title="android万能适配器">
+                android万能适配器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       

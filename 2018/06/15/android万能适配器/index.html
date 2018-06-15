@@ -1,0 +1,768 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="转载请标明出处：(http://blog.csdn.net/lmj623565791/article/details/38902805) ，本文出自【张鸿洋的博客】
+1、概述相信做Android开发的写得最多的就是ListView，GridView的适配器吧，记得以前开发一同事开发项目，一个项目下来基本就一直在写ListView的Adapter都快吐了
+对于Adapter一般都继承BaseAdap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android万能适配器">
+<meta property="og:url" content="http://yoursite.com/2018/06/15/android万能适配器/index.html">
+<meta property="og:site_name" content="XinMing">
+<meta property="og:description" content="转载请标明出处：(http://blog.csdn.net/lmj623565791/article/details/38902805) ，本文出自【张鸿洋的博客】
+1、概述相信做Android开发的写得最多的就是ListView，GridView的适配器吧，记得以前开发一同事开发项目，一个项目下来基本就一直在写ListView的Adapter都快吐了
+对于Adapter一般都继承BaseAdap">
+<meta property="og:image" content="https://img-blog.csdn.net/20140828211448031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG1qNjIzNTY1Nzkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20140828212515045?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG1qNjIzNTY1Nzkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-06-15T06:15:47.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android万能适配器">
+<meta name="twitter:description" content="转载请标明出处：(http://blog.csdn.net/lmj623565791/article/details/38902805) ，本文出自【张鸿洋的博客】
+1、概述相信做Android开发的写得最多的就是ListView，GridView的适配器吧，记得以前开发一同事开发项目，一个项目下来基本就一直在写ListView的Adapter都快吐了
+对于Adapter一般都继承BaseAdap">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20140828211448031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG1qNjIzNTY1Nzkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '123123',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/15/android万能适配器/"/>
+
+
+
+
+
+  <title> android万能适配器 | XinMing </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/android万能适配器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                android万能适配器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-15T14:01:55+08:00">
+                2018-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>转载请标明出处：(<a href="http://blog.csdn.net/lmj623565791/article/details/38902805" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/38902805</a>) ，本文出自【张鸿洋的博客】</p>
+<h5 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h5><p>相信做Android开发的写得最多的就是ListView，GridView的适配器吧，记得以前开发一同事开发项目，一个项目下来基本就一直在写ListView的Adapter都快吐了</p>
+<p>对于Adapter一般都继承BaseAdapter复写几个方法，getView里面使用ViewHolder模式，其实大部分的代码基本都是类似的。本篇博客为快速开发系列的第一篇，将一步一步带您封装出一个通用的Adapter。</p>
+<h5 id="2、常见的例子"><a href="#2、常见的例子" class="headerlink" title="2、常见的例子"></a>2、常见的例子</h5><p>首先看一个最常见的案例，大家一目十行的扫一眼</p>
+<h6 id="1、布局文件"><a href="#1、布局文件" class="headerlink" title="1、布局文件"></a>1、布局文件</h6><p>主布局文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[html] view plain copy</div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;  </div><div class="line">    android:layout_width=&quot;match_parent&quot;  </div><div class="line">    android:layout_height=&quot;match_parent&quot; &gt;  </div><div class="line"></div><div class="line">    &lt;ListView  </div><div class="line">        android:id=&quot;@+id/id_lv_main&quot;  </div><div class="line">        android:layout_width=&quot;fill_parent&quot;  </div><div class="line">        android:layout_height=&quot;fill_parent&quot; /&gt;  </div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<p>Item的布局文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[html] view plain copy</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:id=&quot;@+id/id_tv_title&quot;  </div><div class="line">    android:layout_width=&quot;match_parent&quot;  </div><div class="line">    android:layout_height=&quot;50dp&quot;  </div><div class="line">    android:background=&quot;#aa111111&quot;  </div><div class="line">    android:gravity=&quot;center_vertical&quot;  </div><div class="line">    android:paddingLeft=&quot;15dp&quot;  </div><div class="line">    android:textColor=&quot;#ffffff&quot;  </div><div class="line">    android:text=&quot;hello&quot;  </div><div class="line">    android:textSize=&quot;20sp&quot;  </div><div class="line">    android:textStyle=&quot;bold&quot; &gt;  </div><div class="line"></div><div class="line">&lt;/TextView&gt;</div></pre></td></tr></table></figure></p>
+<h6 id="2、Adapter"><a href="#2、Adapter" class="headerlink" title="2、Adapter"></a>2、Adapter</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import java.util.List;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.view.LayoutInflater;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line">import android.widget.BaseAdapter;  </div><div class="line">import android.widget.TextView;  </div><div class="line"></div><div class="line">public class MyAdapter extends BaseAdapter  </div><div class="line">&#123;  </div><div class="line">    private LayoutInflater mInflater;  </div><div class="line">    private Context mContext;  </div><div class="line">    private List&lt;String&gt; mDatas;  </div><div class="line"></div><div class="line">    public MyAdapter(Context context, List&lt;String&gt; mDatas)  </div><div class="line">    &#123;  </div><div class="line">        mInflater = LayoutInflater.from(context);  </div><div class="line">        this.mContext = context;  </div><div class="line">        this.mDatas = mDatas;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public int getCount()  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.size();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public Object getItem(int position)  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.get(position);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public long getItemId(int position)  </div><div class="line">    &#123;  </div><div class="line">        return position;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public View getView(int position, View convertView, ViewGroup parent)  </div><div class="line">    &#123;  </div><div class="line">        ViewHolder viewHolder = null;  </div><div class="line">        if (convertView == null)  </div><div class="line">        &#123;  </div><div class="line">            convertView = mInflater.inflate(R.layout.item_single_str, parent,  </div><div class="line">                    false);  </div><div class="line">            viewHolder = new ViewHolder();  </div><div class="line">            viewHolder.mTextView = (TextView) convertView  </div><div class="line">                    .findViewById(R.id.id_tv_title);  </div><div class="line">            convertView.setTag(viewHolder);  </div><div class="line">        &#125; else  </div><div class="line">        &#123;  </div><div class="line">            viewHolder = (ViewHolder) convertView.getTag();  </div><div class="line">        &#125;  </div><div class="line">        viewHolder.mTextView.setText(mDatas.get(position));  </div><div class="line">        return convertView;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    private final class ViewHolder  </div><div class="line">    &#123;  </div><div class="line">        TextView mTextView;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="3、Activity"><a href="#3、Activity" class="headerlink" title="3、Activity"></a>3、Activity</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import java.util.ArrayList;  </div><div class="line">import java.util.Arrays;  </div><div class="line">import java.util.List;  </div><div class="line"></div><div class="line">import android.app.Activity;  </div><div class="line">import android.os.Bundle;  </div><div class="line">import android.widget.ListView;  </div><div class="line"></div><div class="line">public class MainActivity extends Activity  </div><div class="line">&#123;  </div><div class="line"></div><div class="line">    private ListView mListView;  </div><div class="line">    private List&lt;String&gt; mDatas = new ArrayList&lt;String&gt;(Arrays.asList(&quot;Hello&quot;,  </div><div class="line">            &quot;World&quot;, &quot;Welcome&quot;));  </div><div class="line">    private MyAdapter mAdapter;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    protected void onCreate(Bundle savedInstanceState)  </div><div class="line">    &#123;  </div><div class="line">        super.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line">        mListView = (ListView) findViewById(R.id.id_lv_main);  </div><div class="line">        mListView.setAdapter(mAdapter = new MyAdapter(this, mDatas));  </div><div class="line"></div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这个例子大家应该都写了无数遍了，MyAdapter集成BaseAdapter，然后getView里面使用ViewHolder模式；一般情况下，我们的写法是这样的：对于不同布局的ListView，我们会有一个对应的Adapter，在Adapter中又会有一个ViewHolder类来提高效率。<br>这样出现ListView就会出现与之对于的Adapter类、ViewHolder类；那么有没有办法减少我们的编码呢？</p>
+<p>下面首先拿ViewHolder开刀~</p>
+<h6 id="3、通用的ViewHolder"><a href="#3、通用的ViewHolder" class="headerlink" title="3、通用的ViewHolder"></a>3、通用的ViewHolder</h6><p>首先分析下ViewHolder的作用，通过convertView.setTag与convertView进行绑定，然后当convertView复用时，直接从与之对于的ViewHolder(getTag)中拿到convertView布局中的控件，省去了findViewById的时间~</p>
+<p>也就是说，实际上们每个convertView会绑定一个ViewHolder对象，这个viewHolder主要用于帮convertView存储布局中的控件。</p>
+<p>那么我们只要写出一个通用的ViewHolder，然后对于任意的convertView，提供一个对象让其setTag即可；</p>
+<p>既然是通用，那么我们这个ViewHolder就不可能含有各种控件的成员变量了，因为每个Item的布局是不同的，最好的方式是什么呢？</p>
+<p>提供一个容器，专门存每个Item布局中的所有控件，而且还要能够查找出来；既然需要查找，那么ListView肯定是不行了，需要一个键值对进行保存，键为控件的Id，值为控件的引用，相信大家立刻就能想到Map；但是我们不用Map，因为有更好的替代类，就是我们android提供的SparseArray这个类，和Map类似，但是比Map效率，不过键只能为Integer.</p>
+<p>下面看我们的ViewHolder类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.util.Log;  </div><div class="line">import android.util.SparseArray;  </div><div class="line">import android.view.LayoutInflater;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line"></div><div class="line">public class ViewHolder  </div><div class="line">&#123;  </div><div class="line">    private final SparseArray&lt;View&gt; mViews;  </div><div class="line">    private View mConvertView;  </div><div class="line"></div><div class="line">    private ViewHolder(Context context, ViewGroup parent, int layoutId,  </div><div class="line">            int position)  </div><div class="line">    &#123;  </div><div class="line">        this.mViews = new SparseArray&lt;View&gt;();  </div><div class="line">        mConvertView = LayoutInflater.from(context).inflate(layoutId, parent,  </div><div class="line">                false);  </div><div class="line">        //setTag  </div><div class="line">        mConvertView.setTag(this);  </div><div class="line"></div><div class="line"></div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 拿到一个ViewHolder对象</div><div class="line">     * @param context</div><div class="line">     * @param convertView</div><div class="line">     * @param parent</div><div class="line">     * @param layoutId</div><div class="line">     * @param position</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public static ViewHolder get(Context context, View convertView,  </div><div class="line">            ViewGroup parent, int layoutId, int position)  </div><div class="line">    &#123;  </div><div class="line"></div><div class="line">        if (convertView == null)  </div><div class="line">        &#123;  </div><div class="line">            return new ViewHolder(context, parent, layoutId, position);  </div><div class="line">        &#125;  </div><div class="line">        return (ViewHolder) convertView.getTag();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 通过控件的Id获取对于的控件，如果没有则加入views</div><div class="line">     * @param viewId</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public &lt;T extends View&gt; T getView(int viewId)  </div><div class="line">    &#123;  </div><div class="line"></div><div class="line">        View view = mViews.get(viewId);  </div><div class="line">        if (view == null)  </div><div class="line">        &#123;  </div><div class="line">            view = mConvertView.findViewById(viewId);  </div><div class="line">            mViews.put(viewId, view);  </div><div class="line">        &#125;  </div><div class="line">        return (T) view;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    public View getConvertView()  </div><div class="line">    &#123;  </div><div class="line">        return mConvertView;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>与传统的ViewHolder不同，我们使用了一个SparseArray<view>用于存储与之对于的convertView的所有的控件，当需要拿这些控件时，通过getView(id)进行获取；</view></p>
+<p>下面看使用该ViewHolder的MyAdapter；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">@Override  </div><div class="line">    public View getView(int position, View convertView, ViewGroup parent)  </div><div class="line">    &#123;  </div><div class="line">        //实例化一个viewHolder  </div><div class="line">        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent,  </div><div class="line">                R.layout.item_single_str, position);  </div><div class="line">        //通过getView获取控件  </div><div class="line">        TextView tv = viewHolder.getView(R.id.id_tv_title);  </div><div class="line">        //使用  </div><div class="line">        tv.setText(mDatas.get(position));  </div><div class="line">        return viewHolder.getConvertView();  </div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>只看getView，其他方法都一样；首先调用ViewHolder的get方法，如果convertView为null，new一个ViewHolder实例，通过使用mInflater.inflate加载布局，然后new一个SparseArray用于存储View，最后setTag(this)；<br>如果存在那么直接getTag</p>
+<p>最后通过getView(id)获取控件，如果存在则直接返回，否则调用findViewById，返回存储，返回。</p>
+<p>好了，一个通用的ViewHolder写好了，以后一个项目几十个Adapter一个ViewHolder直接hold住全场  大家可以省点时间斗个小地主了</p>
+<h6 id="4、打造通用的Adapter"><a href="#4、打造通用的Adapter" class="headerlink" title="4、打造通用的Adapter"></a>4、打造通用的Adapter</h6><p>有了通用的ViewHolder大家肯定不能满足，怎么也得省出dota的时间，人在塔在~~</p>
+<p>下面看如何打造一个通过的Adapter，我们叫做CommonAdapter</p>
+<p>继续分析，Adapter一般需要保持一个List对象，存储一个Bean的集合，不同的ListView，Bean肯定是不同的，这个CommonAdapter肯定需要支持泛型，内部维持一个List<t>，就解决我们的问题了；</t></p>
+<p>于是我们初步打造我们的CommonAdapter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import java.util.List;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.view.LayoutInflater;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line">import android.widget.BaseAdapter;  </div><div class="line">import android.widget.TextView;  </div><div class="line"></div><div class="line">public abstract class CommonAdapter&lt;T&gt; extends BaseAdapter  </div><div class="line">&#123;  </div><div class="line">    protected LayoutInflater mInflater;  </div><div class="line">    protected Context mContext;  </div><div class="line">    protected List&lt;T&gt; mDatas;  </div><div class="line"></div><div class="line">    public CommonAdapter(Context context, List&lt;T&gt; mDatas)  </div><div class="line">    &#123;  </div><div class="line">        mInflater = LayoutInflater.from(context);  </div><div class="line">        this.mContext = context;  </div><div class="line">        this.mDatas = mDatas;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public int getCount()  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.size();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public Object getItem(int position)  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.get(position);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public long getItemId(int position)  </div><div class="line">    &#123;  </div><div class="line">        return position;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们的CommonAdapter依然是一个抽象类，除了getView以外我们把其他的代码都实现了，这样的话，在使用我们的Adapter只要实现一个getView，然后getView里面再使用我们打造的通过的ViewHolder是不是感觉还不错~<br>现在我们的MyAdapter是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import java.util.List;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line">import android.widget.TextView;  </div><div class="line"></div><div class="line">public class MyAdapter&lt;T&gt; extends CommonAdapter&lt;T&gt;  </div><div class="line">&#123;  </div><div class="line">    public MyAdapter(Context context, List&lt;T&gt; mDatas)  </div><div class="line">    &#123;  </div><div class="line">        super(context, mDatas);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public View getView(int position, View convertView, ViewGroup parent)  </div><div class="line">    &#123;  </div><div class="line">        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent,  </div><div class="line">                R.layout.item_single_str, position);  </div><div class="line">        TextView mTitle = viewHolder.getView(R.id.id_tv_title);  </div><div class="line">        mTitle.setText((String) mDatas.get(position));  </div><div class="line">        return viewHolder.getConvertView();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>所有的代码加起来也就10行左右，是不是神清气爽~~稍等，我先去dota一把~<br>但是我们是否就这样满足了呢？显然还可以简化。</p>
+<p>5、进一步铸造<br>注意我们的getView里面的代码，虽然只有4行，但是我觉得所有的Adapter的</p>
+<p>第一行（ViewHolder viewHolder = getViewHolder(position, convertView,parent);）和</p>
+<p>最后一行：return viewHolder.getConvertView();一定是一样的。</p>
+<p>那么我们可以这样做：我们把第一行和最后一行写死，把中间变化的部分抽取出来，这不就是OO的设计原则嘛。现在CommonAdapter是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import java.util.List;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.view.LayoutInflater;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line">import android.widget.BaseAdapter;  </div><div class="line"></div><div class="line">public abstract class CommonAdapter&lt;T&gt; extends BaseAdapter  </div><div class="line">&#123;  </div><div class="line">    protected LayoutInflater mInflater;  </div><div class="line">    protected Context mContext;  </div><div class="line">    protected List&lt;T&gt; mDatas;  </div><div class="line">    protected final int mItemLayoutId;  </div><div class="line"></div><div class="line">    public CommonAdapter(Context context, List&lt;T&gt; mDatas, int itemLayoutId)  </div><div class="line">    &#123;  </div><div class="line">        this.mContext = context;  </div><div class="line">        this.mInflater = LayoutInflater.from(mContext);  </div><div class="line">        this.mDatas = mDatas;  </div><div class="line">        this.mItemLayoutId = itemLayoutId;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public int getCount()  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.size();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public T getItem(int position)  </div><div class="line">    &#123;  </div><div class="line">        return mDatas.get(position);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public long getItemId(int position)  </div><div class="line">    &#123;  </div><div class="line">        return position;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public View getView(int position, View convertView, ViewGroup parent)  </div><div class="line">    &#123;  </div><div class="line">        final ViewHolder viewHolder = getViewHolder(position, convertView,  </div><div class="line">                parent);  </div><div class="line">        convert(viewHolder, getItem(position));  </div><div class="line">        return viewHolder.getConvertView();  </div><div class="line"></div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    public abstract void convert(ViewHolder helper, T item);  </div><div class="line"></div><div class="line">    private ViewHolder getViewHolder(int position, View convertView,  </div><div class="line">            ViewGroup parent)  </div><div class="line">    &#123;  </div><div class="line">        return ViewHolder.get(mContext, convertView, parent, mItemLayoutId,  </div><div class="line">                position);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对外公布了一个convert方法，并且还把viewHolder和本Item对于的Bean对象给传出去，现在convert方法里面需要干嘛呢？<br>通过ViewHolder把View找到，通过Item设置值；</p>
+<p>现在我觉得代码简化到这样，我已经不需要单独写一个Adapter了，直接MainActivity匿名内部类走起~<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">@Override  </div><div class="line">    protected void onCreate(Bundle savedInstanceState)  </div><div class="line">    &#123;  </div><div class="line">        super.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line">        mListView = (ListView) findViewById(R.id.id_lv_main);  </div><div class="line"></div><div class="line">        //设置适配器  </div><div class="line">        mListView.setAdapter(mAdapter = new CommonAdapter&lt;String&gt;(  </div><div class="line">                getApplicationContext(), mDatas, R.layout.item_single_str)  </div><div class="line">        &#123;  </div><div class="line">            @Override  </div><div class="line">            public void convert(ViewHolder c, String item)  </div><div class="line">            &#123;  </div><div class="line">                TextView view = viewHolder.getView(R.id.id_tv_title);  </div><div class="line">                view.setText(item);  </div><div class="line">            &#125;  </div><div class="line"></div><div class="line">        &#125;);  </div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到效果咋样，不错吧。你觉得还能简化么？我觉得还能改善。<br>6、Adapter最后的封魔<br>我们现在在convertView里面需要这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void convert(ViewHolder viewHolder, String item)</div><div class="line">&#123;</div><div class="line">	TextView view = viewHolder.getView(R.id.id_tv_title);</div><div class="line">	view.setText(item);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们细想一下，其实布局里面的View常用也就那么几种：ImageView,TextView,Button,CheckBox等等；</p>
+<p>那么我觉得ViewHolder还可以封装一些常用的方法，比如setText(id,String)；setImageResource(viewId, resId)；setImageBitmap(viewId, bitmap)；</p>
+<p>那么现在ViewHolder是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">package com.example.zhy_baseadapterhelper;  </div><div class="line"></div><div class="line">import android.content.Context;  </div><div class="line">import android.graphics.Bitmap;  </div><div class="line">import android.util.SparseArray;  </div><div class="line">import android.view.LayoutInflater;  </div><div class="line">import android.view.View;  </div><div class="line">import android.view.ViewGroup;  </div><div class="line">import android.widget.ImageView;  </div><div class="line">import android.widget.TextView;  </div><div class="line"></div><div class="line">import com.example.zhy_baseadapterhelper.ImageLoader.Type;  </div><div class="line"></div><div class="line">public class ViewHolder  </div><div class="line">&#123;  </div><div class="line">    private final SparseArray&lt;View&gt; mViews;  </div><div class="line">    private int mPosition;  </div><div class="line">    private View mConvertView;  </div><div class="line"></div><div class="line">    private ViewHolder(Context context, ViewGroup parent, int layoutId,  </div><div class="line">            int position)  </div><div class="line">    &#123;  </div><div class="line">        this.mPosition = position;  </div><div class="line">        this.mViews = new SparseArray&lt;View&gt;();  </div><div class="line">        mConvertView = LayoutInflater.from(context).inflate(layoutId, parent,  </div><div class="line">                false);  </div><div class="line">        // setTag  </div><div class="line">        mConvertView.setTag(this);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 拿到一个ViewHolder对象</div><div class="line">     *  </div><div class="line">     * @param context</div><div class="line">     * @param convertView</div><div class="line">     * @param parent</div><div class="line">     * @param layoutId</div><div class="line">     * @param position</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public static ViewHolder get(Context context, View convertView,  </div><div class="line">            ViewGroup parent, int layoutId, int position)  </div><div class="line">    &#123;  </div><div class="line">        if (convertView == null)  </div><div class="line">        &#123;  </div><div class="line">            return new ViewHolder(context, parent, layoutId, position);  </div><div class="line">        &#125;  </div><div class="line">        return (ViewHolder) convertView.getTag();  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    public View getConvertView()  </div><div class="line">    &#123;  </div><div class="line">        return mConvertView;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 通过控件的Id获取对于的控件，如果没有则加入views</div><div class="line">     *  </div><div class="line">     * @param viewId</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public &lt;T extends View&gt; T getView(int viewId)  </div><div class="line">    &#123;  </div><div class="line">        View view = mViews.get(viewId);  </div><div class="line">        if (view == null)  </div><div class="line">        &#123;  </div><div class="line">            view = mConvertView.findViewById(viewId);  </div><div class="line">            mViews.put(viewId, view);  </div><div class="line">        &#125;  </div><div class="line">        return (T) view;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 为TextView设置字符串</div><div class="line">     *  </div><div class="line">     * @param viewId</div><div class="line">     * @param text</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public ViewHolder setText(int viewId, String text)  </div><div class="line">    &#123;  </div><div class="line">        TextView view = getView(viewId);  </div><div class="line">        view.setText(text);  </div><div class="line">        return this;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 为ImageView设置图片</div><div class="line">     *  </div><div class="line">     * @param viewId</div><div class="line">     * @param drawableId</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public ViewHolder setImageResource(int viewId, int drawableId)  </div><div class="line">    &#123;  </div><div class="line">        ImageView view = getView(viewId);  </div><div class="line">        view.setImageResource(drawableId);  </div><div class="line"></div><div class="line">        return this;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 为ImageView设置图片</div><div class="line">     *  </div><div class="line">     * @param viewId</div><div class="line">     * @param drawableId</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public ViewHolder setImageBitmap(int viewId, Bitmap bm)  </div><div class="line">    &#123;  </div><div class="line">        ImageView view = getView(viewId);  </div><div class="line">        view.setImageBitmap(bm);  </div><div class="line">        return this;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    /**</div><div class="line">     * 为ImageView设置图片</div><div class="line">     *  </div><div class="line">     * @param viewId</div><div class="line">     * @param drawableId</div><div class="line">     * @return</div><div class="line">     */  </div><div class="line">    public ViewHolder setImageByUrl(int viewId, String url)  </div><div class="line">    &#123;  </div><div class="line">        ImageLoader.getInstance(3, Type.LIFO).loadImage(url,  </div><div class="line">                (ImageView) getView(viewId));  </div><div class="line">        return this;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    public int getPosition()  </div><div class="line">    &#123;  </div><div class="line">        return mPosition;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在的MainActivity只需要这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">mAdapter = new CommonAdapter&lt;String&gt;(getApplicationContext(),  </div><div class="line">                R.layout.item_single_str, mDatas)  </div><div class="line">        &#123;  </div><div class="line">            @Override  </div><div class="line">            protected void convert(ViewHolder viewHolder, String item)  </div><div class="line">            &#123;  </div><div class="line">                viewHolder.setText(R.id.id_tv_title, item);  </div><div class="line">            &#125;  </div><div class="line">        &#125;;</div></pre></td></tr></table></figure>
+<p>convertView里面只要一行代码了</p>
+<p>好了，到此我们的通用的Adapter已经一步一步铸造完毕~咋样，以后写项目省下来的时间是不是可以陪我切磋dota了（ps:11昵称：血魔哥404）~~</p>
+<p>注：关于ViewHolder里面的setText，setImageResource这类的方法，大家可以在使用的过程中不断的完善，今天发现这个控件可以这么设置值，好，放进去；时间长了，基本就完善了。还有那个ImageLoader是我另一篇博客里的，大家可以使用UIL，Volley或者自己写个图片加载器；</p>
+<p>7、实践<br>说了这么多，还是得拿出来让我们的实践检验检验，顺便来几张套图，俗话说，没图没正相。</p>
+<p>1、我们的实例代码的图是这样的：<br><img src="https://img-blog.csdn.net/20140828211448031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG1qNjIzNTY1Nzkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="avatar"></p>
+<p>关于Adapter和ViewHolder的代码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">// 设置适配器  </div><div class="line">        mListView.setAdapter(mAdapter = new CommonAdapter&lt;String&gt;(  </div><div class="line">                getApplicationContext(), mDatas, R.layout.item_single_str)  </div><div class="line">        &#123;  </div><div class="line">            @Override  </div><div class="line">            public void convert(ViewHolder helper, String item)  </div><div class="line">            &#123;  </div><div class="line">                helper.setText(R.id.id_tv_title,item);  </div><div class="line">            &#125;  </div><div class="line"></div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p>哎哟，我是不是只要贴一行；<br>2、来个复杂点的布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">[html] view plain copy</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:layout_width=&quot;match_parent&quot;  </div><div class="line">    android:layout_height=&quot;wrap_content&quot;  </div><div class="line">    android:background=&quot;#ffffff&quot;  </div><div class="line">    android:orientation=&quot;vertical&quot;  </div><div class="line">    android:padding=&quot;10dp&quot; &gt;  </div><div class="line"></div><div class="line">    &lt;TextView  </div><div class="line">        android:id=&quot;@+id/tv_title&quot;  </div><div class="line">        android:layout_width=&quot;match_parent&quot;  </div><div class="line">        android:layout_height=&quot;wrap_content&quot;  </div><div class="line">        android:singleLine=&quot;true&quot;  </div><div class="line">        android:text=&quot;红色钱包&quot;  </div><div class="line">        android:textSize=&quot;16sp&quot;  </div><div class="line">        android:textColor=&quot;#444444&quot; &gt;  </div><div class="line">    &lt;/TextView&gt;  </div><div class="line"></div><div class="line">    &lt;TextView  </div><div class="line">        android:id=&quot;@+id/tv_describe&quot;  </div><div class="line">        android:layout_width=&quot;match_parent&quot;  </div><div class="line">        android:layout_height=&quot;wrap_content&quot;  </div><div class="line">        android:layout_below=&quot;@id/tv_title&quot;  </div><div class="line">        android:layout_marginTop=&quot;10dp&quot;  </div><div class="line">        android:maxLines=&quot;2&quot;  </div><div class="line">        android:minLines=&quot;1&quot;  </div><div class="line">        android:text=&quot;周三早上丢失了红色钱包，在食堂二楼&quot;  </div><div class="line">        android:textColor=&quot;#898989&quot;  </div><div class="line">        android:textSize=&quot;16sp&quot; &gt;  </div><div class="line">    &lt;/TextView&gt;  </div><div class="line"></div><div class="line">    &lt;TextView  </div><div class="line">        android:id=&quot;@+id/tv_time&quot;  </div><div class="line">        android:layout_width=&quot;wrap_content&quot;  </div><div class="line">        android:layout_height=&quot;wrap_content&quot;  </div><div class="line">        android:layout_below=&quot;@id/tv_describe&quot;  </div><div class="line">        android:layout_marginTop=&quot;10dp&quot;  </div><div class="line">        android:text=&quot;20130240122&quot;  </div><div class="line">        android:textColor=&quot;#898989&quot;  </div><div class="line">        android:textSize=&quot;12sp&quot; &gt;  </div><div class="line">    &lt;/TextView&gt;  </div><div class="line"></div><div class="line">    &lt;TextView  </div><div class="line">        android:id=&quot;@+id/tv_phone&quot;  </div><div class="line">        android:layout_width=&quot;wrap_content&quot;  </div><div class="line">        android:layout_height=&quot;wrap_content&quot;  </div><div class="line">        android:layout_alignParentRight=&quot;true&quot;  </div><div class="line">        android:layout_below=&quot;@id/tv_describe&quot;  </div><div class="line">        android:layout_marginTop=&quot;10dp&quot;  </div><div class="line">        android:background=&quot;#5cbe6c&quot;  </div><div class="line">        android:drawableLeft=&quot;@drawable/icon_photo&quot;  </div><div class="line">        android:drawablePadding=&quot;5dp&quot;  </div><div class="line">        android:paddingBottom=&quot;3dp&quot;  </div><div class="line">        android:paddingLeft=&quot;5dp&quot;  </div><div class="line">        android:paddingRight=&quot;5dp&quot;  </div><div class="line">        android:paddingTop=&quot;3dp&quot;  </div><div class="line">        android:text=&quot;138024249542&quot;  </div><div class="line">        android:textColor=&quot;#ffffff&quot;  </div><div class="line">        android:textSize=&quot;12sp&quot; &gt;  </div><div class="line">    &lt;/TextView&gt;  </div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;  </div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>效果图是这样的：<br><img src="https://img-blog.csdn.net/20140828212515045?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG1qNjIzNTY1Nzkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="avatar"></p>
+<p>布局是不是挺复杂的了~~</p>
+<p>但是代码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy</div><div class="line">// 设置适配器  </div><div class="line">        mListView.setAdapter(mAdapter = new CommonAdapter&lt;Bean&gt;(  </div><div class="line">                getApplicationContext(), mDatas, R.layout.item_list)  </div><div class="line">        &#123;  </div><div class="line">            @Override  </div><div class="line">            public void convert(ViewHolder helper, Bean item)  </div><div class="line">            &#123;  </div><div class="line">                helper.setText(R.id.tv_title, item.getTitle());  </div><div class="line">                helper.setText(R.id.tv_describe, item.getDesc());  </div><div class="line">                helper.setText(R.id.tv_phone, item.getPhone());  </div><div class="line">                helper.setText(R.id.tv_time, item.getTime());  </div><div class="line"></div><div class="line">//              helper.getView(R.id.tv_title).setOnClickListener(l)  </div><div class="line">            &#125;  </div><div class="line"></div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p>从一个字符串的布局到这样的布局，Adapter加ViewHolder的改变就这么多，加起来3行左右代码~~~</p>
+<p>到此，Android 快速开发系列 打造万能的ListView GridView 适配器结束；</p>
+<p>最后给大家推荐一个gitHub项目：<a href="https://github.com/JoanZapata/base-adapter-helper" target="_blank" rel="external">https://github.com/JoanZapata/base-adapter-helper</a> ,这个项目所做的，和我上面写的基本一致。</p>
+<p>还有上面的布局文件来自网络，感谢Bmob的提供~</p>
+<p>好了，我要去快乐的玩耍了~~</p>
+<p>以下为最新更新==&gt;</p>
+<p>添加了多种Item类型的支持，源码地址：<a href="https://github.com/hongyangAndroid/base-adapter" target="_blank" rel="external">https://github.com/hongyangAndroid/base-adapter</a> .</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/Collections-sort对数组进行排序/" rel="next" title="Collections.sort对数组进行排序">
+                <i class="fa fa-chevron-left"></i> Collections.sort对数组进行排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、概述"><span class="nav-number">1.</span> <span class="nav-text">1、概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、常见的例子"><span class="nav-number">2.</span> <span class="nav-text">2、常见的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1、布局文件"><span class="nav-number">2.1.</span> <span class="nav-text">1、布局文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2、Adapter"><span class="nav-number">2.2.</span> <span class="nav-text">2、Adapter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3、Activity"><span class="nav-number">2.3.</span> <span class="nav-text">3、Activity</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3、通用的ViewHolder"><span class="nav-number">2.4.</span> <span class="nav-text">3、通用的ViewHolder</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4、打造通用的Adapter"><span class="nav-number">2.5.</span> <span class="nav-text">4、打造通用的Adapter</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

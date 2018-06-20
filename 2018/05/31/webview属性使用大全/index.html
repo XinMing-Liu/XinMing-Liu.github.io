@@ -91,16 +91,32 @@
 
 
 
-<meta name="description" content="WebViewWebSettings settings = webView.getSettings();//获取webview的设置settings.setJavaScriptEnabled(true);//可以加载jssettings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件webView.setWebChrome">
+<meta name="description" content="前言现在很多App里都内置了Web网页（Hybrid App），比如说很多电商平台，淘宝、京东、聚划算等等
+目录
+1. 简介一个基于webkit引擎、展现web页面的控件12a. Android 4.4前：Android Webview在低版本 &amp;amp; 高版本采用了不同的webkit版本的内核b. Android 4.4后：直接使用了Chrome内核
+2. 作用
+在 Android 客户端上加">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webview属性使用大全">
 <meta property="og:url" content="http://yoursite.com/2018/05/31/webview属性使用大全/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="WebViewWebSettings settings = webView.getSettings();//获取webview的设置settings.setJavaScriptEnabled(true);//可以加载jssettings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件webView.setWebChrome">
-<meta property="og:updated_time" content="2018-06-15T04:00:37.579Z">
+<meta property="og:description" content="前言现在很多App里都内置了Web网页（Hybrid App），比如说很多电商平台，淘宝、京东、聚划算等等
+目录
+1. 简介一个基于webkit引擎、展现web页面的控件12a. Android 4.4前：Android Webview在低版本 &amp;amp; 高版本采用了不同的webkit版本的内核b. Android 4.4后：直接使用了Chrome内核
+2. 作用
+在 Android 客户端上加">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/19/1641592ecb20e7ef?imageslim">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/19/1641592efe5703b7?imageslim">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/19/1641592f01b03bc8?imageslim">
+<meta property="og:updated_time" content="2018-06-19T07:11:00.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webview属性使用大全">
-<meta name="twitter:description" content="WebViewWebSettings settings = webView.getSettings();//获取webview的设置settings.setJavaScriptEnabled(true);//可以加载jssettings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件webView.setWebChrome">
+<meta name="twitter:description" content="前言现在很多App里都内置了Web网页（Hybrid App），比如说很多电商平台，淘宝、京东、聚划算等等
+目录
+1. 简介一个基于webkit引擎、展现web页面的控件12a. Android 4.4前：Android Webview在低版本 &amp;amp; 高版本采用了不同的webkit版本的内核b. Android 4.4后：直接使用了Chrome内核
+2. 作用
+在 Android 客户端上加">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/19/1641592ecb20e7ef?imageslim">
 
 
 
@@ -345,7 +361,36 @@
       
 
       
-        <h1 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h1><p>WebSettings settings = webView.getSettings();//获取webview的设置<br>settings.setJavaScriptEnabled(true);//可以加载js<br>settings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件<br>webView.setWebChromeClient(new WebChromeClient());//页面标题与页面中连接跳转的处理<br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN_MR1) {<br>    settings.setMediaPlaybackRequiresUserGesture(false);//设置WebView是否通过手势触发播放媒体，默认是true，需要手势触发。<br>}<br>//设置WebView是否使用viewport，<br>// 当该属性被设置为false时，加载页面的宽度总是适应WebView控件宽度；当被设置为true，<br>// 当前页面包含viewport属性标签，在标签中指定宽度值生效，如果页面不包含viewport标签，<br>// 无法提供一个宽度值，这个时候该方法将被使用。<br>webView.getSettings().setUseWideViewPort(true);<br>webView.getSettings().setLoadWithOverviewMode(true);<br>//        webView.getSettings().setDomStorageEnabled(true);<br>//        webView.getSettings().setSupportMultipleWindows(true);<br>webView.setWebChromeClient(new WebChromeClient());<br>//        webView.setWebViewClient(new WebViewClient());<br>//            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//开启硬件加速<br>webView.getSettings().setLoadWithOverviewMode(true);//设置WebView是否使用预览模式加载界面。<br>webView.getSettings().setDomStorageEnabled(true);//设置是否开启DOM存储API权限，默认false，未开启，设置为true，WebView能够使用DOM storage API<br>settings.setAllowFileAccess(true);//设置在WebView内部是否允许访问文件<br>settings.setAppCacheEnabled(true);//是否使用应用缓存<br>//        webView.getSettings().setSupportMultipleWindows(true);//设置WebView是否支持多屏窗口，参考WebChromeClient#onCreateWindow，默认false，不支持。<br>//        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//关闭单个view的硬件加速</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>现在很多App里都内置了Web网页（Hybrid App），比如说很多电商平台，淘宝、京东、聚划算等等</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592ecb20e7ef?imageslim" alt=""></p>
+<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>一个基于webkit引擎、展现web页面的控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a. Android 4.4前：Android Webview在低版本 &amp; 高版本采用了不同的webkit版本的内核</div><div class="line">b. Android 4.4后：直接使用了Chrome内核</div></pre></td></tr></table></figure></p>
+<h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2. 作用"></a>2. 作用</h3><blockquote>
+<p>在 Android 客户端上加载h5页面</p>
+<p>在本地 与 h5页面实现交互 &amp; 调用</p>
+<p>其他：对 url 请求、页面加载、渲染、对话框 进行额外处理。</p>
+</blockquote>
+<h3 id="3-具体使用"><a href="#3-具体使用" class="headerlink" title="3. 具体使用"></a>3. 具体使用</h3><p>Webview的使用主要包括：Webview类 及其 工具类（WebSettings类、WebViewClient类、WebChromeClient类）</p>
+<h3 id="4-WebView与-JS-的交互方式"><a href="#4-WebView与-JS-的交互方式" class="headerlink" title="4. WebView与 JS 的交互方式"></a>4. WebView与 JS 的交互方式</h3><blockquote>
+<p>在Android WebView的使用中，与前端h5页面交互的需求十分常见</p>
+<p>Android 与 JS 通过WebView互相调用方法，实际上是：Android 去调用JS的代码 + JS去调用Android的代码</p>
+<p>二者沟通的桥梁是WebView</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592efe5703b7?imageslim" alt="img"></p>
+<ul>
+<li>具体介绍请看文章：<a href="https://www.jianshu.com/p/345f4d8a5cfa" target="_blank" rel="external">最全面总结 Android WebView与 JS 的交互方式</a><h4 id="5-使用漏洞"><a href="#5-使用漏洞" class="headerlink" title="5. 使用漏洞"></a>5. 使用漏洞</h4></li>
+<li>WebView 使用过程中存在许多漏洞，容易造成用户数据泄露等等危险，而很多人往往会忽视这个问题</li>
+<li>WebView中，主要漏洞有3类：任意代码执行漏洞、密码明文存储漏洞、域控制不严格漏洞</li>
+<li>漏洞具体介绍 &amp; 修复方式请看文章：<a href="https://www.jianshu.com/p/3a345d27cd42" target="_blank" rel="external">你不知道的 Android WebView 使用漏洞</a></li>
+</ul>
+<h4 id="6-缓存机制构建"><a href="#6-缓存机制构建" class="headerlink" title="6. 缓存机制构建"></a>6. 缓存机制构建</h4><p>Android WebView由于前端h5本身的原因，存在加载效率慢 &amp; 流量耗费的性能问题，具体介绍如下：<br><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592f01b03bc8?imageslim" alt=""></p>
+<p>示意图</p>
+<blockquote>
+<p>本文通过 H5缓存机制 + 资源预加载 + 资源拦截的方式 构建了一套WebView缓存机制，从而解决Android</p>
+<p>WebView的性能问题，最终提高用户使用体验</p>
+<p>具体缓存机制的讲解请看文章：<a href="https://www.jianshu.com/p/5e7075f4875f" target="_blank" rel="external">手把手教你构建 Android WebView 的缓存机制 &amp; 资源预加载方案</a></p>
+</blockquote>
+<h4 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h4><p>WebSettings settings = webView.getSettings();//获取webview的设置<br>settings.setJavaScriptEnabled(true);//可以加载js<br>settings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件<br>webView.setWebChromeClient(new WebChromeClient());//页面标题与页面中连接跳转的处理<br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN_MR1) {<br>    settings.setMediaPlaybackRequiresUserGesture(false);//设置WebView是否通过手势触发播放媒体，默认是true，需要手势触发。<br>}<br>//设置WebView是否使用viewport，<br>// 当该属性被设置为false时，加载页面的宽度总是适应WebView控件宽度；当被设置为true，<br>// 当前页面包含viewport属性标签，在标签中指定宽度值生效，如果页面不包含viewport标签，<br>// 无法提供一个宽度值，这个时候该方法将被使用。<br>webView.getSettings().setUseWideViewPort(true);<br>webView.getSettings().setLoadWithOverviewMode(true);<br>//webView.getSettings().setDomStorageEnabled(true);<br>//webView.getSettings().setSupportMultipleWindows(true);<br>webView.setWebChromeClient(new WebChromeClient());<br>//webView.setWebViewClient(new WebViewClient());<br>//webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//开启硬件加速<br>webView.getSettings().setLoadWithOverviewMode(true);//设置WebView是否使用预览模式加载界面。<br>webView.getSettings().setDomStorageEnabled(true);//设置是否开启DOM存储API权限，默认false，未开启，设置为true，WebView能够使用DOM storage API<br>settings.setAllowFileAccess(true);//设置在WebView内部是否允许访问文件<br>settings.setAppCacheEnabled(true);//是否使用应用缓存<br>//        webView.getSettings().setSupportMultipleWindows(true);//设置WebView是否支持多屏窗口，参考WebChromeClient#onCreateWindow，默认false，不支持。<br>//        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//关闭单个view的硬件加速</p>
+<hr>
 
       
     </div>
@@ -533,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebView"><span class="nav-number">1.</span> <span class="nav-text">WebView</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录"><span class="nav-number"></span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简介"><span class="nav-number"></span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-作用"><span class="nav-number"></span> <span class="nav-text">2. 作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-具体使用"><span class="nav-number"></span> <span class="nav-text">3. 具体使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-WebView与-JS-的交互方式"><span class="nav-number"></span> <span class="nav-text">4. WebView与 JS 的交互方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-使用漏洞"><span class="nav-number">1.</span> <span class="nav-text">5. 使用漏洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-缓存机制构建"><span class="nav-number">2.</span> <span class="nav-text">6. 缓存机制构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebView"><span class="nav-number">3.</span> <span class="nav-text">WebView</span></a></li></ol></div>
             
 
           </div>

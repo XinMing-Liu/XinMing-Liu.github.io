@@ -91,16 +91,22 @@
 
 
 
-<meta name="description" content="用时间沉淀一切，用博客记录一生。">
+<meta name="description" content="1 .checkArgument(boolean) ：功能描述：检查boolean是否为真。 用作方法中检查参数失败时抛出的异常类型: IllegalArgumentException
+2.checkNotNull(T)：功能描述：检查value不为null， 直接返回value；失败时抛出的异常类型：NullPointerException
+3.checkState(boolean)：功能描述：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Androud+H5混合开发">
-<meta property="og:url" content="http://yoursite.com/2017/12/04/Androud-H5混合开发/index.html">
+<meta property="og:title" content="Preconditions类中的方法">
+<meta property="og:url" content="http://yoursite.com/2018/06/27/Preconditions类中的方法/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="用时间沉淀一切，用博客记录一生。">
-<meta property="og:updated_time" content="2017-12-04T06:58:04.232Z">
+<meta property="og:description" content="1 .checkArgument(boolean) ：功能描述：检查boolean是否为真。 用作方法中检查参数失败时抛出的异常类型: IllegalArgumentException
+2.checkNotNull(T)：功能描述：检查value不为null， 直接返回value；失败时抛出的异常类型：NullPointerException
+3.checkState(boolean)：功能描述：">
+<meta property="og:updated_time" content="2018-06-27T00:36:04.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Androud+H5混合开发">
-<meta name="twitter:description" content="用时间沉淀一切，用博客记录一生。">
+<meta name="twitter:title" content="Preconditions类中的方法">
+<meta name="twitter:description" content="1 .checkArgument(boolean) ：功能描述：检查boolean是否为真。 用作方法中检查参数失败时抛出的异常类型: IllegalArgumentException
+2.checkNotNull(T)：功能描述：检查value不为null， 直接返回value；失败时抛出的异常类型：NullPointerException
+3.checkState(boolean)：功能描述：">
 
 
 
@@ -128,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/04/Androud-H5混合开发/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/27/Preconditions类中的方法/"/>
 
 
 
 
 
-  <title> Androud+H5混合开发 | XinMing </title>
+  <title> Preconditions类中的方法 | XinMing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/Androud-H5混合开发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Preconditions类中的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XinMing">
@@ -294,7 +300,7 @@
             
             
               
-                Androud+H5混合开发
+                Preconditions类中的方法
               
             
           </h1>
@@ -309,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T14:58:04+08:00">
-                2017-12-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T08:35:22+08:00">
+                2018-06-27
               </time>
             
 
@@ -345,7 +351,13 @@
       
 
       
-        
+        <p>1 .checkArgument(boolean) ：<br>功能描述：检查boolean是否为真。 用作方法中检查参数<br>失败时抛出的异常类型: IllegalArgumentException</p>
+<p>2.checkNotNull(T)：<br>功能描述：检查value不为null， 直接返回value；<br>失败时抛出的异常类型：NullPointerException</p>
+<p>3.checkState(boolean)：<br>功能描述：检查对象的一些状态，不依赖方法参数。 例如， Iterator可以用来next是否在remove之前被调用。<br>失败时抛出的异常类型：IllegalStateException</p>
+<p>4.checkElementIndex(int index, int size)：<br>功能描述：检查index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0, size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p>5.checkPositionIndex(int index, int size)：<br>功能描述：检查位置index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0， size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p>6.checkPositionIndexes(int start, int end, int size)：<br>功能描述：检查[start, end)是一个长度为size的list， string或array合法的范围子集。伴随着错误信息。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+
       
     </div>
 
@@ -375,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/04/记录：宝宝出生记/" rel="next" title="记录：宝宝出生记">
-                <i class="fa fa-chevron-left"></i> 记录：宝宝出生记
+              <a href="/2018/06/27/Collections-unmodifiableXXX-方法实例/" rel="next" title="Collections.unmodifiableXXX()方法实例">
+                <i class="fa fa-chevron-left"></i> Collections.unmodifiableXXX()方法实例
               </a>
             
           </div>
@@ -384,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/26/一个android应用的从无到有/" rel="prev" title="一个android应用的从无到有01">
-                一个android应用的从无到有01 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

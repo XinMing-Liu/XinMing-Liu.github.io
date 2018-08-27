@@ -274,7 +274,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/好物/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Preconditions类中的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XinMing">
@@ -296,8 +296,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/06/15/好物/" itemprop="url">
-                  好物
+                <a class="post-title-link" href="/2018/06/27/Preconditions类中的方法/" itemprop="url">
+                  Preconditions类中的方法
                 </a>
               
             
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-15T14:17:12+08:00">
-                2018-06-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T08:35:22+08:00">
+                2018-06-27
               </time>
             
 
@@ -351,15 +351,270 @@
       
         
           
-            <h2 id="在此记录那些用过的比较不错的东西"><a href="#在此记录那些用过的比较不错的东西" class="headerlink" title="在此记录那些用过的比较不错的东西"></a>在此记录那些用过的比较不错的东西</h2><ul>
-<li>软件</li>
-<li>硬件</li>
+            <p>1 .checkArgument(boolean) ：<br>功能描述：检查boolean是否为真。 用作方法中检查参数<br>失败时抛出的异常类型: IllegalArgumentException</p>
+<p>2.checkNotNull(T)：<br>功能描述：检查value不为null， 直接返回value；<br>失败时抛出的异常类型：NullPointerException</p>
+<p>3.checkState(boolean)：<br>功能描述：检查对象的一些状态，不依赖方法参数。 例如， Iterator可以用来next是否在remove之前被调用。<br>失败时抛出的异常类型：IllegalStateException</p>
+<p>4.checkElementIndex(int index, int size)：<br>功能描述：检查index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0, size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p>5.checkPositionIndex(int index, int size)：<br>功能描述：检查位置index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0， size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p>6.checkPositionIndexes(int start, int end, int size)：<br>功能描述：检查[start, end)是一个长度为size的list， string或array合法的范围子集。伴随着错误信息。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Collections-unmodifiableXXX-方法实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/27/Collections-unmodifiableXXX-方法实例/" itemprop="url">
+                  Collections.unmodifiableXXX()方法实例
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T08:16:51+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="unmodifiableSet-方法返回指定set的不可修改视图。"><a href="#unmodifiableSet-方法返回指定set的不可修改视图。" class="headerlink" title="unmodifiableSet() 方法返回指定set的不可修改视图。"></a>unmodifiableSet() 方法返回指定set的不可修改视图。</h6><h6 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h6><p>以下是java.util.Collections.unmodifiableSet()方法的声明。</p>
+<p>public static <t> boolean addAll(Collection&lt;? super T&gt; c, T.. a)</t></p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><p>s–这是一个不可修改视图是要返回的集合。</p>
+<h6 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h6><p>在方法调用返回指定set的不可修改视图。</p>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><p>下面的例子显示java.util.Collections.unmodifiableSet()方法的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.yiibai;</div><div class="line">public class CollectionsDemo &#123;</div><div class="line">   public static void main(String[] s) &#123;</div><div class="line">      // create set</div><div class="line">      Set&lt;String&gt; set = new HashSet&lt;String&gt;();</div><div class="line"></div><div class="line">      // populate the set</div><div class="line">      set.add(&quot;Welcome&quot;);</div><div class="line">      set.add(&quot;to&quot;);</div><div class="line">      set.add(&quot;TP&quot;);</div><div class="line"></div><div class="line">      System.out.println(&quot;Initial set value: &quot;+set);</div><div class="line"></div><div class="line">      // create unmodifiable set</div><div class="line">      Set unmodset = Collections.unmodifiableSet(set);</div><div class="line"></div><div class="line">      // try to modify the set</div><div class="line">      unmodset.add(&quot;Hello&quot;);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Collections.unmodifiableXXX() 来做一个不可修改的集合。例如你要构造存储常量的 Set，你可以这样来做 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(new String[]&#123;&quot;RED&quot;, &quot;GREEN&quot;&#125;));</div><div class="line">Set&lt;String&gt; unmodifiableSet = Collections.unmodifiableSet(set);</div></pre></td></tr></table></figure>
+<p>这看上去似乎不错，因为每次调 unmodifiableSet.add() 都会抛出一个 UnsupportedOperationException。感觉安全了？慢！如果有人在原来的 set 上 add 或者 remove 元素会怎么样？结果 unmodifiableSet 也是被 add 或者 remove 元素了。而且构造这样一个简单的 set 写了两句长的代码。下面看看 ImmutableSet 是怎么来做地更安全和简洁 :</p>
+<figure class="highlight plain"><figcaption><span>immutableSet = ImmutableSet.of("RED", "GREEN");```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">就这样一句就够了，而且试图调 add 方法的时候，它一样会抛出 UnsupportedOperationException。重要的是代码的可读性增强了不少，非常直观地展现了代码的用意。如果像之前这个代码保护一个 set 怎么做呢？你可以 :</div><div class="line"></div><div class="line">``` ImmutableSet&lt;String&gt; immutableSet = ImmutableSet.copyOf(set);</div></pre></td></tr></table></figure>
+<p>从构造的方式来说，ImmutableSet 集合还提供了 Builder 模式来构造一个集合 :</p>
+<figure class="highlight plain"><figcaption><span>builder = ImmutableSet.builder();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImmutableSet&lt;String&gt; immutableSet = builder.add(&quot;RED&quot;).addAll(set).build();</div></pre></td></tr></table></figure>
+<p>在这个例子里面 Builder 不但能加入单个元素还能加入既有的集合。<br>除此之外，Guava Collections 还提供了各种 Immutable 集合的实现：ImmutableList，ImmutableMap，ImmutableSortedSet，ImmutableSortedMap</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/CopyOnWriteArraySet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/27/CopyOnWriteArraySet/" itemprop="url">
+                  CopyOnWriteArraySet
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T08:07:24+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CopyOnWriteArraySet简介"><a href="#CopyOnWriteArraySet简介" class="headerlink" title="CopyOnWriteArraySet简介"></a>CopyOnWriteArraySet简介</h2><ul>
+<li>基于CopyOnWriteArrayList实现，线程安全无需集合。</li>
+<li>add调用的是CopyOnWriteArraylist的addIfAbsent方法。</li>
+<li>CopyOnWriteArraySet每次add要进行遍历数组,性能略低于CopyOnWriteArrayList。</li>
+<li>适用于set大小一般很小，读操作远远多于写操作的场景。</li>
 </ul>
-<h3 id="1、软件"><a href="#1、软件" class="headerlink" title="1、软件"></a>1、软件</h3><p>android模拟器 <a href="http://www.genymotion.net/" target="_blank" rel="external">genymotion</a></p>
-<hr>
-<p>截图软件 FSCapture</p>
-<hr>
-<h3 id="2、硬件"><a href="#2、硬件" class="headerlink" title="2、硬件"></a>2、硬件</h3>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>CopyOnWriteArraySet集成AbstractSet，实现Serializable接口。是基于CopyOnWriteArrayList实现。</p>
+<h5 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h5><p>通过CopyOnWriteArrayList的addIfAbsent实现。<br>基本方法都在CopyOnWriteArrayList中说明过，不做过多讲解。</p>
+<h5 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jdk1.7.0_71</div></pre></td></tr></table></figure>
+<p>//基于CopyOnWriteArrayList</p>
+
           
         
       
@@ -813,6 +1068,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/好物/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/10/好物/" itemprop="url">
+                  好物
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T14:17:12+08:00">
+                2018-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="在此记录那些用过的比较不错的东西"><a href="#在此记录那些用过的比较不错的东西" class="headerlink" title="在此记录那些用过的比较不错的东西"></a>在此记录那些用过的比较不错的东西</h2><ul>
+<li>软件</li>
+<li>硬件</li>
+</ul>
+<h3 id="1、软件"><a href="#1、软件" class="headerlink" title="1、软件"></a>1、软件</h3><p>android模拟器 <a href="http://www.genymotion.net/" target="_blank" rel="external">genymotion</a></p>
+<hr>
+<p>截图软件 FSCapture</p>
+<hr>
+<h3 id="2、硬件"><a href="#2、硬件" class="headerlink" title="2、硬件"></a>2、硬件</h3><h2 id="主机"><a href="#主机" class="headerlink" title="主机"></a>主机</h2><p>新如手台式电脑：<br>  <img src="https://img.alicdn.com/imgextra/i3/734006677/TB2nf6qvbuWBuNjSszgXXb8jVXa_!!734006677.jpg" alt="台式机"></p>
+<h2 id="显示器："><a href="#显示器：" class="headerlink" title="显示器："></a>显示器：</h2><h3 id="LG-29WK500-P-21-9超宽屏-FHD-sRGB-99-FreeSync-IPS硬屏显示器"><a href="#LG-29WK500-P-21-9超宽屏-FHD-sRGB-99-FreeSync-IPS硬屏显示器" class="headerlink" title="LG 29WK500-P 21:9超宽屏 FHD sRGB 99% FreeSync IPS硬屏显示器"></a>LG 29WK500-P 21:9超宽屏 FHD sRGB 99% FreeSync IPS硬屏显示器</h3><h3 id="准备再如手-双飞燕鼠标-及-机械键盘一套-就完美了。。。"><a href="#准备再如手-双飞燕鼠标-及-机械键盘一套-就完美了。。。" class="headerlink" title="准备再如手  双飞燕鼠标  及 机械键盘一套 就完美了。。。"></a>准备再如手  双飞燕鼠标  及 机械键盘一套 就完美了。。。</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/webview属性使用大全/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1207,434 +1588,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/一个android应用的从无到有/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XinMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/img/ic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XinMing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/26/一个android应用的从无到有/" itemprop="url">
-                  一个android应用的从无到有01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T08:44:32+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android-开发/" itemprop="url" rel="index">
-                    <span itemprop="name">Android 开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><blockquote>
-<p>参考：wifi管家，架构我们自己控制累应用。</p>
-</blockquote>
-<p>（领导说话就这样，一句话剩下的是需求拆解）</p>
-<h4 id="需求分析："><a href="#需求分析：" class="headerlink" title="需求分析："></a>需求分析：</h4><ul>
-<li>首先wifi管家，分为三个内容板块，另加一个个人中心。</li>
-<li>(首页)第一个内容中心主要是：设备控制类/体验为主</li>
-<li>第二个内容中心主要是：设备绑定，一键链接</li>
-<li>第三个内容中心主要是：新闻咨询</li>
-<li>首页右上角，是个人中心的入口<h4 id="根据需求选择合适的开发框架"><a href="#根据需求选择合适的开发框架" class="headerlink" title="根据需求选择合适的开发框架"></a>根据需求选择合适的开发框架</h4>通过整体布局可以看到，整体可采用三个。</li>
-<li>开发框架的选择:MVC MVP MVVM;MVC简单易上手、MVP MVVM比较绕不建议新手使用。</li>
-<li>权衡是否使用开源的框架，还是自己写？开源的简单看懂文档就可以直接拿来用，可能有很多功能用不上。自己写建议用到什么写什么自己掌控。</li>
-</ul>
-<blockquote>
-<p>这里我先尝试使用：使用之前建议现将代码demo熟悉过来<br><br> ThinkAndroid框架<dir><br>项目地址：<a href="https://github.com/white-cat/ThinkAndroid" target="_blank" rel="external">https://github.com/white-cat/ThinkAndroid</a><br><br>主要有以下模块：<br><br>  (1)  MVC模块：实现视图与模型的分离。<br><br>  (2)  ioc模块：android中的ioc模块，完全注解方式就可以进行UI绑定、res中的资源的读取、以及对象的初始化。 <br><br>  (3)  数据库模块：android中的orm框架，使用了线程池对sqlite进行操作。  <br><br>  (4)  http模块：通过httpclient进行封装http数据请求，支持异步及同步方式加载。<br><br>  (5)  缓存模块：通过简单的配置及设计可以很好的实现缓存，对缓存可以随意的配置<br><br>  (6)  图片缓存模块：imageview加载图片的时候无需考虑图片加载过程中出现的oom和android容器快速滑动时候出现的图片错位等现象。<br><br>  (7)  配置器模块：可以对简易的实现配对配置的操作，目前配置文件可以支持Preference、Properties对配置进行存取。<br><br>  (8)  日志打印模块：可以较快的轻易的是实现日志打印，支持日志打印的扩展，目前支持对sdcard写入本地打印、以及控制台打印<br><br>  (9)  下载器模块:可以简单的实现多线程下载、后台下载、断点续传、对下载进行控制、如开始、暂停、删除等等。<br><br>  (10) 网络状态检测模块：当网络状态改变时，对其进行检<br></dir></p>
-</blockquote>
-<hr>
-<h3 id="框架确定好了，根据需求依赖，看看有没有开源的库和动画与需求匹配（当然可能准备的最后用不上，哈哈哈）"><a href="#框架确定好了，根据需求依赖，看看有没有开源的库和动画与需求匹配（当然可能准备的最后用不上，哈哈哈）" class="headerlink" title="框架确定好了，根据需求依赖，看看有没有开源的库和动画与需求匹配（当然可能准备的最后用不上，哈哈哈）"></a>框架确定好了，根据需求依赖，看看有没有开源的库和动画与需求匹配（当然可能准备的最后用不上，哈哈哈）</h3><p>NotBoringActionBar<br><br>项目地址：<a href="https://github.com/flavienlaurent/NotBoringActionBar" target="_blank" rel="external">https://github.com/flavienlaurent/NotBoringActionBar</a></p>
-<hr>
-<p>由于人力变动等，外力条件该项目暂时搁置。</p>
-<p>再次启动时间无限期推迟。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/Androud-H5混合开发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XinMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/img/ic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XinMing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/04/Androud-H5混合开发/" itemprop="url">
-                  Androud+H5混合开发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T14:58:04+08:00">
-                2017-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/记录：宝宝出生记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XinMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/img/ic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XinMing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/04/记录：宝宝出生记/" itemprop="url">
-                  记录：宝宝出生记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T08:54:25+08:00">
-                2017-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/散文/" itemprop="url" rel="index">
-                    <span itemprop="name">散文</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="我当爹了"><a href="#我当爹了" class="headerlink" title="我当爹了"></a>我当爹了</h1><blockquote>
-<p>2017年11月23日喜得贵子。<br><br></p>
-</blockquote>
-<h3 id="与儿子的第一眼"><a href="#与儿子的第一眼" class="headerlink" title="与儿子的第一眼"></a>与儿子的第一眼</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">下午两点半左右我的爱人推进手术室，我与家人在手术室外焦急的等待。</div><div class="line">当手术室打开推出婴儿车的那个瞬间我的眼睛模糊了。可能因为激动血压升高瞬间世界变得模糊了。</div><div class="line">医生简单介绍了一下我儿子的情况，让我签字，具体签的是什么都没来得及看。宝宝睁着眼看着陌生</div><div class="line">的世界，这是我与他的第一眼。</div><div class="line"></div><div class="line">奶奶及小姨将宝宝推走啦。（擦洗，疫苗。。。）</div><div class="line"></div><div class="line">我站在手术室外心里的喜悦无法表达，拿起手机将这喜讯让世界知道。</div><div class="line">第一个电话打给了百里之外的老爸，告诉他我也当爸爸了，你当爷爷了。。。隔着电话也能听到远方</div><div class="line">老爸也是异常的高兴，一个劲的说好挺好</div><div class="line"></div><div class="line">大约一个小时之后手术室的门再次打开，筋疲力尽的爱人推出来时这时我的眼湿润了。</div><div class="line">她是好样的，脸上一点血色也没有，隐约中能感到她的疼。</div></pre></td></tr></table></figure>
-<h3 id="宝宝离开身边的第一晚"><a href="#宝宝离开身边的第一晚" class="headerlink" title="宝宝离开身边的第一晚"></a>宝宝离开身边的第一晚</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">作为黄种人,小孩出身都会有黄疸.我也是因为孩子生黄疸去学习的,我记得我们黄种人有那么两三个特性.其他的</div><div class="line">自己去百度吧我也记清楚了.</div><div class="line"></div><div class="line">出生第3天 黄疸达到10.几 医生建议进新生儿重症监护 当时考虑孩子 犹豫再三还是去了 我们在的医院虽是三甲医院</div><div class="line">当时没有母婴同室,需要婴儿单独隔离在儿科那边.他妈在产科毕竟刚生产完.</div><div class="line"></div><div class="line">刚跟孩子见面就面临分离...</div><div class="line"></div><div class="line">隔离的这段时间  只有每天上午 10 点 可以去询问病情及前一天的情况.(不能看孩子)</div><div class="line"></div><div class="line">分离第一天晚上我们俩哭了,并彼此相互安慰...</div><div class="line"></div><div class="line">---</div><div class="line">第3天: 10.04 观察</div><div class="line">第四天: 14.2  照紫外线 抗生素</div><div class="line">第五天: 12,3  观察 抗生素</div><div class="line">第六天; 11:8  观察 抗生素</div><div class="line">第七天:10.1 观察</div></pre></td></tr></table></figure>
-<h3 id="宝宝出院回家"><a href="#宝宝出院回家" class="headerlink" title="宝宝出院回家"></a>宝宝出院回家</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">第七天 他妈出院了</div><div class="line">孩子还需要观察就继续留在医院了...</div><div class="line"></div><div class="line">第八天 实在是忍不住了 加上 孩子的黄疸已经下来了</div><div class="line">我们决定强制出院,在医生的免责责任书上签字 把孩子带回来了.</div><div class="line"></div><div class="line">每天 定期晒太阳  </div><div class="line">三天 一洗澡</div><div class="line">每周 去医院测一次黄疸</div><div class="line">第一个周 去测 9</div><div class="line">第二周 10</div><div class="line">在满月的时候还是有点高 9</div><div class="line">开始打预防针的时候还是有点高 不建议打  到了</div><div class="line">一个半月  我们的才下来 7</div><div class="line"></div><div class="line">从此能吃能喝的 比我们大一个月的 长的高 张的重</div><div class="line"></div><div class="line">现在已经六个月了 74com 了</div></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1679,7 +1637,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

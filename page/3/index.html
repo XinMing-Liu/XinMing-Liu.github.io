@@ -274,161 +274,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Ubuntu 压缩解压/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XinMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/img/ic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XinMing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/13/Ubuntu 压缩解压/" itemprop="url">
-                  ubuntu 压缩解压命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T09:56:56+08:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ZIP"><a href="#ZIP" class="headerlink" title="ZIP"></a>ZIP</h1><p>zip文件解压：unzip xxx.zip<br>zip文件压缩：zip -r xxx.zip xxx/</p>
-<h1 id="TAR"><a href="#TAR" class="headerlink" title="TAR"></a>TAR</h1><p>tar文件解压：tar xvf xxx.tar<br>tar文件压缩：tar cvf xxx.tar xxx/</p>
-<h1 id="tar-gz"><a href="#tar-gz" class="headerlink" title="tar.gz"></a>tar.gz</h1><p>tar.gz文件解压：tar zcvf xxx.tar.gz xxx/<br>tar.gz文件压缩：tar zxvf xxx.tar.gz</p>
-<h1 id="gz"><a href="#gz" class="headerlink" title=".gz"></a>.gz</h1><p>解压1：gunzip FileName.gz<br>解压2：gzip -d FileName.gz<br>压缩：gzip FileName</p>
-<h1 id="bz2"><a href="#bz2" class="headerlink" title=".bz2"></a>.bz2</h1><p>解压1：bzip2 -d FileName.bz2<br>解压2：bunzip2 FileName.bz2<br>压缩： bzip2 -z FileName </p>
-<h1 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title=".tar.bz2"></a>.tar.bz2</h1><p>解压：tar jxvf FileName.tar.bz2<br>压缩：tar jcvf FileName.tar.bz2 DirName </p>
-<h1 id="Z"><a href="#Z" class="headerlink" title=".Z"></a>.Z</h1><p>解压：uncompress FileName.Z<br>压缩：compress FileName </p>
-<h1 id="tar-Z"><a href="#tar-Z" class="headerlink" title=".tar.Z"></a>.tar.Z</h1><p>解压：tar Zxvf FileName.tar.Z<br>压缩：tar Zcvf FileName.tar.Z DirName </p>
-<h1 id="tgz"><a href="#tgz" class="headerlink" title=".tgz"></a>.tgz</h1><p>解压：tar zxvf FileName.tgz<br>压缩：未知 </p>
-<h1 id="tar-tgz"><a href="#tar-tgz" class="headerlink" title=".tar.tgz"></a>.tar.tgz</h1><p>解压：tar zxvf FileName.tar.tgz<br>压缩：tar zcvf FileName.tar.tgz FileName </p>
-<h1 id="rar"><a href="#rar" class="headerlink" title=".rar"></a>.rar</h1><p>解压：rar a FileName.rar<br>压缩：r ar e FileName.rar分卷压缩</p>
-<hr>
-<h1 id="tar分卷压缩"><a href="#tar分卷压缩" class="headerlink" title="tar分卷压缩:"></a>tar分卷压缩:</h1><blockquote>
-<p>tar cvzpf - eclipse | split -d -b 50m<br>上面的命令是将eclipse这个文件夹分卷压缩，每卷50m，注意eclipse 前面有空格.压缩完之后，会被命名为x00,x01,x02。。。</p>
-</blockquote>
-<h1 id="分卷tar压缩文件解压"><a href="#分卷tar压缩文件解压" class="headerlink" title="分卷tar压缩文件解压"></a>分卷tar压缩文件解压</h1><p>首先需要合并：<br>合并的命令是：cat x*&gt;eclipse.tar.gz<br>然后解压：<br>tar xzvf eclipse.tar.gz</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Eclipse快捷键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -609,7 +454,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Android-启动过程详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/Android-SDK目录详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XinMing">
@@ -631,8 +476,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/09/13/Android-启动过程详解/" itemprop="url">
-                  Android 启动过程详解
+                <a class="post-title-link" href="/2017/09/13/Android-SDK目录详解/" itemprop="url">
+                  Android SDK 目录详解
                 </a>
               
             
@@ -671,8 +516,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Android-开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 开发</span>
                   </a>
                 </span>
 
@@ -708,20 +553,169 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">今天系统遇到一个问题，问题描述是这样的：开机或者是重启平板的时候经常会卡在OS动画进不去系统，需要强制关机或者是按复位孔在重新开机才能进系统。</div></pre></td></tr></table></figure>
-<h2 id="这样有机会深入了解开机的具体过程。"><a href="#这样有机会深入了解开机的具体过程。" class="headerlink" title="这样有机会深入了解开机的具体过程。"></a>这样有机会深入了解开机的具体过程。</h2><ul>
-<li>首先，百度了一下先关资料(如下)：<blockquote>
-<p><a href="http://blog.csdn.net/codectq/article/details/7383231" target="_blank" rel="external">Android 启动过程简介</a></p>
-</blockquote>
-</li>
+            <p>对于整套安卓源码是个复杂的庞大的工程，我将尽我所能将所有目录及结构将明白，首先我们先来了解每个目录是做什么的。<br>初级了解可以不必纠结android版本存在的差异，先做一次大体的了解。下边我基于android6.0来分析，以下是所有目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">abi/</div><div class="line">art/</div><div class="line">bionic/     （bionic C库）</div><div class="line">bootable/   （启动引导相关代码）</div><div class="line">build/     编译脚本（makefile shell（bash））</div><div class="line">cts/    （Android兼容性测试套件标准）</div><div class="line">dalvik/   虚拟机相关工具</div><div class="line">developers/  开发工具和例子程序源码</div><div class="line">development/  开发工具和例子程序源码</div><div class="line">device/  厂家目录</div><div class="line">docs/   说明文档</div><div class="line">external/  三方开源库代码（android使用的一些开源的模组）</div><div class="line">frameworks/   应用框架源码</div><div class="line">gen/</div><div class="line">hardware/   硬件抽象层源码（部分厂家开源的硬解适配层HAL代码）</div><div class="line">libcore/</div><div class="line">libnativehelper/</div><div class="line">Makefile</div><div class="line">ndk/   开发本地工具箱代码</div><div class="line">out/   编译结果</div><div class="line">packages/   应用程序及包的源码</div><div class="line">pdk/</div><div class="line">platform_testing/</div><div class="line">prebuilts/   （x86和arm架构下预编译的一些资源）</div><div class="line">projectFilesBackup/</div><div class="line">sdk/   应用程序开发工具箱中工具源代码（sdk及模拟器）</div><div class="line">system/   系统核心程序和本地服务程序源码（底层文件系统库、应用及组件——C语言）</div><div class="line">tools/</div><div class="line">vendor/   厂家预制应用及修改原生系统源码（厂商定制代码）</div></pre></td></tr></table></figure></p>
+<ul>
+<li>这些目录，其中大部分是做安卓开发无法涉猎的，其实它也是不是我们做安卓开发所要去修改的，而是由底层ROM驱动工程师去改的。说白了就是跟我们没关系。</li>
+<li>这里我推荐以下几个目录做重点了解：build；frameworks；external；out；packages；system；vendor；device<br>如果你想在一款nexs上开发一套自己的全新系统了解这些足够了。（贪多吃不烂，这个道理不必多说现在开始）</li>
 </ul>
-<p>其实这些之前也是有所了解的，不过通过这次机会可以重新认识一下。</p>
-<p>####详解<br> Android系统在启动时首先会启动Linux基础系统，然后引导加载Linux Kernel并启动初始化进程（Init），在第一个进程中会读取init.rc。在这个文件中会启动servicemanager,zygote……等基本的服务。 在init.c@system/core/init。会调用parse_config_file(init.rc)解析脚本文件init.rc<br> init.rc一般会在devices目录下<br> 包括系统的初始化创建文件夹，设置文件权限，初始话启动服务等都在init.rc中配置<br>例如以下截取的部分片段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#GPS</div><div class="line">   mkdir /data/gps_mnl 0771 gps system</div><div class="line">   mkdir /data/misc/gps 0770 gps system</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#bootanation 启动</div><div class="line">on property:init.svc.bootanim=running</div><div class="line">write /proc/bootprof &quot;BOOT_Animation:START&quot;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#wlan0初始话</div><div class="line">service dhcpcd_wlan0 /system/bin/dhcpcd -BK -dd</div><div class="line">    class main</div><div class="line">    user root</div><div class="line">    group net_admin net_raw</div><div class="line">    disabled</div><div class="line">    oneshot</div></pre></td></tr></table></figure>
-<p>我这里看的是mtk中的init.rc文件。如下不同的模块的初始化可以放在相应的rc文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import init.project.rc</div><div class="line">import /FWUpgradeInit.rc</div><div class="line">import init.xlog.rc</div><div class="line">import init.aee.rc</div><div class="line">import init.fon.rc</div><div class="line">import init.volte.rc</div><div class="line">import init.mal.rc</div><div class="line">import init.epdg.rc</div><div class="line">import init.trustonic.rc</div><div class="line">import init.common_svc.rc</div><div class="line">import init.mt8173.usb.rc</div></pre></td></tr></table></figure></p>
-<hr>
-<p>  （在frameworks\base\core\jni文件夹下存在com_android_internel_os_ZygoteInit.cpp文件。在此文件中通过register_com_android_internel_os_ZygoteInit函数调用AndroidRuntime::registerNativeMethods函数。）<br>最终会调用到frameworks/base/core/jni/AndroidRuntime.cpp的start()方法。事实上，Android API与本地方法的注册关联就是在AndroidRuntime.cpp模块里完成的。</p>
+<p>######以下是我从各个网站整理的部分目录功能的介绍（了解）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">bionic 目录</div><div class="line">|-- libc                        （C库）</div><div class="line">|   |-- arch-arm        （ARM架构，包含系统调用汇编实现）</div><div class="line">|   |-- arch-x86        （x86架构，包含系统调用汇编实现）</div><div class="line">|   |-- bionic                （由C实现的功能，架构无关）</div><div class="line">|   |-- docs                （文档）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   |-- inet                （？inet相关，具体作用不明）</div><div class="line">|   |-- kernel                （Linux内核中的一些头文件）</div><div class="line">|   |-- netbsd                （？nesbsd系统相关，具体作用不明）</div><div class="line">|   |-- private                （？一些私有的头文件）</div><div class="line">|   |-- stdio                （stdio实现）</div><div class="line">|   |-- stdlib                （stdlib实现）</div><div class="line">|   |-- string                （string函数实现）</div><div class="line">|   |-- tools                （几个工具）</div><div class="line">|   |-- tzcode                （时区相关代码）</div><div class="line">|   |-- unistd                （unistd实现）</div><div class="line">|   `-- zoneinfo        （时区信息）</div><div class="line">|-- libdl                        （libdl实现，dl是动态链接，提供访问动态链接库的功能）</div><div class="line">|-- libm                        （libm数学库的实现，）</div><div class="line">|   |-- alpha                （apaha架构）</div><div class="line">|   |-- amd64                （amd64架构）</div><div class="line">|   |-- arm                （arm架构）</div><div class="line">|   |-- bsdsrc                （？bsd的源码）</div><div class="line">|   |-- i386                （i386架构）</div><div class="line">|   |-- i387                （i387架构？）</div><div class="line">|   |-- ia64                （ia64架构）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   |-- man                （数学函数，后缀名为.3，一些为freeBSD的库文件）</div><div class="line">|   |-- powerpc        （powerpc架构）</div><div class="line">|   |-- sparc64                （sparc64架构）</div><div class="line">|   `-- src                （源代码）</div><div class="line">|-- libstdc++                （libstdc++ C++实现库）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   `-- src                （源码）</div><div class="line">|-- libthread_db        （多线程程序的调试器库）</div><div class="line">|   `-- include                （头文件）</div><div class="line">`-- linker                        （动态链接器）</div><div class="line">`-- arch                （支持arm和x86两种架构）</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">bootable 目录</div><div class="line">.</div><div class="line">|-- bootloader                                （适合各种bootloader的通用代码）</div><div class="line">|   `-- legacy                                （估计不能直接使用，可以参考）</div><div class="line">|       |-- arch_armv6                （V6架构，几个简单的汇编文件）</div><div class="line">|       |-- arch_msm7k                （高通7k处理器架构的几个基本驱动）</div><div class="line">|       |-- include                        （通用头文件和高通7k架构头文件）</div><div class="line">|       |-- libboot                        （启动库，都写得很简单）</div><div class="line">|       |-- libc                        （一些常用的c函数）</div><div class="line">|       |-- nandwrite                （nandwirte函数实现）</div><div class="line">|       `-- usbloader                （usbloader实现）</div><div class="line">|-- diskinstaller                        （android镜像打包器，x86可生产iso）</div><div class="line">`-- recovery                                （系统恢复相关）</div><div class="line">    |-- edify                                （升级脚本使用的edify脚本语言）</div><div class="line">    |-- etc                                （init.rc恢复脚本）</div><div class="line">    |-- minui                                （一个简单的UI）</div><div class="line">    |-- minzip                                （一个简单的压缩工具）</div><div class="line">    |-- mtdutils                        （mtd工具）</div><div class="line">    |-- res                                （资源）</div><div class="line">    |   `-- images                        （一些图片）</div><div class="line">    |-- tools                                （工具）</div><div class="line">    |   `-- ota                        （OTA Over The Air Updates升级工具）</div><div class="line">`-- updater                        （升级器）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">build目录</div><div class="line">.</div><div class="line">|-- core                                （核心编译规则）</div><div class="line">|-- history                                （历史记录）</div><div class="line">|-- libs</div><div class="line">|   `-- host                        （主机端库，有android “cp”功能替换）</div><div class="line">|-- target                                （目标机编译对象）</div><div class="line">|   |-- board                        （开发平台）</div><div class="line">|   |   |-- emulator        （模拟器）</div><div class="line">|   |   |-- generic                （通用）</div><div class="line">|   |   |-- idea6410        （自己添加的）</div><div class="line">|   |   `-- sim                （最简单）</div><div class="line">|   `-- product                （开发平台对应的编译规则）</div><div class="line">|       `-- security        （密钥相关）</div><div class="line">`-- tools                                （编译中主机使用的工具及脚本）</div><div class="line">    |-- acp                        （Android &quot;acp&quot; Command）</div><div class="line">    |-- apicheck                （api检查工具）</div><div class="line">    |-- applypatch                （补丁工具）</div><div class="line">    |-- apriori                        （预链接工具）</div><div class="line">    |-- atree                        （tree工具）</div><div class="line">    |-- bin2asm                （bin转换为asm工具）</div><div class="line">    |-- check_prereq        （检查编译时间戳工具）</div><div class="line">    |-- dexpreopt                （模拟器相关工具，具体功能不明）</div><div class="line">    |-- droiddoc                （？作用不明，java语言，网上有人说和JDK5有关）</div><div class="line">    |-- fs_config                （This program takes a list of files and directories）</div><div class="line">    |-- fs_get_stats                （获取文件系统状态）</div><div class="line">    |-- iself                        （判断是否ELF格式）</div><div class="line">    |-- isprelinked                （判断是否prelinked）</div><div class="line">    |-- kcm                        （按键相关）</div><div class="line">    |-- lsd                        （List symbol dependencies）</div><div class="line">    |-- releasetools                （生成镜像的工具及脚本）</div><div class="line">    |-- rgb2565                （rgb转换为565）</div><div class="line">    |-- signapk                （apk签名工具）</div><div class="line">    |-- soslim                        （strip工具）</div><div class="line">`-- zipalign                （zip archive alignment tool）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">dalvik目录 dalvik虚拟机</div><div class="line">.</div><div class="line">|-- dalvikvm                        （main.c的目录）</div><div class="line">|-- dexdump                        （dex反汇编）</div><div class="line">|-- dexlist                                （List all methods in all concrete classes in a DEX file.）</div><div class="line">|-- dexopt                                （预验证与优化）</div><div class="line">|-- docs                                （文档）</div><div class="line">|-- dvz                                （和zygote相关的一个命令）</div><div class="line">|-- dx                                （dx工具，将多个java转换为dex）</div><div class="line">|-- hit                                （？java语言写成）</div><div class="line">|-- libcore                                （核心库）</div><div class="line">|-- libcore-disabled                （？禁用的库）</div><div class="line">|-- libdex                                （dex的库）</div><div class="line">|-- libnativehelper                （Support functions for Android&apos;s class libraries）</div><div class="line">|-- tests                                （测试代码）</div><div class="line">|-- tools                                （工具）</div><div class="line">`-- vm                                （虚拟机实现）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">development 目录                （开发者需要的一些例程及工具）</div><div class="line">|-- apps                                （一些核心应用程序）</div><div class="line">|   |-- BluetoothDebug        （蓝牙调试程序）</div><div class="line">|   |-- CustomLocale        （自定义区域设置）</div><div class="line">|   |-- Development        （开发）</div><div class="line">|   |-- Fallback                （和语言相关的一个程序）</div><div class="line">|   |-- FontLab                （字库）</div><div class="line">|   |-- GestureBuilder        （手势动作）</div><div class="line">|   |-- NinePatchLab        （？）</div><div class="line">|   |-- OBJViewer                （OBJ查看器）</div><div class="line">|   |-- SdkSetup                （SDK安装器）</div><div class="line">|   |-- SpareParts                （高级设置）</div><div class="line">|   |-- Term                        （远程登录）</div><div class="line">|   `-- launchperf                （？）</div><div class="line">|-- build                                （编译脚本模板）</div><div class="line">|-- cmds                                （有个monkey工具）</div><div class="line">|-- data                                （配置数据）</div><div class="line">|-- docs                                （文档）</div><div class="line">|-- host                                （主机端USB驱动等）</div><div class="line">|-- ide                                （集成开发环境）</div><div class="line">|-- ndk                                （本地开发套件——c语言开发套件）</div><div class="line">|-- pdk                                （Plug Development Kit）</div><div class="line">|-- samples                        （例程）</div><div class="line">|   |-- AliasActivity        （？）</div><div class="line">|   |-- ApiDemos                （API演示程序）</div><div class="line">|   |-- BluetoothChat        （蓝牙聊天）</div><div class="line">|   |-- BrowserPlugin        （浏览器插件）</div><div class="line">|   |-- BusinessCard        （商业卡）</div><div class="line">|   |-- Compass                （指南针）</div><div class="line">|   |-- ContactManager        （联系人管理器）</div><div class="line">|   |-- CubeLiveWallpaper        （动态壁纸的一个简单例程）</div><div class="line">|   |-- FixedGridLayout        （像是布局）</div><div class="line">|   |-- GlobalTime                （全球时间）</div><div class="line">|   |-- HelloActivity        （Hello）</div><div class="line">|   |-- Home                        （Home）</div><div class="line">|   |-- JetBoy                        （jetBoy游戏）</div><div class="line">|   |-- LunarLander        （貌似又是一个游戏）</div><div class="line">|   |-- MailSync                （邮件同步）</div><div class="line">|   |-- MultiResolution        （多分辨率）</div><div class="line">|   |-- MySampleRss        （RSS）</div><div class="line">|   |-- NotePad                （记事本）</div><div class="line">|   |-- RSSReader                （RSS阅读器）</div><div class="line">|   |-- SearchableDictionary        （目录搜索）</div><div class="line">|   |-- SimpleJNI                （JNI例程）</div><div class="line">|   |-- SkeletonApp        （空壳APP）</div><div class="line">|   |-- Snake                        （snake程序）</div><div class="line">|   |-- SoftKeyboard        （软键盘）</div><div class="line">|   |-- Wiktionary                （？维基）</div><div class="line">|   `-- WiktionarySimple（？维基例程）</div><div class="line">|-- scripts                                （脚本）</div><div class="line">|-- sdk                                （sdk配置）</div><div class="line">|-- simulator                        （？模拟器）</div><div class="line">|-- testrunner                        （？测试用）</div><div class="line">`-- tools                                （一些工具）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">external 目录</div><div class="line">.</div><div class="line">|-- aes                        （AES加密）</div><div class="line">|-- apache-http                （网页服务器）</div><div class="line">|-- astl                        （ASTL (Android STL) is a slimmed-down version of the regular C++ STL.）</div><div class="line">|-- bison                        （自动生成语法分析器，将无关文法转换成C、C++）</div><div class="line">|-- blktrace                （blktrace is a block layer IO tracing mechanism）</div><div class="line">|-- bluetooth                （蓝牙相关、协议栈）</div><div class="line">|-- bsdiff                        （diff工具）</div><div class="line">|-- bzip2                        （压缩工具）</div><div class="line">|-- clearsilver                （html模板系统）</div><div class="line">|-- dbus                        （低延时、低开销、高可用性的IPC机制）</div><div class="line">|-- dhcpcd                （DHCP服务）</div><div class="line">|-- dosfstools                （DOS文件系统工具）</div><div class="line">|-- dropbear                （SSH2的server）</div><div class="line">|-- e2fsprogs                （EXT2文件系统工具）</div><div class="line">|-- elfcopy                （复制ELF的工具）</div><div class="line">|-- elfutils                        （ELF工具）</div><div class="line">|-- embunit                （Embedded Unit Project）</div><div class="line">|-- emma                        （java代码覆盖率统计工具）</div><div class="line">|-- esd                        （Enlightened Sound Daemon，将多种音频流混合在一个设备上播放）</div><div class="line">|-- expat                        （Expat is a stream-oriented XML parser.）</div><div class="line">|-- fdlibm                        （FDLIBM (Freely Distributable LIBM)）</div><div class="line">|-- freetype                （字体）</div><div class="line">|-- fsck_msdos                （dos文件系统检查工具）</div><div class="line">|-- gdata                        （google的无线数据相关）</div><div class="line">|-- genext2fs                （genext2fs generates an ext2 filesystem as a normal (non-root) user）</div><div class="line">|-- giflib                        （gif库）</div><div class="line">|-- googleclient        （google用户库）</div><div class="line">|-- grub                        （This is GNU GRUB, the GRand Unified Bootloader.）</div><div class="line">|-- gtest                        （Google C++ Testing Framework）</div><div class="line">|-- icu4c                        （ICU(International Component for Unicode)在C/C++下的版本）</div><div class="line">|-- ipsec-tools                （This package provides a way to use the native IPsec functionality ）</div><div class="line">|-- iptables                （防火墙）</div><div class="line">|-- jdiff                        （generate a report describing the difference between two public Java APIs.）</div><div class="line">|-- jhead                        （jpeg头部信息工具）</div><div class="line">|-- jpeg                        （jpeg库）</div><div class="line">|-- junit                        （JUnit是一个Java语言的单元测试框架）</div><div class="line">|-- kernel-headers        （内核的一些头文件）</div><div class="line">|-- libffi                        （libffi is a foreign function interface library.）</div><div class="line">|-- libpcap                （网络数据包捕获函数）</div><div class="line">|-- libpng                        （png库）</div><div class="line">|-- libxml2                （xml解析库）</div><div class="line">|-- mtpd                        （一个命令）</div><div class="line">|-- netcat                        （simple Unix utility which reads and writes dataacross network connections）</div><div class="line">|-- netperf                        （网络性能测量工具）</div><div class="line">|-- neven                        （看代码和JNI相关）</div><div class="line">|-- opencore                （多媒体框架）</div><div class="line">|-- openssl                （SSL加密相关）</div><div class="line">|-- openvpn                （VPN开源库）</div><div class="line">|-- oprofile                （OProfile是Linux内核支持的一种性能分析机制。）</div><div class="line">|-- ping                        （ping命令）</div><div class="line">|-- ppp                        （pppd拨号命令，好像还没有chat）</div><div class="line">|-- proguard                （Java class file shrinker, optimizer, obfuscator, and preverifier）</div><div class="line">|-- protobuf                （a flexible, efficient, automated mechanism for serializing structured data）</div><div class="line">|-- qemu                        （arm模拟器）</div><div class="line">|-- safe-iop                （functions for performing safe integer operations ）</div><div class="line">|-- skia                        （skia图形引擎）</div><div class="line">|-- sonivox                （sole MIDI solution for Google Android Mobile Phone Platform）</div><div class="line">|-- speex                        （Speex编/解码API的使用(libspeex)）</div><div class="line">|-- sqlite                        （数据库）</div><div class="line">|-- srec                        （Nuance 公司提供的开源连续非特定人语音识别）</div><div class="line">|-- strace                        （trace工具）</div><div class="line">|-- svox                        （Embedded Text-to-Speech）</div><div class="line">|-- tagsoup                （TagSoup是一个Java开发符合SAX的HTML解析器）</div><div class="line">|-- tcpdump                （抓TCP包的软件）</div><div class="line">|-- tesseract                （Tesseract Open Source OCR Engine.）</div><div class="line">|-- tinyxml                （TinyXml is a simple, small, C++ XML parser）</div><div class="line">|-- tremor                        （I stream and file decoder provides an embeddable,integer-only library）</div><div class="line">|-- webkit                        （浏览器核心）</div><div class="line">|-- wpa_supplicant        （无线网卡管理）</div><div class="line">|-- xmlwriter                （XML 编辑工具）</div><div class="line">|-- yaffs2                        （yaffs文件系统）</div><div class="line">`-- zlib                        （a general purpose data compression library）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">frameworks 目录        （核心框架——java及C++语言）</div><div class="line">.</div><div class="line">|-- base                        （基本内容）</div><div class="line">|   |-- api                （？都是xml文件，定义了java的api？）</div><div class="line">|   |-- awt                （AWT库）</div><div class="line">|   |-- build                （空的）</div><div class="line">|   |-- camera                （摄像头服务程序库）</div><div class="line">|   |-- cmds                （重要命令：am、app_proce等）</div><div class="line">|   |-- core                （核心库）</div><div class="line">|   |-- data                （字体和声音等数据文件）</div><div class="line">|   |-- docs                （文档）</div><div class="line">|   |-- graphics        （图形相关）</div><div class="line">|   |-- include                （头文件）</div><div class="line">|   |-- keystore        （和数据签名证书相关）</div><div class="line">|   |-- libs                （库）</div><div class="line">|   |-- location        （地区库）</div><div class="line">|   |-- media                （媒体相关库）</div><div class="line">|   |-- obex                （蓝牙传输库）</div><div class="line">|   |-- opengl                （2D-3D加速库）</div><div class="line">|   |-- packages        （设置、TTS、VPN程序）</div><div class="line">|   |-- sax                （XML解析器）</div><div class="line">|   |-- services        （各种服务程序）</div><div class="line">|   |-- telephony        （电话通讯管理）</div><div class="line">|   |-- test-runner        （测试工具相关）</div><div class="line">|   |-- tests                （各种测试）</div><div class="line">|   |-- tools                （一些叫不上名的工具）</div><div class="line">|   |-- vpn                （VPN）</div><div class="line">|   `-- wifi                （无线网络）</div><div class="line">|-- opt                        （可选部分）</div><div class="line">|   |-- com.google.android                                （有个framework.jar）</div><div class="line">|   |-- com.google.android.googlelogin                （有个client.jar）</div><div class="line">|   `-- emoji                （standard message elements）</div><div class="line">`-- policies                （Product policies are operating system directions aimed at specific uses）</div><div class="line">    `-- base                </div><div class="line">        |-- mid        （MID设备）</div><div class="line">        `-- phone        （手机类设备，一般用这个）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">hardware 目录                （部分厂家开源的硬解适配层HAL代码）</div><div class="line">|-- broadcom                        （博通公司）</div><div class="line">|   `-- wlan                        （无线网卡）</div><div class="line">|-- libhardware                        （硬件库）</div><div class="line">|   |-- include                        （头文件）</div><div class="line">|   `-- modules                （Default (and possibly architecture dependents) HAL modules）</div><div class="line">|       |-- gralloc                （gralloc显示相关）</div><div class="line">|       `-- overlay                （Skeleton for the &quot;overlay&quot; HAL module.）</div><div class="line">|-- libhardware_legacy        （旧的硬件库）</div><div class="line">|   |-- flashlight                （背光）</div><div class="line">|   |-- gps                        （GPS）</div><div class="line">|   |-- include                        （头文件）</div><div class="line">|   |-- mount                        （旧的挂载器）</div><div class="line">|   |-- power                        （电源）</div><div class="line">|   |-- qemu                        （模拟器）</div><div class="line">|   |-- qemu_tracing        （模拟器跟踪）</div><div class="line">|   |-- tests                        （测试）</div><div class="line">|   |-- uevent                        （uevent）</div><div class="line">|   |-- vibrator                        （震动）</div><div class="line">|   `-- wifi                        （无线）</div><div class="line">|-- msm7k                        （高通7k处理器开源抽象层）</div><div class="line">|   |-- boot                        （启动）</div><div class="line">|   |-- libaudio                （声音库）</div><div class="line">|   |-- libaudio-qsd8k        （qsd8k的声音相关库）</div><div class="line">|   |-- libcamera                （摄像头库）</div><div class="line">|   |-- libcopybit                （copybit库）</div><div class="line">|   |-- libgralloc                （gralloc库）</div><div class="line">|   |-- libgralloc-qsd8k        （qsd8k的gralloc库）</div><div class="line">|   |-- liblights                （背光库）</div><div class="line">|   `-- librpc                        （RPC库）</div><div class="line">|-- ril                                （无线电抽象层）</div><div class="line">|   |-- include                        （头文件）</div><div class="line">|   |-- libril                        （库）</div><div class="line">|   |-- reference-cdma-sms        （cdma短信参考）</div><div class="line">|   |-- reference-ril                        （ril参考）</div><div class="line">|   `-- rild                                （ril后台服务程序）</div><div class="line">`-- ti                                                （ti公司开源HAL）</div><div class="line">    |-- omap3                                （omap3处理器）</div><div class="line">    |   |-- dspbridge                （DSP桥）</div><div class="line">    |   |-- libopencorehw        （opencore硬件库）</div><div class="line">    |   |-- liboverlay                （overlay硬件库）</div><div class="line">    |   |-- libstagefrighthw        （stagefright硬件库）</div><div class="line">    |   `-- omx                        （omx组件）</div><div class="line">    `-- wlan                                （无线网卡）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">packages 目录</div><div class="line">.</div><div class="line">|-- apps                                （应用程序库）</div><div class="line">|   |-- AlarmClock                （闹钟）</div><div class="line">|   |-- Bluetooth                （蓝牙）</div><div class="line">|   |-- Browser                （浏览器）</div><div class="line">|   |-- Calculator                （计算器）</div><div class="line">|   |-- Calendar                （日历）</div><div class="line">|   |-- Camera                 （相机）</div><div class="line">|   |-- CertInstaller                （在Android中安装数字签名，被调用）</div><div class="line">|   |-- Contacts                （拨号(调用)、联系人、通话记录）</div><div class="line">|   |-- DeskClock                （桌面时钟）</div><div class="line">|   |-- Email                        （Email）</div><div class="line">|   |-- Gallery                        （相册，和Camera类似，多了列表）</div><div class="line">|   |-- Gallery3D                （？3D相册）</div><div class="line">|   |-- GlobalSearch        （为google搜索服务，提供底层应用）</div><div class="line">|   |-- GoogleSearch        （google搜索）</div><div class="line">|   |-- HTMLViewer        （浏览器附属界面，被浏览器应用调用，同时提供存储记录功能）</div><div class="line">|   |-- IM                        （即时通讯，为手机提供信号发送、接收、通信的服务）</div><div class="line">|   |-- Launcher                （登陆启动项，显示图片框架等等图形界面）</div><div class="line">|   |-- Launcher2                （登陆启动项，负责应用的调用）</div><div class="line">|   |-- Mms                        （？彩信业务）</div><div class="line">|   |-- Music                        （音乐播放器）</div><div class="line">|   |-- PackageInstaller        （安装、卸载程序的响应）</div><div class="line">|   |-- Phone                        （电话拨号程序）</div><div class="line">|   |-- Provision                （预设应用的状态，使能应用）</div><div class="line">|   |-- Settings                （开机设定，包括电量、蓝牙、设备信息、界面、wifi等）</div><div class="line">|   |-- SoundRecorder        （录音机，可计算存储所需空间和时间）</div><div class="line">|   |-- Stk                         （接收和发送短信）</div><div class="line">|   |-- Sync                        （空）   -------○1</div><div class="line">|   |-- Updater                （空）</div><div class="line">|   `-- VoiceDialer                （语音识别通话）</div><div class="line">|-- inputmethods                （输入法）</div><div class="line">|   |-- LatinIME                （拉丁文输入法）</div><div class="line">|   |-- OpenWnn                （OpenWnn输入法）</div><div class="line">|   `-- PinyinIME                （拼音输入法）</div><div class="line">|-- providers                        （提供器，提供应用程序、界面所需的数据）</div><div class="line">|   |-- ApplicationsProvider                （应用程序提供器，提供应用程序启动项、更新等）</div><div class="line">|   |-- CalendarProvider                        （日历提供器）</div><div class="line">|   |-- ContactsProvider                        （联系人提供器）</div><div class="line">|   |-- DownloadProvider                （下载管理提供器）</div><div class="line">|   |-- DrmProvider                        （创建和更新数据库时调用）</div><div class="line">|   |-- GoogleContactsProvider        （联系人提供器的子类，用以同步联系人）</div><div class="line">|   |-- GoogleSubscribedFeedsProvider（设置信息提供器）</div><div class="line">|   |-- ImProvider                                （空）</div><div class="line">|   |-- ManagementProvider                （空）</div><div class="line">|   |-- MediaProvider                        （媒体提供器，提供存储数据）</div><div class="line">|   |-- TelephonyProvider                （彩信提供器）</div><div class="line">|   |-- UserDictionaryProvider        （用户字典提供器，提供用户常用字字典）</div><div class="line">|   `-- WebSearchProvider                （空）</div><div class="line">|-- services</div><div class="line">|   |-- EasService                                （空）</div><div class="line">|   `-- LockAndWipe                        （空）</div><div class="line">`-- wallpapers                                        （墙纸）</div><div class="line">    |-- Basic                                        （基本墙纸，系统内置墙纸）</div><div class="line">    |-- LivePicker                                （选择动态壁纸）</div><div class="line">    |-- MagicSmoke                        （壁纸特殊效果）</div><div class="line">    `-- MusicVisualization                （音乐可视化，图形随音乐而变化）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">prebuilt 目录                        （x86和arm架构下预编译的一些资源）</div><div class="line">.</div><div class="line">|-- android-arm                （arm-android相关）</div><div class="line">|   |-- gdbserver                （gdb调试器）</div><div class="line">|   `-- kernel                        （模拟的arm内核）</div><div class="line">|-- android-x86                （x86-android相关）</div><div class="line">|   `-- kernel                        （空的）</div><div class="line">|-- common                        （通用编译好的代码，应该是java的）</div><div class="line">|-- darwin-x86                        （drawin x86平台）</div><div class="line">|   `-- toolchain                （工具链）</div><div class="line">|       |-- arm-eabi-4.2.1        </div><div class="line">|       |-- arm-eabi-4.3.1        </div><div class="line">|       `-- arm-eabi-4.4.0        </div><div class="line">|-- darwin-x86_64                （drawin x86 64bit平台）</div><div class="line">|-- linux-x86                        （linux x86平台）</div><div class="line">|   `-- toolchain                （工具链，我们应该主要用这个）</div><div class="line">|       |-- arm-eabi-4.2.1        </div><div class="line">|       |-- arm-eabi-4.3.1        </div><div class="line">|       |-- arm-eabi-4.4.0        </div><div class="line">|       `-- i686-unknown-linux-gnu-4.2.1        （x86版编译器）</div><div class="line">|-- linux-x86_64                （linux x86 64bit平台）</div><div class="line">|-- windows                        （windows平台）</div><div class="line">`-- windows-x86_64        （64bit windows平台）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">system 目录                （底层文件系统库、应用及组件——C语言）</div><div class="line">.</div><div class="line">|-- Bluetooth                （蓝牙相关）</div><div class="line">|-- core                        （系统核心工具盒接口）</div><div class="line">|   |-- adb                （adb调试工具）</div><div class="line">|   |-- cpio                （cpio工具，创建img）</div><div class="line">|   |-- debuggerd        （调试工具）</div><div class="line">|   |-- fastboot        （快速启动相关）</div><div class="line">|   |-- include                （系统接口头文件）</div><div class="line">|   |-- init                （init程序源代码）</div><div class="line">|   |-- libacc                （轻量级C编译器）</div><div class="line">|   |-- libctest                （libc测试相关）</div><div class="line">|   |-- libcutils        （libc工具）</div><div class="line">|   |-- liblog                （log库）</div><div class="line">|   |-- libmincrypt        （加密库）</div><div class="line">|   |-- libnetutils        （网络工具库）</div><div class="line">|   |-- libpixelflinger        （图形处理库）</div><div class="line">|   |-- libsysutils        （系统工具库）</div><div class="line">|   |-- libzipfile        （zip库）</div><div class="line">|   |-- logcat                （查看log工具）</div><div class="line">|   |-- logwrapper        （log封装工具）</div><div class="line">|   |-- mkbootimg        （制作启动boot.img的工具盒脚本）</div><div class="line">|   |-- netcfg                （网络配置netcfg源码）</div><div class="line">|   |-- nexus                （google最新手机的代码）</div><div class="line">|   |-- rootdir                （rootfs，包含一些etc下的脚本和配置）</div><div class="line">|   |-- sh                        （shell代码）</div><div class="line">|   |-- toolbox                （toolbox，类似busybox的工具集）</div><div class="line">|   `-- vold                （SD卡管理器）</div><div class="line">|-- extras                        （额外工具）</div><div class="line">|   |-- latencytop        （a tool for software developers ，identifying system latency happen）</div><div class="line">|   |-- libpagemap        （pagemap库）</div><div class="line">|   |-- librank                （Java Library Ranking System库）</div><div class="line">|   |-- procmem        （pagemap相关）</div><div class="line">|   |-- procrank        （Java Library Ranking System相关）</div><div class="line">|   |-- showmap        （showmap工具）</div><div class="line">|   |-- showslab        （showslab工具）</div><div class="line">|   |-- sound                （声音相关）</div><div class="line">|   |-- su                        （su命令源码）</div><div class="line">|   |-- tests                （一些测试工具）</div><div class="line">|   `-- timeinfo        （时区相关）</div><div class="line">`-- wlan                        （无线相关）</div><div class="line">    `-- ti                        （ti网卡相关工具及库）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">vendor 目录                        （厂家定制内容）</div><div class="line"></div><div class="line">|-- aosp                                （android open source project）</div><div class="line">|   `-- products                （一些板级规则）</div><div class="line">|-- htc                                （HTC公司）</div><div class="line">|   |-- common-open        （通用部分）</div><div class="line">|   |   `-- akmd                （解压img用的工具）</div><div class="line">|   |-- dream-open                （G1开放部分）</div><div class="line">|   |-- prebuilt-open        （预编译开放部分）</div><div class="line">|   `-- sapphire-open        （sapphire这款型号开放内容）</div><div class="line">|-- pv-open                        （没东西）</div><div class="line">|-- qcom                                （里面基本是空的）</div><div class="line">`-- sample                        （google提供的样例）</div><div class="line">    |-- apps                        （应用）</div><div class="line">    |   |-- client                （用户）</div><div class="line">    |   `-- upgrade        （升级）</div><div class="line">    |-- frameworks                （框架）</div><div class="line">    |   `-- PlatformLibrary        （平台库）</div><div class="line">    |-- products                （产品）</div><div class="line">    |-- sdk_addon                （sdk添加部分）</div><div class="line">    `-- skins                        （皮肤）</div><div class="line">        `-- WVGAMedDpi        （WVGA适用的图片）</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">编译结果：</div><div class="line">out</div><div class="line">├── host                               SDK 中的各种工具(emulator，adb...)</div><div class="line">│   ├── common                         所有主机都用的通用库(java库)</div><div class="line">│   │   └── obj</div><div class="line">│   │       └── JAVA_LIBRARIES</div><div class="line">│   └── Linux-x86                      用linux-x86主机上工具程序</div><div class="line">└── target                             目标机上运行的各种程序</div><div class="line">    ├── common                         所有产品都用的通用程序(java程序或库)</div><div class="line">    │   ├── docs                       文档目录</div><div class="line">    │   ├── obj                        中间文件</div><div class="line">    │   │   ├── APPS                   应用程序的中间文件</div><div class="line">    │   │   └── JAVA_LIBRARIES         java库的中间文件</div><div class="line">    │   └── R                          资源文件(java代码形式)</div><div class="line">    │       ├── android</div><div class="line">    │       ├── com</div><div class="line">    │       ├── jp</div><div class="line">    │       └── org</div><div class="line">    └── product                         产品(特定平台)专用程序</div><div class="line">        └── fspad-723                   fspad-723型号产品(全志A23平台)程序</div><div class="line">            ├── data                    用户数据, 该目录中的内容被挂载到/data目录下</div><div class="line">            ├── obj</div><div class="line">            ├── recovery                恢复版的根文件系统</div><div class="line">            ├── root                    根文件系统，装有最基本的命令, 该目录中的内容被挂载到/目录下</div><div class="line">            ├── symbols</div><div class="line">            ├── system                  系统文件系统, 该目录中的内容被挂载到/system目录下</div><div class="line">            -------------------------------------------------------------</div><div class="line">            ├── ramdisk.img             root目录打包</div><div class="line">            ├── ramdisk-recovery.img    recovery目录打包</div><div class="line">            ├── boot.img                kernel + ramdisk.img</div><div class="line">            ├── system.img              system目录打包</div><div class="line">            ├── userdata.img            data目录打包</div><div class="line">            └── recovery.img            kernel + ramdisk-recovery.img</div></pre></td></tr></table></figure>
+<p>参考资料：<br>    <a href="http://blog.csdn.net/haoge921026/article/details/47608751" target="_blank" rel="external">CSDN Android系统编译原理</a><br>    <a href="http://www.cnblogs.com/yyangblog/archive/2011/03/02/1968880.html" target="_blank" rel="external">进则净土，退则凡尘 的博客</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/git常用指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/13/git常用指令/" itemprop="url">
+                  git 常用指令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T09:56:56+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>对于新手可以先去看一下廖雪峰的博客从基础去学习git指令，而我这里只是我认为比较常用重要的指令。</p>
+</blockquote>
+<p>git clone git@github.com:XinMing-Liu/XinMing-Liu.github.io.git  //克隆代码</p>
+<p>git status  查看仓库状态<br>git status &lt; dir &gt; 查看该仓库下某个目录的状态<br>gitk  查看历史提交记录<br>gitk -10   查看最近十次的提交记录<br>git log -2  查看最近两次的提交log描述（可用gitk代替，应用场景在repo仓库中可保存每个git最后提交的记录）<br>git branch -a(或者 -av) 查看分直结构<br>git add . 姜本地修改提交到本地缓存<br>git commit -m “提交描述”<br>git commit –amend  修改上次提交的描述信息</p>
 
           
         

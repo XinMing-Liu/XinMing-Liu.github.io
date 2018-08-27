@@ -1,0 +1,727 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="控件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.效果首先看下效果:
+1.1使用:onCreate123456789101112/*初始化*/public void initData() &amp;#123;    mSingleDataList = new ArrayList&amp;lt;String&amp;gt;();    for (int i = 0; i &amp;lt; 9; i++) &amp;#123;        String string1 = i + &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义GridView+Dailog+RadioButton">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/自定义GridView-Dailog-RadioButton/index.html">
+<meta property="og:site_name" content="XinMing">
+<meta property="og:description" content="1.效果首先看下效果:
+1.1使用:onCreate123456789101112/*初始化*/public void initData() &amp;#123;    mSingleDataList = new ArrayList&amp;lt;String&amp;gt;();    for (int i = 0; i &amp;lt; 9; i++) &amp;#123;        String string1 = i + &amp;">
+<meta property="og:image" content="https://yuntu88.oss-cn-beijing.aliyuncs.com/fromlocal/Screenshot_2018-08-27-08-30-45-752_com.hongzhi.demo.png">
+<meta property="og:updated_time" content="2018-08-27T01:52:12.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义GridView+Dailog+RadioButton">
+<meta name="twitter:description" content="1.效果首先看下效果:
+1.1使用:onCreate123456789101112/*初始化*/public void initData() &amp;#123;    mSingleDataList = new ArrayList&amp;lt;String&amp;gt;();    for (int i = 0; i &amp;lt; 9; i++) &amp;#123;        String string1 = i + &amp;">
+<meta name="twitter:image" content="https://yuntu88.oss-cn-beijing.aliyuncs.com/fromlocal/Screenshot_2018-08-27-08-30-45-752_com.hongzhi.demo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '123123',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/27/自定义GridView-Dailog-RadioButton/"/>
+
+
+
+
+
+  <title> 自定义GridView+Dailog+RadioButton | XinMing </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/自定义GridView-Dailog-RadioButton/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                自定义GridView+Dailog+RadioButton
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T08:26:36+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-效果"><a href="#1-效果" class="headerlink" title="1.效果"></a>1.效果</h2><p>首先看下效果:<br><img src="https://yuntu88.oss-cn-beijing.aliyuncs.com/fromlocal/Screenshot_2018-08-27-08-30-45-752_com.hongzhi.demo.png" alt="截图"></p>
+<h5 id="1-1使用"><a href="#1-1使用" class="headerlink" title="1.1使用:"></a>1.1使用:</h5><p><code>onCreate</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*初始化*/</div><div class="line">public void initData() &#123;</div><div class="line">    mSingleDataList = new ArrayList&lt;String&gt;();</div><div class="line">    for (int i = 0; i &lt; 9; i++) &#123;</div><div class="line">        String string1 = i + &quot;线&quot;;</div><div class="line">        mSingleDataList.add(string1);</div><div class="line">    &#125;</div><div class="line">    initDailog();</div><div class="line">&#125;</div><div class="line">public void initDailog() &#123;</div><div class="line">    mSingleChoiceDialog = new SingleChoiceDialog(this, mSingleDataList);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>@OnClick</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">case R.id.tv_banci_loginconfig:</div><div class="line">    //班次选择</div><div class="line">    boolean showing = mSingleChoiceDialog.isShowing();</div><div class="line">    if (!showing) &#123;</div><div class="line">        mSingleChoiceDialog.setTitle(&quot;请选择班次&quot;);</div><div class="line">        mSingleChoiceDialog.setAdapterDate(mSingleDataList);</div><div class="line">        mSingleChoiceDialog.setOnOKButtonListener(new DialogInterface.OnClickListener() &#123;</div><div class="line">            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)</div><div class="line">            @Override</div><div class="line">            public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                // TODO Auto-generated method stub</div><div class="line">                int selItem = mSingleChoiceDialog.getSelectItem();</div><div class="line">                tv_banci_loginconfig.setText(mSingleDataList.get(selItem));</div><div class="line">                right_go2.setImageDrawable(getDrawable(R.mipmap.right_goto));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        mSingleChoiceDialog.show();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    break;</div></pre></td></tr></table></figure></p>
+<h1 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class SingleChoiceDialog extends AbstractChoickDialog&#123;</div><div class="line"></div><div class="line">	private SingleChoicAdapter&lt;String&gt; mSingleChoicAdapter;</div><div class="line"></div><div class="line">	public SingleChoiceDialog(Context context, List&lt;String&gt; list) &#123;</div><div class="line">		super(context, list);</div><div class="line"></div><div class="line">		initData();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protected void initData() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		mSingleChoicAdapter = new SingleChoicAdapter&lt;String&gt;(mContext, mList,</div><div class="line">				R.drawable.selector_checkbox2);</div><div class="line"></div><div class="line">		mListView.setAdapter(mSingleChoicAdapter);</div><div class="line">		mListView.setOnItemClickListener(mSingleChoicAdapter);</div><div class="line"></div><div class="line">		AbViewUtil.setListViewHeightBasedOnChildren(mListView);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public int getSelectItem()</div><div class="line">	&#123;</div><div class="line">		return mSingleChoicAdapter.getSelectItem();</div><div class="line">	&#125;</div><div class="line">	public void setAdapterDate(List&lt;String&gt; list) &#123;</div><div class="line">		this.mList=list;</div><div class="line">		this.mSingleChoicAdapter.notifyDataSetChanged();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="AbstractChoickDialog"><a href="#AbstractChoickDialog" class="headerlink" title="AbstractChoickDialog"></a>AbstractChoickDialog</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">public abstract class AbstractChoickDialog extends Dialog implements OnClickListener &#123;</div><div class="line"></div><div class="line">    protected Context mContext;</div><div class="line">    protected View mParentView;</div><div class="line">    protected View mRootView;</div><div class="line"></div><div class="line">    protected ScrollView mScrollView;</div><div class="line">    protected TextView mTVTitle;</div><div class="line">    protected Button mButtonOK;</div><div class="line">    protected Button mButtonCancel;</div><div class="line">    protected GridView mListView;</div><div class="line"></div><div class="line">    protected List&lt;String&gt; mList;</div><div class="line">    protected OnClickListener mOkClickListener;</div><div class="line"></div><div class="line">    public AbstractChoickDialog(Context context, List&lt;String&gt; list) &#123;</div><div class="line">        super(context);</div><div class="line">        // TODO Auto-generated constructor stub</div><div class="line">        mContext = context;</div><div class="line">        mList = list;</div><div class="line">        initView(mContext);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    protected void initView(Context context) &#123;</div><div class="line">        requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));</div><div class="line">        WindowManager m = getWindow().getWindowManager();</div><div class="line">        Display d = m.getDefaultDisplay();</div><div class="line">        WindowManager.LayoutParams p = getWindow().getAttributes();</div><div class="line">        p.width = d.getWidth() - 100; //设置dialog的宽度为当前手机屏幕的宽度-100</div><div class="line">        getWindow().setAttributes(p);</div><div class="line">        setContentView(R.layout.popwindow_listview_layout);</div><div class="line">        mScrollView = (ScrollView) findViewById(R.id.scrollView);</div><div class="line">        mTVTitle = (TextView) findViewById(R.id.tvTitle);</div><div class="line">        mButtonOK = (Button) findViewById(R.id.btnOK);</div><div class="line">        mButtonOK.setOnClickListener(this);</div><div class="line">        mButtonCancel = (Button) findViewById(R.id.btnCancel);</div><div class="line">        mButtonCancel.setOnClickListener(this);</div><div class="line">        mListView = (GridView) findViewById(R.id.listView);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setTitle(String title) &#123;</div><div class="line">        mTVTitle.setText(title);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setOnOKButtonListener(OnClickListener onClickListener) &#123;</div><div class="line">        mOkClickListener = onClickListener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public void onClick(View v) &#123;</div><div class="line">        int i = v.getId();</div><div class="line">        if (i == R.id.btnOK) &#123;</div><div class="line">            onButtonOK();</div><div class="line"></div><div class="line">        &#125; else if (i == R.id.btnCancel) &#123;</div><div class="line">            onButtonCancel();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected void onButtonOK() &#123;</div><div class="line">        dismiss();</div><div class="line">        if (mOkClickListener != null) &#123;</div><div class="line">            mOkClickListener.onClick(this, 0);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected void onButtonCancel() &#123;</div><div class="line">        dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/rootView&quot;</div><div class="line">    android:layout_width=&quot;fill_parent&quot;</div><div class="line">    android:layout_height=&quot;fill_parent&quot;</div><div class="line">    android:background=&quot;@drawable/dailog_white_shape&quot;</div><div class="line">    android:gravity=&quot;center_vertical&quot;</div><div class="line">    android:orientation=&quot;horizontal&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;ScrollView</div><div class="line"></div><div class="line">        android:id=&quot;@+id/scrollView&quot;</div><div class="line">        android:layout_width=&quot;fill_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:scrollbars=&quot;none&quot;&gt;</div><div class="line"></div><div class="line">        &lt;RelativeLayout</div><div class="line">            android:layout_width=&quot;fill_parent&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;&gt;</div><div class="line"></div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/tvTitle&quot;</div><div class="line">                android:layout_width=&quot;fill_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:layout_marginBottom=&quot;18dp&quot;</div><div class="line">                android:layout_marginTop=&quot;18dp&quot;</div><div class="line">                android:gravity=&quot;center&quot;</div><div class="line">                android:textColor=&quot;#000&quot;</div><div class="line">                android:textSize=&quot;16sp&quot; /&gt;</div><div class="line"></div><div class="line">            &lt;View</div><div class="line">                android:id=&quot;@+id/grey_line&quot;</div><div class="line">                android:layout_width=&quot;259dp&quot;</div><div class="line">                android:layout_height=&quot;1dp&quot;</div><div class="line">                android:layout_below=&quot;@+id/tvTitle&quot;</div><div class="line">                android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">                android:background=&quot;#c0c0c0&quot; /&gt;</div><div class="line"></div><div class="line">            &lt;GridView</div><div class="line">                android:id=&quot;@+id/listView&quot;</div><div class="line">                android:layout_width=&quot;fill_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:layout_below=&quot;@id/grey_line&quot;</div><div class="line">                android:numColumns=&quot;2&quot;</div><div class="line">                android:paddingLeft=&quot;70dp&quot;</div><div class="line">                android:paddingRight=&quot;70dp&quot;</div><div class="line">                android:scrollbars=&quot;none&quot; /&gt;</div><div class="line">            &lt;!--android:cacheColorHint=&quot;#00000000&quot;--&gt;</div><div class="line">            &lt;!--android:divider=&quot;@drawable/pop_listview_diver&quot;--&gt;</div><div class="line"></div><div class="line">            &lt;LinearLayout</div><div class="line">                android:layout_width=&quot;fill_parent&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:layout_below=&quot;@id/listView&quot;</div><div class="line">                android:paddingLeft=&quot;60dp&quot;</div><div class="line">                android:paddingRight=&quot;60dp&quot;</div><div class="line">                android:paddingBottom=&quot;20dp&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">                &lt;Button</div><div class="line">                    android:id=&quot;@+id/btnCancel&quot;</div><div class="line">                    android:layout_width=&quot;68dp&quot;</div><div class="line">                    android:layout_height=&quot;27dp&quot;</div><div class="line">                    android:layout_weight=&quot;1&quot;</div><div class="line">                    android:background=&quot;@drawable/button_gray_shape&quot;</div><div class="line">                    android:text=&quot;取消&quot;</div><div class="line">                    android:textColor=&quot;#fff&quot;</div><div class="line">                    android:textSize=&quot;16sp&quot; /&gt;</div><div class="line"></div><div class="line">                &lt;View</div><div class="line">                    android:layout_width=&quot;0dp&quot;</div><div class="line">                    android:layout_height=&quot;1dp&quot;</div><div class="line">                    android:layout_weight=&quot;1&quot; /&gt;</div><div class="line"></div><div class="line">                &lt;Button</div><div class="line">                    android:id=&quot;@+id/btnOK&quot;</div><div class="line">                    android:layout_width=&quot;68dp&quot;</div><div class="line">                    android:layout_height=&quot;27dp&quot;</div><div class="line">                    android:layout_weight=&quot;1&quot;</div><div class="line">                    android:background=&quot;@drawable/button_green_shape&quot;</div><div class="line">                    android:text=&quot;确定&quot;</div><div class="line">                    android:textColor=&quot;#fff&quot;</div><div class="line">                    android:textSize=&quot;16sp&quot; /&gt;</div><div class="line"></div><div class="line">            &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">        &lt;/RelativeLayout&gt;</div><div class="line">    &lt;/ScrollView&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<h1 id="selector-checkbox2"><a href="#selector-checkbox2" class="headerlink" title="selector_checkbox2"></a>selector_checkbox2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;selector</div><div class="line">  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;item android:state_enabled=&quot;true&quot; android:state_checked=&quot;false&quot; android:drawable=&quot;@mipmap/checkbut_unsel&quot; /&gt;</div><div class="line">    &lt;item android:state_enabled=&quot;true&quot; android:state_checked=&quot;true&quot;  android:drawable=&quot;@mipmap/checkbut_sel&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/checkbut_unsel&quot; /&gt;</div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+<h1 id="SingleChoicAdapter"><a href="#SingleChoicAdapter" class="headerlink" title="SingleChoicAdapter"></a>SingleChoicAdapter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line">public class SingleChoicAdapter&lt;T&gt; extends BaseAdapter implements OnItemClickListener &#123;</div><div class="line"></div><div class="line">    private Context mContext;   </div><div class="line">    private List&lt;T&gt; mObjects = new ArrayList&lt;T&gt;();</div><div class="line">    private int mCheckBoxResourceID = 0;</div><div class="line">    private int mSelectItem = 0;</div><div class="line"></div><div class="line">    private LayoutInflater mInflater;</div><div class="line"></div><div class="line"></div><div class="line">    public SingleChoicAdapter(Context context, int checkBoxResourceId) &#123;</div><div class="line">        init(context, checkBoxResourceId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public SingleChoicAdapter(Context context, List&lt;T&gt; objects, int checkBoxResourceId) &#123;</div><div class="line">        init(context, checkBoxResourceId);</div><div class="line">        if (objects != null)</div><div class="line">    	&#123;</div><div class="line">        	mObjects = objects;</div><div class="line">    	&#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init(Context context, int checkBoResourceId) &#123;</div><div class="line">        mContext = context;</div><div class="line">        mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">        mCheckBoxResourceID = checkBoResourceId;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void refreshData(List&lt;T&gt; objects)</div><div class="line">    &#123;</div><div class="line">    	if (objects != null)</div><div class="line">    	&#123;</div><div class="line">    		mObjects = objects;</div><div class="line">    		setSelectItem(0);</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setSelectItem(int selectItem)</div><div class="line">    &#123;</div><div class="line">    	if (selectItem &gt;= 0 &amp;&amp; selectItem &lt; mObjects.size())</div><div class="line">    	&#123;</div><div class="line">    		mSelectItem = selectItem;</div><div class="line">    		notifyDataSetChanged();</div><div class="line">    	&#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getSelectItem()</div><div class="line">    &#123;</div><div class="line">    	return mSelectItem;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void clear() &#123;</div><div class="line">         mObjects.clear();</div><div class="line">         notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public int getCount() &#123;</div><div class="line">        return mObjects.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public T getItem(int position) &#123;</div><div class="line">        return mObjects.get(position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getPosition(T item) &#123;</div><div class="line">        return mObjects.indexOf(item);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public long getItemId(int position) &#123;</div><div class="line">        return position;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public View getView(int position, View convertView, ViewGroup parent) &#123;   </div><div class="line"></div><div class="line">    	 ViewHolder viewHolder;</div><div class="line"></div><div class="line">	     if (convertView == null) &#123;</div><div class="line">	    	 convertView = mInflater.inflate(R.layout.choice_list_item_layout, null);</div><div class="line">	         viewHolder = new ViewHolder();</div><div class="line">	         viewHolder.mTextView = (TextView) convertView.findViewById(R.id.textView);</div><div class="line">	         viewHolder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkBox);</div><div class="line">	         convertView.setTag(viewHolder);</div><div class="line"></div><div class="line">	         if (mCheckBoxResourceID != 0)</div><div class="line">	         &#123;</div><div class="line">	        	 viewHolder.mCheckBox.setButtonDrawable(mCheckBoxResourceID);</div><div class="line">	         &#125;</div><div class="line"></div><div class="line">	     &#125; else &#123;</div><div class="line">	         viewHolder = (ViewHolder) convertView.getTag();</div><div class="line">	     &#125;</div><div class="line"></div><div class="line">	     viewHolder.mCheckBox.setChecked(mSelectItem == position);</div><div class="line"></div><div class="line"></div><div class="line">	     T item = getItem(position);</div><div class="line">		 if (item instanceof CharSequence) &#123;</div><div class="line">		        viewHolder.mTextView.setText((CharSequence)item);</div><div class="line">		 &#125; else &#123;</div><div class="line">			 viewHolder.mTextView.setText(item.toString());</div><div class="line">		 &#125;</div><div class="line"></div><div class="line">	     return convertView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static class ViewHolder</div><div class="line">    &#123;</div><div class="line">    	public TextView mTextView;</div><div class="line">    	public CheckBox mCheckBox;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position,</div><div class="line">			long id) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		if (position != mSelectItem)</div><div class="line">		&#123;</div><div class="line">			mSelectItem = position;</div><div class="line">			notifyDataSetChanged();</div><div class="line">		&#125;</div><div class="line">	&#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="choice-list-item-layout"><a href="#choice-list-item-layout" class="headerlink" title="choice_list_item_layout"></a>choice_list_item_layout</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:paddingBottom=&quot;10dp&quot;</div><div class="line">    android:paddingTop=&quot;10dp&quot;</div><div class="line">    android:gravity=&quot;center&quot;&gt;</div><div class="line">    &lt;CheckBox</div><div class="line">        android:id=&quot;@+id/checkBox&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:focusable=&quot;false&quot;</div><div class="line">        android:clickable=&quot;false&quot;/&gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/textView&quot;</div><div class="line">        android:paddingLeft=&quot;10dp&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:textColor=&quot;#000&quot;</div><div class="line">        android:textSize=&quot;16sp&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<h1 id="button-gray-shape-xml"><a href="#button-gray-shape-xml" class="headerlink" title="button_gray_shape.xml"></a>button_gray_shape.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shape=&quot;rectangle&quot;&gt;</div><div class="line">    &lt;solid android:color=&quot;#c0c0c0&quot;/&gt;</div><div class="line">    &lt;!--圆角弧度可自己修改--&gt;</div><div class="line">    &lt;corners android:radius=&quot;8dp&quot;/&gt;</div><div class="line">    &lt;stroke</div><div class="line">        android:width=&quot;0.5dp&quot;</div><div class="line">        android:color=&quot;#EDEDEF&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure>
+<h1 id="button-green-shape-xml"><a href="#button-green-shape-xml" class="headerlink" title="button_green_shape.xml"></a>button_green_shape.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shape=&quot;rectangle&quot;&gt;</div><div class="line">    &lt;solid android:color=&quot;#32b16c&quot;/&gt;</div><div class="line">    &lt;!--圆角弧度可自己修改--&gt;</div><div class="line">    &lt;corners android:radius=&quot;8dp&quot;/&gt;</div><div class="line">    &lt;stroke</div><div class="line">        android:width=&quot;0.5dp&quot;</div><div class="line">        android:color=&quot;#EDEDEF&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure>
+<h1 id="OK-该有的都有了…"><a href="#OK-该有的都有了…" class="headerlink" title="OK 该有的都有了…"></a>OK 该有的都有了…</h1><p>  如果还有不清楚的可邮件联系我liuxinmingab@163.com</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/控件/" rel="tag"># 控件</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/27/Preconditions类中的方法/" rel="next" title="Preconditions类中的方法">
+                <i class="fa fa-chevron-left"></i> Preconditions类中的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/27/MakeDown-常用语法/" rel="prev" title="MakeDown 常用语法">
+                MakeDown 常用语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-效果"><span class="nav-number">1.</span> <span class="nav-text">1.效果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1使用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.1使用:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dialog"><span class="nav-number"></span> <span class="nav-text">Dialog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AbstractChoickDialog"><span class="nav-number"></span> <span class="nav-text">AbstractChoickDialog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#布局"><span class="nav-number">0.1.</span> <span class="nav-text">布局</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selector-checkbox2"><span class="nav-number"></span> <span class="nav-text">selector_checkbox2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SingleChoicAdapter"><span class="nav-number"></span> <span class="nav-text">SingleChoicAdapter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#choice-list-item-layout"><span class="nav-number"></span> <span class="nav-text">choice_list_item_layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#button-gray-shape-xml"><span class="nav-number"></span> <span class="nav-text">button_gray_shape.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#button-green-shape-xml"><span class="nav-number"></span> <span class="nav-text">button_green_shape.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OK-该有的都有了…"><span class="nav-number"></span> <span class="nav-text">OK 该有的都有了…</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -274,6 +274,177 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/DialogUitls对Dialog进行封装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/09/14/DialogUitls对Dialog进行封装/" itemprop="url">
+                  DialogUitls对Dialog进行封装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T08:28:55+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">开发中难免会遇到很多各种奇怪的需求及 各式各样的dialog.写一些无畏的代码.</div><div class="line">我们除了粘贴复制好像也没有其他技术可言,目前常用的dialog也就无非那些步骤,</div><div class="line">在此基础上我决定痛定思痛,呈现在不是特别忙写一下.</div><div class="line"></div><div class="line">    首先我们要有思路</div></pre></td></tr></table></figure>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>原生 Dialog 的使用及不足<br>先贴出一般的使用方法：</p>
+<pre><code>AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+builder.setTitle(&quot;title&quot;)
+    .setMessage(&quot;message&quot;)
+    .setPositiveButton(&quot;确定&quot;, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int id) {
+
+      }
+    })
+    .setNegativeButton(&quot;取消&quot;, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int id) {
+
+      }
+    });
+builder.create().show();
+</code></pre><p>可以发现如果在项目中多次使用此种方法构建 Dialog 那么势必会产生大量重复的无用代码。且项目中如果需要多次展现相同的 Dialog ，这时每个 Dialog 都产生一个对象显然是极为浪费资源。再加上这个对象被回收还会带来的 ANR 风险。所以，我们需要对 Dialog 进行封装。</p>
+<h3 id="封装-Dialog-工具类的思路"><a href="#封装-Dialog-工具类的思路" class="headerlink" title="封装 Dialog 工具类的思路"></a>封装 Dialog 工具类的思路</h3><h6 id="即有如下需求："><a href="#即有如下需求：" class="headerlink" title="即有如下需求："></a>即有如下需求：</h6><ul>
+<li>丰富的自定义选项</li>
+<li>尽量减小内存占用</li>
+</ul>
+<p>其中第二点可以通过 Dialog 与页面的解耦来实现，具体的方式是建立一个单例模式的 DialogUtil ，用这个工具类来持有 Dialog 对象的弱引用，并提供展示、隐藏 Dialog 的方法给页面调用</p>
+<h6 id="这样做的好处是："><a href="#这样做的好处是：" class="headerlink" title="这样做的好处是："></a>这样做的好处是：</h6><ul>
+<li>可以实现 Dialog 的复用</li>
+<li>弱引用可以防止内存泄漏</li>
+<li>统一管理 Dialog ，对象被回收时即使重建以避免 ANR<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">自定义 - 传参</div><div class="line">减小内存 - 较少对象,单例实现,抛弃枚举使用注解</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>同时需要给用户暴露相应的可能用到的接口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">需要提供的接口:</div><div class="line">  创建</div><div class="line">  销毁</div><div class="line">  事件监听</div><div class="line">  样式及内容设置</div><div class="line"></div><div class="line">创建:</div><div class="line">  可采取模仿AlertDialog的形式,通过build创建.</div><div class="line">  优点: 可以根据自己的需求设置,代码简洁.不至于通过创建对象传参的形式繁琐.</div><div class="line">样式设置:</div><div class="line">  可通过传入的枚举Type设置展示的Dialog的样式,比如:Toast;提示(只有确认);提示(确认,取消都有);提示(有没有标题)等等</div><div class="line">甚至可以设置style样式比如,背景色及按钮样式等</div><div class="line"></div><div class="line">事件监听:</div><div class="line">  普通提示类的dialog 只需要设置确认\取消的监听即可;</div><div class="line">  但是对于复杂dialog 还需设置item的监听.</div><div class="line"></div><div class="line">    &gt; 复杂dialog主要是列表dialog</div><div class="line">      &gt; 不带rediobutton单选list</div><div class="line">      &gt; 带rediobutton单选list</div><div class="line">      &gt; 带复选框的list dialog</div><div class="line">    &gt; 复杂Dialog其他特殊情况</div><div class="line">      &gt; 图片查看,区别切换样式动画</div><div class="line">      &gt; 卡片引导下一页,下一页</div><div class="line">      &gt; 登录带输入样式</div><div class="line">      &gt; loging 转圈动画</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/MakeDown-常用语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -594,7 +765,7 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
       
         
           
-            <h2 id="1-效果"><a href="#1-效果" class="headerlink" title="1.效果"></a>1.效果</h2><p>首先看下效果:<br><img src="http://yuntu88.oss-cn-beijing.aliyuncs.com/fromlocal/Screenshot_2018-08-27-08-30-45-752_com.hongzhi.demo.png" alt="截图"></p>
+            <h2 id="1-效果"><a href="#1-效果" class="headerlink" title="1.效果"></a>1.效果</h2><p>首先看下效果:<br><img src="https://yuntu88.oss-cn-beijing.aliyuncs.com/fromlocal/Screenshot_2018-08-27-08-30-45-752_com.hongzhi.demo.png" alt="截图"></p>
 <h5 id="1-1使用"><a href="#1-1使用" class="headerlink" title="1.1使用:"></a>1.1使用:</h5><p><code>onCreate</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*初始化*/</div><div class="line">public void initData() &#123;</div><div class="line">    mSingleDataList = new ArrayList&lt;String&gt;();</div><div class="line">    for (int i = 0; i &lt; 9; i++) &#123;</div><div class="line">        String string1 = i + &quot;线&quot;;</div><div class="line">        mSingleDataList.add(string1);</div><div class="line">    &#125;</div><div class="line">    initDailog();</div><div class="line">&#125;</div><div class="line">public void initDailog() &#123;</div><div class="line">    mSingleChoiceDialog = new SingleChoiceDialog(this, mSingleDataList);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><code>@OnClick</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">case R.id.tv_banci_loginconfig:</div><div class="line">    //班次选择</div><div class="line">    boolean showing = mSingleChoiceDialog.isShowing();</div><div class="line">    if (!showing) &#123;</div><div class="line">        mSingleChoiceDialog.setTitle(&quot;请选择班次&quot;);</div><div class="line">        mSingleChoiceDialog.setAdapterDate(mSingleDataList);</div><div class="line">        mSingleChoiceDialog.setOnOKButtonListener(new DialogInterface.OnClickListener() &#123;</div><div class="line">            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)</div><div class="line">            @Override</div><div class="line">            public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                // TODO Auto-generated method stub</div><div class="line">                int selItem = mSingleChoiceDialog.getSelectItem();</div><div class="line">                tv_banci_loginconfig.setText(mSingleDataList.get(selItem));</div><div class="line">                right_go2.setImageDrawable(getDrawable(R.mipmap.right_goto));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        mSingleChoiceDialog.show();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    break;</div></pre></td></tr></table></figure></p>
 <h1 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class SingleChoiceDialog extends AbstractChoickDialog&#123;</div><div class="line"></div><div class="line">	private SingleChoicAdapter&lt;String&gt; mSingleChoicAdapter;</div><div class="line"></div><div class="line">	public SingleChoiceDialog(Context context, List&lt;String&gt; list) &#123;</div><div class="line">		super(context, list);</div><div class="line"></div><div class="line">		initData();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protected void initData() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		mSingleChoicAdapter = new SingleChoicAdapter&lt;String&gt;(mContext, mList,</div><div class="line">				R.drawable.selector_checkbox2);</div><div class="line"></div><div class="line">		mListView.setAdapter(mSingleChoicAdapter);</div><div class="line">		mListView.setOnItemClickListener(mSingleChoicAdapter);</div><div class="line"></div><div class="line">		AbViewUtil.setListViewHeightBasedOnChildren(mListView);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public int getSelectItem()</div><div class="line">	&#123;</div><div class="line">		return mSingleChoicAdapter.getSelectItem();</div><div class="line">	&#125;</div><div class="line">	public void setAdapterDate(List&lt;String&gt; list) &#123;</div><div class="line">		this.mList=list;</div><div class="line">		this.mSingleChoicAdapter.notifyDataSetChanged();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1557,153 +1728,6 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/webview属性使用大全/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XinMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/img/ic.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XinMing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/31/webview属性使用大全/" itemprop="url">
-                  webview属性使用大全
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T07:40:40+08:00">
-                2018-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>现在很多App里都内置了Web网页（Hybrid App），比如说很多电商平台，淘宝、京东、聚划算等等</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592ecb20e7ef?imageslim" alt=""></p>
-<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>一个基于webkit引擎、展现web页面的控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a. Android 4.4前：Android Webview在低版本 &amp; 高版本采用了不同的webkit版本的内核</div><div class="line">b. Android 4.4后：直接使用了Chrome内核</div></pre></td></tr></table></figure></p>
-<h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2. 作用"></a>2. 作用</h3><blockquote>
-<p>在 Android 客户端上加载h5页面</p>
-<p>在本地 与 h5页面实现交互 &amp; 调用</p>
-<p>其他：对 url 请求、页面加载、渲染、对话框 进行额外处理。</p>
-</blockquote>
-<h3 id="3-具体使用"><a href="#3-具体使用" class="headerlink" title="3. 具体使用"></a>3. 具体使用</h3><p>Webview的使用主要包括：Webview类 及其 工具类（WebSettings类、WebViewClient类、WebChromeClient类）</p>
-<h3 id="4-WebView与-JS-的交互方式"><a href="#4-WebView与-JS-的交互方式" class="headerlink" title="4. WebView与 JS 的交互方式"></a>4. WebView与 JS 的交互方式</h3><blockquote>
-<p>在Android WebView的使用中，与前端h5页面交互的需求十分常见</p>
-<p>Android 与 JS 通过WebView互相调用方法，实际上是：Android 去调用JS的代码 + JS去调用Android的代码</p>
-<p>二者沟通的桥梁是WebView</p>
-</blockquote>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592efe5703b7?imageslim" alt="img"></p>
-<ul>
-<li>具体介绍请看文章：<a href="https://www.jianshu.com/p/345f4d8a5cfa" target="_blank" rel="external">最全面总结 Android WebView与 JS 的交互方式</a><h4 id="5-使用漏洞"><a href="#5-使用漏洞" class="headerlink" title="5. 使用漏洞"></a>5. 使用漏洞</h4></li>
-<li>WebView 使用过程中存在许多漏洞，容易造成用户数据泄露等等危险，而很多人往往会忽视这个问题</li>
-<li>WebView中，主要漏洞有3类：任意代码执行漏洞、密码明文存储漏洞、域控制不严格漏洞</li>
-<li>漏洞具体介绍 &amp; 修复方式请看文章：<a href="https://www.jianshu.com/p/3a345d27cd42" target="_blank" rel="external">你不知道的 Android WebView 使用漏洞</a></li>
-</ul>
-<h4 id="6-缓存机制构建"><a href="#6-缓存机制构建" class="headerlink" title="6. 缓存机制构建"></a>6. 缓存机制构建</h4><p>Android WebView由于前端h5本身的原因，存在加载效率慢 &amp; 流量耗费的性能问题，具体介绍如下：<br><img src="https://user-gold-cdn.xitu.io/2018/6/19/1641592f01b03bc8?imageslim" alt=""></p>
-<p>示意图</p>
-<blockquote>
-<p>本文通过 H5缓存机制 + 资源预加载 + 资源拦截的方式 构建了一套WebView缓存机制，从而解决Android</p>
-<p>WebView的性能问题，最终提高用户使用体验</p>
-<p>具体缓存机制的讲解请看文章：<a href="https://www.jianshu.com/p/5e7075f4875f" target="_blank" rel="external">手把手教你构建 Android WebView 的缓存机制 &amp; 资源预加载方案</a></p>
-</blockquote>
-<h4 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h4><p>WebSettings settings = webView.getSettings();//获取webview的设置<br>settings.setJavaScriptEnabled(true);//可以加载js<br>settings.setPluginState(WebSettings.PluginState.ON);////让WebView支持播放插件<br>webView.setWebChromeClient(new WebChromeClient());//页面标题与页面中连接跳转的处理<br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN_MR1) {<br>    settings.setMediaPlaybackRequiresUserGesture(false);//设置WebView是否通过手势触发播放媒体，默认是true，需要手势触发。<br>}<br>//设置WebView是否使用viewport，<br>// 当该属性被设置为false时，加载页面的宽度总是适应WebView控件宽度；当被设置为true，<br>// 当前页面包含viewport属性标签，在标签中指定宽度值生效，如果页面不包含viewport标签，<br>// 无法提供一个宽度值，这个时候该方法将被使用。<br>webView.getSettings().setUseWideViewPort(true);<br>webView.getSettings().setLoadWithOverviewMode(true);<br>//webView.getSettings().setDomStorageEnabled(true);<br>//webView.getSettings().setSupportMultipleWindows(true);<br>webView.setWebChromeClient(new WebChromeClient());<br>//webView.setWebViewClient(new WebViewClient());<br>//webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//开启硬件加速<br>webView.getSettings().setLoadWithOverviewMode(true);//设置WebView是否使用预览模式加载界面。<br>webView.getSettings().setDomStorageEnabled(true);//设置是否开启DOM存储API权限，默认false，未开启，设置为true，WebView能够使用DOM storage API<br>settings.setAllowFileAccess(true);//设置在WebView内部是否允许访问文件<br>settings.setAppCacheEnabled(true);//是否使用应用缓存<br>//        webView.getSettings().setSupportMultipleWindows(true);//设置WebView是否支持多屏窗口，参考WebChromeClient#onCreateWindow，默认false，不支持。<br>//        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);.//关闭单个view的硬件加速</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1753,7 +1777,7 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

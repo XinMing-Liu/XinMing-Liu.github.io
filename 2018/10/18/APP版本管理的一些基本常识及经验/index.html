@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="google-site-verification" content="yDftMuMpSHLFT3CO6R5WOb9M-oozAosLddh4pBYNxUs" />
+<meta name="baidu-site-verification" content="eUJY3hmGQw" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="APP版本管理看似简单的一个问题,但经常有时候被我们忽视.这篇文章只作为一个科普或一个约定来促进我们以后版本的管理更规范.
+1.科普(versionCode &amp;amp; versionName &amp;amp; Debug版本 &amp;amp; Release版本)versionCode int类型数字
+versionCode:主要是用于版本升级所用，是INT类型的，第一个版本定义为1，以后递增，这样只要判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APP版本管理的一些基本常识及经验">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/APP版本管理的一些基本常识及经验/index.html">
+<meta property="og:site_name" content="XinMing">
+<meta property="og:description" content="APP版本管理看似简单的一个问题,但经常有时候被我们忽视.这篇文章只作为一个科普或一个约定来促进我们以后版本的管理更规范.
+1.科普(versionCode &amp;amp; versionName &amp;amp; Debug版本 &amp;amp; Release版本)versionCode int类型数字
+versionCode:主要是用于版本升级所用，是INT类型的，第一个版本定义为1，以后递增，这样只要判断">
+<meta property="og:updated_time" content="2018-10-18T07:17:23.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="APP版本管理的一些基本常识及经验">
+<meta name="twitter:description" content="APP版本管理看似简单的一个问题,但经常有时候被我们忽视.这篇文章只作为一个科普或一个约定来促进我们以后版本的管理更规范.
+1.科普(versionCode &amp;amp; versionName &amp;amp; Debug版本 &amp;amp; Release版本)versionCode int类型数字
+versionCode:主要是用于版本升级所用，是INT类型的，第一个版本定义为1，以后递增，这样只要判断">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '123123',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/APP版本管理的一些基本常识及经验/"/>
+
+
+
+
+
+  <title> APP版本管理的一些基本常识及经验 | XinMing </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/APP版本管理的一些基本常识及经验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                APP版本管理的一些基本常识及经验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T13:44:07+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="APP版本管理"><a href="#APP版本管理" class="headerlink" title="APP版本管理"></a>APP版本管理</h1><p>看似简单的一个问题,但经常有时候被我们忽视.<br>这篇文章只作为一个科普或一个约定来促进我们以后版本的管理更规范.</p>
+<h2 id="1-科普-versionCode-amp-versionName-amp-Debug版本-amp-Release版本"><a href="#1-科普-versionCode-amp-versionName-amp-Debug版本-amp-Release版本" class="headerlink" title="1.科普(versionCode &amp; versionName &amp; Debug版本 &amp; Release版本)"></a>1.科普(versionCode &amp; versionName &amp; Debug版本 &amp; Release版本)</h2><h4 id="versionCode-int类型数字"><a href="#versionCode-int类型数字" class="headerlink" title="versionCode int类型数字"></a>versionCode int类型数字</h4><ul>
+<li>versionCode:主要是用于版本升级所用，是INT类型的，第一个版本定义为1，以后递增，这样只要判断该值就能确定是否需要升级，该值不显示给用户。</li>
+</ul>
+<h4 id="versionName-String类型版本标识"><a href="#versionName-String类型版本标识" class="headerlink" title="versionName String类型版本标识"></a>versionName String类型版本标识</h4><ul>
+<li>versionName:这个是我们常说明的版本号，由三部分组成<major>.<minor>.<point>,该值是个字符串，可以显示给用户。</point></minor></major></li>
+</ul>
+<h4 id="测试包-Debug版本-未经签名的APP-只为了我们内部测试使用"><a href="#测试包-Debug版本-未经签名的APP-只为了我们内部测试使用" class="headerlink" title="测试包(Debug版本) 未经签名的APP,只为了我们内部测试使用."></a>测试包(Debug版本) 未经签名的APP,只为了我们内部测试使用.</h4><h4 id="正式包-Release版本-一般认为已经签名了-可以发布的版本"><a href="#正式包-Release版本-一般认为已经签名了-可以发布的版本" class="headerlink" title="正式包(Release版本) 一般认为已经签名了,可以发布的版本"></a>正式包(Release版本) 一般认为已经签名了,可以发布的版本</h4><h3 id="真理—APP升级首先判断权限安全性-即签名文件是否一样-所以正式包不能升级为测试包-其次判断版本号即versionCode-新的版本只能大不能小-所以不能往低版本升级"><a href="#真理—APP升级首先判断权限安全性-即签名文件是否一样-所以正式包不能升级为测试包-其次判断版本号即versionCode-新的版本只能大不能小-所以不能往低版本升级" class="headerlink" title="真理—APP升级首先判断权限安全性,即签名文件是否一样,所以正式包不能升级为测试包.其次判断版本号即versionCode,新的版本只能大不能小.所以不能往低版本升级."></a>真理—APP升级首先判断权限安全性,即签名文件是否一样,所以正式包不能升级为测试包.其次判断版本号即versionCode,新的版本只能大不能小.所以不能往低版本升级.</h3><h2 id="2-versionCode-amp-versionName定义规则-经验"><a href="#2-versionCode-amp-versionName定义规则-经验" class="headerlink" title="2.versionCode &amp; versionName定义规则(经验)"></a>2.versionCode &amp; versionName定义规则(经验)</h2><ul>
+<li>versionCode是个int类型的,是个递增的.每次升级versionCode都要增加</li>
+</ul>
+<h6 id="一般分为两种情况-一种情况是从1开始一直往后增加每次增加1-另有一种情况是1-0-0这种"><a href="#一般分为两种情况-一种情况是从1开始一直往后增加每次增加1-另有一种情况是1-0-0这种" class="headerlink" title="一般分为两种情况,一种情况是从1开始一直往后增加每次增加1;另有一种情况是1.0.0这种."></a>一般分为两种情况,一种情况是从1开始一直往后增加每次增加1;另有一种情况是1.0.0这种.</h6><h4 id="第一种-目前比较有代表的就是android系统"><a href="#第一种-目前比较有代表的就是android系统" class="headerlink" title="第一种,目前比较有代表的就是android系统"></a>第一种,目前比较有代表的就是android系统</h4><table>
+<thead>
+<tr>
+<th>versionName</th>
+<th style="text-align:center">versionCode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android 7.0</td>
+<td style="text-align:center">24</td>
+</tr>
+<tr>
+<td>Android 6.0</td>
+<td style="text-align:center">23</td>
+</tr>
+<tr>
+<td>Android 5.1</td>
+<td style="text-align:center">22</td>
+</tr>
+<tr>
+<td>Android 5.0</td>
+<td style="text-align:center">21</td>
+</tr>
+<tr>
+<td>Android 4.4W</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td>Android 4.4</td>
+<td style="text-align:center">19</td>
+</tr>
+<tr>
+<td>Android 4.3</td>
+<td style="text-align:center">18</td>
+</tr>
+</tbody>
+</table>
+<p>当然这里是举例,如果深究其实发现android系统并不是按照versionCode的大小升级的.有研究的朋友会知道他是按照build的版本管理的(这里暂时不去说buildVersion的问题)</p>
+<h4 id="第二种-目前比较有代表的是今日头条-QQ-微信-支付宝等-也是我比较推崇的方式"><a href="#第二种-目前比较有代表的是今日头条-QQ-微信-支付宝等-也是我比较推崇的方式" class="headerlink" title="第二种,目前比较有代表的是今日头条,QQ,微信,支付宝等,也是我比较推崇的方式"></a>第二种,目前比较有代表的是今日头条,QQ,微信,支付宝等,也是我比较推崇的方式</h4><p>每个公司定义versionCode的规则也不一定完全一样,但是他的理念可定是样的.</p>
+<p>一般都分为三段来表示,小问题及需求修改,版本更新只修改最后一位.重要更新会修改第二位或最后一位已经增长到9需要进位时也需要更新第二位.第一位一般很少改动可以说百年难遇.(比如,用户使用习惯的改变;界面几乎重新设计了等)有可能会修改第一位数字.</p>
+<h4 id="1-普通更新不是很频繁的公司-前期做完以后很少更新-推荐"><a href="#1-普通更新不是很频繁的公司-前期做完以后很少更新-推荐" class="headerlink" title="1.普通更新不是很频繁的公司,前期做完以后很少更新(推荐)"></a>1.普通更新不是很频繁的公司,前期做完以后很少更新(推荐)</h4><h6 id="versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E"><a href="#versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E" class="headerlink" title="versionCode=10000 ==&gt;&gt;将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E"></a>versionCode=10000 ==&gt;&gt;将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E</h6><h6 id="versionCode-1-0-0-gt-gt-X’-Y’-Z"><a href="#versionCode-1-0-0-gt-gt-X’-Y’-Z" class="headerlink" title="versionCode=1.0.0 ==&gt;&gt; X’.Y’.Z"></a>versionCode=1.0.0 ==&gt;&gt; X’.Y’.Z</h6><blockquote>
+<p>ABC对应XYZ</p>
+<blockquote>
+<p> A==&gt;X</p>
+<p> B==&gt;Y</p>
+<p> C==&gt;Z</p>
+</blockquote>
+</blockquote>
+<p>最后两位是预留位.防止运维人员刚上传服务器1.0.0(10000)版本,突然发现有个地方忘记改回来.这个版本还没有用户下载,并且已经撤不回来了,那就需要我们重新打一个1.0.0(10001)版本给他,让他赶紧重新发布一次.</p>
+<h4 id="2-大公司长期运维的公司-比如腾讯等-可能以上根本不一定够用-那就需要将每一位用两位表示-如下"><a href="#2-大公司长期运维的公司-比如腾讯等-可能以上根本不一定够用-那就需要将每一位用两位表示-如下" class="headerlink" title="2.大公司长期运维的公司,比如腾讯等,可能以上根本不一定够用.那就需要将每一位用两位表示,如下"></a>2.大公司长期运维的公司,比如腾讯等,可能以上根本不一定够用.那就需要将每一位用两位表示,如下</h4><h6 id="versionCode-1000000-gt-gt-将10000每位用字母表示-AA-‘-BB-‘-CC-‘-DD-‘-EE"><a href="#versionCode-1000000-gt-gt-将10000每位用字母表示-AA-‘-BB-‘-CC-‘-DD-‘-EE" class="headerlink" title="versionCode=1000000 ==&gt;&gt;将10000每位用字母表示   AA ‘ BB ‘ CC ‘ DD ‘ EE"></a>versionCode=1000000 ==&gt;&gt;将10000每位用字母表示   AA ‘ BB ‘ CC ‘ DD ‘ EE</h6><h6 id="versionCode-1-20-10-gt-gt-X’-Y’-Z"><a href="#versionCode-1-20-10-gt-gt-X’-Y’-Z" class="headerlink" title="versionCode=1.20.10 ==&gt;&gt; X’.Y’.Z"></a>versionCode=1.20.10 ==&gt;&gt; X’.Y’.Z</h6><blockquote>
+<p>ABC对应XYZ</p>
+<blockquote>
+<p> AA==&gt;X</p>
+<p> BB==&gt;Y</p>
+<p> CC==&gt;Z</p>
+</blockquote>
+</blockquote>
+<h4 id="3-当然也有领导感觉版本变化太快了-使用四段显示的"><a href="#3-当然也有领导感觉版本变化太快了-使用四段显示的" class="headerlink" title="3.当然也有领导感觉版本变化太快了,使用四段显示的"></a>3.当然也有领导感觉版本变化太快了,使用四段显示的</h4><h6 id="versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E-‘-F"><a href="#versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E-‘-F" class="headerlink" title="versionCode=10000 ==&gt;&gt;将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E ‘ F"></a>versionCode=10000 ==&gt;&gt;将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E ‘ F</h6><h6 id="versionCode-1-0-0-0-gt-gt-X’-Y’-Z’-K’"><a href="#versionCode-1-0-0-0-gt-gt-X’-Y’-Z’-K’" class="headerlink" title="versionCode=1.0.0.0 ==&gt;&gt; X’.Y’.Z’.K’"></a>versionCode=1.0.0.0 ==&gt;&gt; X’.Y’.Z’.K’</h6><blockquote>
+<p>ABC对应XYZ</p>
+<blockquote>
+<p> A==&gt;X</p>
+<p> B==&gt;Y</p>
+<p> C==&gt;Z</p>
+<p> D==&gt;K</p>
+</blockquote>
+</blockquote>
+<p>依次类推.</p>
+<h2 id="3-发版流程-经验"><a href="#3-发版流程-经验" class="headerlink" title="3.发版流程(经验)"></a>3.发版流程(经验)</h2><p>一般公司开发都会有测试服务器,正式服务器至少两台服务器.<br>内部测试时一般使用测试服务器,等APP稳定后才切换成正式服务器.这时候就需要测试人员跟开发要个请求地址是正式服的APP测试.待一切没问题的时候.一切功能测试都ok了.这时候需要跟开发人员要一个正式包.一般正式包也就是我们上边说的对外版本管理的包.<br>正式包跟测试包最大区别在与是否签名.(签名版本与不签名的区别下边讲)</p>
+<p>APP开发一般很注意APP的体验,稍微有对用户影响的地方都认为是不可原谅的.因为这有可能影响了你的用户量.所以版本管理可以及发布一定要谨慎.</p>
+<h2 id="4-APP签名"><a href="#4-APP签名" class="headerlink" title="4.APP签名"></a>4.APP签名</h2><ul>
+<li>应用程序升级：如果你希望用户无缝升级到新的版本，那么你必须用同一个证书进行签名。这是由于只有以同一个证书签名，系统才会允许安装升级的应用程序。如果你采用了不同的证书，那么系统会要求你的应用程序采用不同的包名称，在这种情况下相当于安装了一个全新的应用程序。如果想升级应用程序，签名证书要相同，包名称要相同！</li>
+</ul>
+<p>APP签名是很重要的东西,签名文件及密码一定妥善保管.有条件的公司,app打包可以做到在线打包(签名文件放在服务器),可以不考虑这个问题.</p>
+<p>如果我们还没有这个能力,这个问题就需要重视.</p>
+<p>假如你的签名文件丢失了.这样会损失用户且带来灾难性的后果</p>
+<p>往应用市场发布必须是带签名的APP,否则无法发布.</p>
+<hr>
+<p>有什么还要了解的或有错误的地方,欢迎邮件反馈</p>
+<p>liuxinmingab@163.com</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/11/ListUtil-对list拆分成固定大小的子list/" rel="next" title="ListUtil 对list拆分成固定大小的子list">
+                <i class="fa fa-chevron-left"></i> ListUtil 对list拆分成固定大小的子list
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#APP版本管理"><span class="nav-number">1.</span> <span class="nav-text">APP版本管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-科普-versionCode-amp-versionName-amp-Debug版本-amp-Release版本"><span class="nav-number">1.1.</span> <span class="nav-text">1.科普(versionCode & versionName & Debug版本 & Release版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#versionCode-int类型数字"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">versionCode int类型数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#versionName-String类型版本标识"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">versionName String类型版本标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试包-Debug版本-未经签名的APP-只为了我们内部测试使用"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">测试包(Debug版本) 未经签名的APP,只为了我们内部测试使用.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正式包-Release版本-一般认为已经签名了-可以发布的版本"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">正式包(Release版本) 一般认为已经签名了,可以发布的版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真理—APP升级首先判断权限安全性-即签名文件是否一样-所以正式包不能升级为测试包-其次判断版本号即versionCode-新的版本只能大不能小-所以不能往低版本升级"><span class="nav-number">1.1.1.</span> <span class="nav-text">真理—APP升级首先判断权限安全性,即签名文件是否一样,所以正式包不能升级为测试包.其次判断版本号即versionCode,新的版本只能大不能小.所以不能往低版本升级.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-versionCode-amp-versionName定义规则-经验"><span class="nav-number">1.2.</span> <span class="nav-text">2.versionCode & versionName定义规则(经验)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一般分为两种情况-一种情况是从1开始一直往后增加每次增加1-另有一种情况是1-0-0这种"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">一般分为两种情况,一种情况是从1开始一直往后增加每次增加1;另有一种情况是1.0.0这种.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种-目前比较有代表的就是android系统"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">第一种,目前比较有代表的就是android系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种-目前比较有代表的是今日头条-QQ-微信-支付宝等-也是我比较推崇的方式"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">第二种,目前比较有代表的是今日头条,QQ,微信,支付宝等,也是我比较推崇的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-普通更新不是很频繁的公司-前期做完以后很少更新-推荐"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">1.普通更新不是很频繁的公司,前期做完以后很少更新(推荐)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E"><span class="nav-number">1.2.0.3.0.1.</span> <span class="nav-text">versionCode=10000 ==>>将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-1-0-0-gt-gt-X’-Y’-Z"><span class="nav-number">1.2.0.3.0.2.</span> <span class="nav-text">versionCode=1.0.0 ==>> X’.Y’.Z</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-大公司长期运维的公司-比如腾讯等-可能以上根本不一定够用-那就需要将每一位用两位表示-如下"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">2.大公司长期运维的公司,比如腾讯等,可能以上根本不一定够用.那就需要将每一位用两位表示,如下</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-1000000-gt-gt-将10000每位用字母表示-AA-‘-BB-‘-CC-‘-DD-‘-EE"><span class="nav-number">1.2.0.4.0.1.</span> <span class="nav-text">versionCode=1000000 ==>>将10000每位用字母表示   AA ‘ BB ‘ CC ‘ DD ‘ EE</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-1-20-10-gt-gt-X’-Y’-Z"><span class="nav-number">1.2.0.4.0.2.</span> <span class="nav-text">versionCode=1.20.10 ==>> X’.Y’.Z</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-当然也有领导感觉版本变化太快了-使用四段显示的"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">3.当然也有领导感觉版本变化太快了,使用四段显示的</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-10000-gt-gt-将10000每位用字母表示-A-‘-B-‘-C-‘-D-‘-E-‘-F"><span class="nav-number">1.2.0.5.0.1.</span> <span class="nav-text">versionCode=10000 ==>>将10000每位用字母表示   A ‘ B ‘ C ‘ D ‘ E ‘ F</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#versionCode-1-0-0-0-gt-gt-X’-Y’-Z’-K’"><span class="nav-number">1.2.0.5.0.2.</span> <span class="nav-text">versionCode=1.0.0.0 ==>> X’.Y’.Z’.K’</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-发版流程-经验"><span class="nav-number">1.3.</span> <span class="nav-text">3.发版流程(经验)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-APP签名"><span class="nav-number">1.4.</span> <span class="nav-text">4.APP签名</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

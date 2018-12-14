@@ -1,0 +1,794 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="google-site-verification" content="yDftMuMpSHLFT3CO6R5WOb9M-oozAosLddh4pBYNxUs" />
+<meta name="baidu-site-verification" content="eUJY3hmGQw" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="弘智," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="APPdemo项目介绍目前这个套代码,参考项目架构.使用原来的qdhz lib库.(目前来看似乎并不是很适合,需要以后做删除工作重新整理)整体架构的思路是,以qdhz lib为基础工具lib.不牵扯任何业务功能,服务与现有业务功能在app model中实现.app作为主要业务功能实现.
+软件架构软件架构说明,开发采用MVP开发架构模式.
+
+Activity 页面实现在activit中设置.包括vi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="弘智APP的readme">
+<meta property="og:url" content="http://yoursite.com/2018/12/14/弘智APP的readme/index.html">
+<meta property="og:site_name" content="XinMing">
+<meta property="og:description" content="APPdemo项目介绍目前这个套代码,参考项目架构.使用原来的qdhz lib库.(目前来看似乎并不是很适合,需要以后做删除工作重新整理)整体架构的思路是,以qdhz lib为基础工具lib.不牵扯任何业务功能,服务与现有业务功能在app model中实现.app作为主要业务功能实现.
+软件架构软件架构说明,开发采用MVP开发架构模式.
+
+Activity 页面实现在activit中设置.包括vi">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676f7ebbf66136e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="http://www.17qq.com/img_biaoqing/54167286.jpeg">
+<meta property="og:updated_time" content="2018-12-14T00:59:52.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="弘智APP的readme">
+<meta name="twitter:description" content="APPdemo项目介绍目前这个套代码,参考项目架构.使用原来的qdhz lib库.(目前来看似乎并不是很适合,需要以后做删除工作重新整理)整体架构的思路是,以qdhz lib为基础工具lib.不牵扯任何业务功能,服务与现有业务功能在app model中实现.app作为主要业务功能实现.
+软件架构软件架构说明,开发采用MVP开发架构模式.
+
+Activity 页面实现在activit中设置.包括vi">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676f7ebbf66136e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '123123',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/14/弘智APP的readme/"/>
+
+
+
+
+
+  <title> 弘智APP的readme | XinMing </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XinMing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">剑锋在磨砺，梅香在苦寒</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/弘智APP的readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                弘智APP的readme
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T08:58:21+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="APPdemo"><a href="#APPdemo" class="headerlink" title="APPdemo"></a>APPdemo</h1><h4 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h4><p>目前这个套代码,参考<strong>项目架构.使用原来</strong>的qdhz lib库.(目前来看似乎并不是很适合,需要以后做删除工作重新整理)</p><p><br>整体架构的思路是,以qdhz lib为基础工具lib.不牵扯任何业务功能,服务与现有业务功能在app model中实现.<br>app作为主要业务功能实现.</p>
+<h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构说明,开发采用MVP开发架构模式.</p>
+<ul>
+<li>Activity 页面实现在activit中设置.包括view的setValue及setListener.需要继承baseactivity 实现activityView</li>
+<li>activityView 接口实现类,用于Presenter的结果回调.</li>
+<li>activityPresenter 接口实现类,用于业务接口的回调</li>
+<li>activityPresenterImpl 业务逻辑的实现,比如:网络获取数据,复杂逻辑的判断.实现 activityPresenter.</li>
+</ul>
+<p>基础模块基础类放到qdhz里面,业务放到APP中,app中还包括业务的基础模块,比如登录等.</p>
+<p>(后期每个业务模块如果过于复杂可以,将每个业务模块单独拿出来分成modle,采用插件式管理)</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/2/1676f7ebbf66136e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><h5 id="1-BaseActivity"><a href="#1-BaseActivity" class="headerlink" title="1. BaseActivity"></a>1. BaseActivity</h5><p>所有页面的共同类,所有页面必须继承该类.BaseActivity提供很多扩展设置方法,页面继承后可直接回调.</p>
+<h6 id="1-1-title标题的设置"><a href="#1-1-title标题的设置" class="headerlink" title="1.1 title标题的设置"></a>1.1 title标题的设置</h6><p>需要你要的页面中include/ltsoft_toolbar,<br><figure class="highlight plain"><figcaption><span>layout="@layout/ltsoft_toolbar"</span><a href="/>```">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后在该页面的onCreate方法中</div></pre></td></tr></table></figure></p>
+<p>/**</p>
+<ul>
+<li>“测试Banner内容显示页”:标题显示的内容;</li>
+<li>true:是否居中显示,如果为false显示为居左对齐;</li>
+<li>除此也可setToolBarTitle(“测试Banner内容显示页”);默认居左显示标题<br>*/<br>setToolBarTitle(“测试Banner内容显示页”, true);<br>onstart();//设置是否显示返回按钮,如果不设置则不显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">另:特殊情况可不inclode,自定义title,则不必设置setToolBarTitle 及 onstart.</div><div class="line"></div><div class="line">##### 1.2 集成BaseActivity可以随意使用baseactivity中的方法.</div><div class="line">* notifyVibrator 震动</div><div class="line">* notifyRing 提示声音</div><div class="line">* setSteepStatusBar 是否设置沉浸状态栏</div><div class="line">* setAllowFullScreen 是否允许全屏</div><div class="line">* setScreenRoate 是否禁止旋转屏幕</div><div class="line">* onNetChange 网络状态监听</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/**</p>
+<pre><code> * 没有连接网络
+ */
+public static final int NETWORK_NONE = -1;
+/**
+ * 移动网络
+ */
+public static final int NETWORK_MOBILE = 0;
+/**
+ * 无线网络
+ */
+public static final int NETWORK_WIFI = 1;
+/**
+ * 无线 移动网络 同时存在
+ */
+public static final int NETWORK_WIFI_MOBILE = 2;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 2 Log使用</div><div class="line"></div><div class="line">##### 2.1 LogUtils</div><div class="line">	使用logutils的目的,在正式发版时可以快速关闭log的输出只需修改下配置为false即可,避免发版时去一个个找log输出位置关闭.</div><div class="line">	简单临时log可使用logutils.比如功能验证等重要log采用logback记录.</div><div class="line">##### 2.2 LogBack(基于log4j)</div><div class="line">	logBack目的是记录log并打印log,对log的进一步封装,建议所有log统一使用logback,目前logback已经集成到qdhz lib</div><div class="line">	下修改配置可以在 lib下的assets/logback.xml 中修改.</div><div class="line"></div><div class="line">	目前只声明了两个crash 和 http</div></pre></td></tr></table></figure>
+
+&lt;logger name=&quot;crash&quot;&gt;
+         &lt;appender-ref ref=&quot;BASE_ROLL_FILE&quot; /&gt;
+ &lt;/logger&gt;
+
+ &lt;logger name=&quot;http&quot;&gt;
+         &lt;appender-ref ref=&quot;BASE_HTTP_FILE&quot; /&gt;
+ &lt;/logger&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">更多内容,请移步</div><div class="line">[我的博客--基于Log4J LogBack集成使用详解](https://xinming-liu.github.io/2018/11/09/%E5%9F%BA%E4%BA%8ELog4J-LogBack%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/)</div><div class="line"></div><div class="line"></div><div class="line">	目前项目中的使用: HttpService中对每次的请求都作了记录.及全局的异常捕获</div><div class="line"></div><div class="line">#### 3 HttpService 网络请求的封装及使用</div><div class="line">##### 3.1 HttpService对象创建提供了三种方式:</div></pre></td></tr></table></figure>
+<pre><code>HttpService(Context context) //activity中使用
+HttpService(Context context, T mthis) //activity或fragment中使用
+HttpService( T mthis) //activity或fragment 或 没有context的类中使用. [注意此时只可以使用
+doPostStringNotDialog请求,否则会失败]
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">##### 3.2 其次Uil中的ip采用静态对象存储使用时需要new UrlUtils();</div><div class="line">##### 3.3 获取请求结果</div><div class="line">要想获取结果需要将 T 类implements IAppCallBack 并实现他的onSuccess,onFailure方法.</div><div class="line">一个页面有多个请求可根据fucName区分哪个请求的结果</div><div class="line"></div><div class="line">* 注:fucName因为都是在本页面中传入获取,不建议放到全局静态变量中.(fucName建议使用通俗易的命名,或直接使用中文命名)</div><div class="line"></div><div class="line">##### 3.4 请求</div></pre></td></tr></table></figure>
+
+/**
+ * POST请求通用方法
+ *
+ * @param uri     请求地址
+ * @param operStr 操作字符串
+ * @param jsonStr 请求参数json
+ */
+public void doPostString(String uri, final String operStr, String jsonStr){
+...
+
+/**
+ * POST请求无dialog提示方法
+ *
+ * @param uri     请求地址
+ * @param operStr 操作字符串
+ * @param jsonStr 请求参数json
+ */
+public void doPostStringNotDialog(String uri, final String operStr, String jsonStr) {
+...
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 4 图片加载框架Glide</div></pre></td></tr></table></figure>
+<p>Glide.with(getContext())<br>     .load(mUrlUtils.HTTP_HEAD + model.get(finalJ).getIcon())//设置uil地址<br>     .placeholder(R.mipmap.ic_item_more_round)//默认显示图片<br>     .error(R.mipmap.ic_item_more_round)//报错显示图片<br>     .override(100, 100)//设置图片大小<br>     .diskCacheStrategy(DiskCacheStrategy.NONE)//设置缓存模式<br>     .into(childAt2);//设置给要显示的View<br>```<br><a href="https://blog.csdn.net/ccg_201216323/article/details/53862797" target="_blank" rel="external">参考 图片加载框架之Glide</a></p>
+<h1 id="待续…"><a href="#待续…" class="headerlink" title="(待续…)"></a>(待续…)</h1><p><img src="http://www.17qq.com/img_biaoqing/54167286.jpeg" alt=""></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h6 id="1-原材料出库-入库-输入view必须设置id"><a href="#1-原材料出库-入库-输入view必须设置id" class="headerlink" title="1. 原材料出库/入库 输入view必须设置id"></a>1. 原材料出库/入库 输入view必须设置id</h6><p>  页面中的调用手机摄像头的扫描输入功能,是通过获取屏幕焦点view,然后将结果赋值的方式实现的.<br>  所有获取焦点view需要先获取view的id,然后在onActivityResult中获取要显示的id然后给他设置.<br>  如果有特殊业务需求,比如我扫完条码然后需要用这个条码去验证.可根据这个id进行判断.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/弘智/" rel="tag"># 弘智</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/09/基于Log4J-LogBack集成使用详解/" rel="next" title="基于Log4J LogBack集成使用详解">
+                <i class="fa fa-chevron-left"></i> 基于Log4J LogBack集成使用详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/img/ic.png"
+               alt="XinMing" />
+          <p class="site-author-name" itemprop="name">XinMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">用时间沉淀一切，用博客记录一生。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/XinMing-Liu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.sina.com.cn/stringmain" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#APPdemo"><span class="nav-number">1.</span> <span class="nav-text">APPdemo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目介绍"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">项目介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用说明"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-BaseActivity"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">1. BaseActivity</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-title标题的设置"><span class="nav-number">1.0.0.3.1.1.</span> <span class="nav-text">1.1 title标题的设置</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待续…"><span class="nav-number">2.</span> <span class="nav-text">(待续…)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">2.0.1.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-原材料出库-入库-输入view必须设置id"><span class="nav-number">2.0.1.0.0.1.</span> <span class="nav-text">1. 原材料出库/入库 输入view必须设置id</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XinMing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

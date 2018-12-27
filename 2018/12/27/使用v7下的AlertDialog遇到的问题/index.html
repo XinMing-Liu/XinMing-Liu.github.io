@@ -92,15 +92,22 @@
 
 
 
-<meta name="description" content="用时间沉淀一切，用博客记录一生。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="XinMing">
-<meta property="og:url" content="http://yoursite.com/tags/回忆/index.html">
+<meta name="description" content="使用v7下的AlertDialog 关于Theme的问题1You need to use a Theme.AppCompat theme (or descendant) with this activity.
+开始在网上找到如下的解决方法:https://blog.csdn.net/u010072933/article/details/52325755
+当时我的程序并不想改theme因为我用到了A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用v7下的AlertDialog遇到的问题">
+<meta property="og:url" content="http://yoursite.com/2018/12/27/使用v7下的AlertDialog遇到的问题/index.html">
 <meta property="og:site_name" content="XinMing">
-<meta property="og:description" content="用时间沉淀一切，用博客记录一生。">
+<meta property="og:description" content="使用v7下的AlertDialog 关于Theme的问题1You need to use a Theme.AppCompat theme (or descendant) with this activity.
+开始在网上找到如下的解决方法:https://blog.csdn.net/u010072933/article/details/52325755
+当时我的程序并不想改theme因为我用到了A">
+<meta property="og:updated_time" content="2018-12-27T02:15:29.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XinMing">
-<meta name="twitter:description" content="用时间沉淀一切，用博客记录一生。">
+<meta name="twitter:title" content="使用v7下的AlertDialog遇到的问题">
+<meta name="twitter:description" content="使用v7下的AlertDialog 关于Theme的问题1You need to use a Theme.AppCompat theme (or descendant) with this activity.
+开始在网上找到如下的解决方法:https://blog.csdn.net/u010072933/article/details/52325755
+当时我的程序并不想改theme因为我用到了A">
 
 
 
@@ -128,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/回忆/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/27/使用v7下的AlertDialog遇到的问题/"/>
 
 
 
 
 
-  <title> 标签: 回忆 | XinMing </title>
+  <title> 使用v7下的AlertDialog遇到的问题 | XinMing </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +166,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -263,46 +270,149 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        回忆
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/使用v7下的AlertDialog遇到的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XinMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/ic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XinMing">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用v7下的AlertDialog遇到的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-27T10:06:11+08:00">
+                2018-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="使用v7下的AlertDialog-关于Theme的问题"><a href="#使用v7下的AlertDialog-关于Theme的问题" class="headerlink" title="使用v7下的AlertDialog 关于Theme的问题"></a>使用v7下的AlertDialog 关于Theme的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">You need to use a Theme.AppCompat theme (or descendant) with this activity.</div></pre></td></tr></table></figure>
+<p>开始在网上找到如下的解决方法:<br><a href="https://blog.csdn.net/u010072933/article/details/52325755" target="_blank" rel="external">https://blog.csdn.net/u010072933/article/details/52325755</a></p>
+<p>当时我的程序并不想改theme因为我用到了ActionBar toolbar<br>我担心如果修改的话会对我之前的有影响.</p>
+<p>所以我尝试修改了new AlertDialog传入的context</p>
+<p>我的这个AlertDialog的创建显示是在 RecyclerCommonAdapter 中,当点击一个item的时候显示AlertDialog<br>所以这里刚开始也没注意就传入了一个getApplicationContext(),然后运行的时候就报错了</p>
+<p>后来改成MyActiovity.this 就可以了.</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/05/22/儿时味道/" itemprop="url">
-              
-                <span itemprop="name">儿时味道</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-22T13:19:53+08:00"
-              content="2018-05-22" >
-          05-22
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/14/弘智APP的readme/" rel="next" title="弘智APP的readme">
+                <i class="fa fa-chevron-left"></i> 弘智APP的readme
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -310,6 +420,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -329,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/img/ic.png"
@@ -408,6 +531,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用v7下的AlertDialog-关于Theme的问题"><span class="nav-number">1.</span> <span class="nav-text">使用v7下的AlertDialog 关于Theme的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -513,6 +652,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
